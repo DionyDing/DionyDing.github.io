@@ -124,6 +124,7 @@ a:hover {
   -webkit-background-size: 100% auto;
   -moz-background-size: 100% auto;
   background-size: 100% auto;
+  z-index: 999;
 }
 #header .alignleft {
   width: 485px;
