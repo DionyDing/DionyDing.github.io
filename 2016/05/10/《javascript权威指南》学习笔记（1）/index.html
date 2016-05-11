@@ -52,13 +52,13 @@
     
       <li><a href="/archives">归档</a></li>
     
-      <li><a href="/categories/technology">分类</a></li>
-    
       <li><a href="/">关于生活</a></li>
     
       <li><a href="/categories/technology">关于技术</a></li>
     
-      <li><a href="/">and关于计划赶不上变化</a></li>
+      <li><a href="/categories/technology/javascript">关于技术—js篇</a></li>
+    
+      <li><a href="/categories/plan">and关于计划赶不上变化</a></li>
     
   </ul>
   <div class="clearfix"></div>
@@ -82,10 +82,7 @@
     <div class="entry">
       
         <p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><p>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，如<code>join()</code>,<code>filter()</code>等）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</p>
-<h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><p><strong>字符串的方法全都不改变原字符串！</strong></p>
-<p>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。<br>常见的字符串方法：</p>
-<ul>
+<h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，如join-filter-等）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，如join-filter-等）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，如join(),filter()等）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，如<code>join()</code>,<code>filter()</code>等）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
 <li>索引类：<ul>
 <li><code>charAt(i)</code>：返回索引i处的字符</li>
 <li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
@@ -99,11 +96,16 @@
 <li><code>match(&#39;子串&#39;/正则表达式)</code>：返回数组，包含匹配到的文本</li>
 </ul>
 </li>
-<li>截取类：<br>-<code>substring(start,end)</code>：截取start索引到end-1索引的子字符串（参数不可为负值）<br>-<code>slice(start,end)</code>：截取start索引到end-1索引的子字符串（参数可为负值）<br>-<code>substr(start,length)</code>：截取start索引起的lengrh长的子字符串（参数不可为负值）</li>
+<li>截取类：<ul>
+<li><code>substring(start,end)</code>：截取start索引到end-1索引的子字符串（参数不可为负值）</li>
+<li><code>slice(start,end)</code>：截取start索引到end-1索引的子字符串（参数可为负值）</li>
+<li><code>substr(start,length)</code>：截取start索引起的lengrh长的子字符串（参数不可为负值）</li>
+</ul>
+</li>
 <li>其他：<ul>
 <li><code>replace(&#39;被替代子串(可为正则表达式)&#39;,&#39;新子串&#39;)</code>：用新子串替代旧子串，默认只替换一次，全局替换用正则表达式g指向全局</li>
-<li><code>split(&#39;seperator&#39;,~~howmany~~)</code>：将字符串以seperator为界分为多元素数组，howmany参数可省略，表数组最大长度</li>
-<li><code>toUpperCase()</code>,<code>toLowerCase()</code>：将字符串转换为全部大写/小写</li>
+<li><code>split(&#39;seperator&#39;,~~howmany~~)</code>：将字符串以seperator为界分为多元素数组，seperator为空’ ‘对每个字母都分割，默认为整个字符串为一个数组元素，howmany参数可省略，表数组最大长度</li>
+<li><code>toUpperCase()</code>,<code>toLowerCase()</code>：将字符串转换为全部大写/小写<br><p></p></li>
 </ul>
 </li>
 </ul>
@@ -125,7 +127,7 @@
         
   
   <div class="tags">
-    <a href="/tags/javascript/">javascript</a>, <a href="/tags/学习笔记/">学习笔记</a>
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
   </div>
 
         <!-- partial('post/share') -->
@@ -165,6 +167,8 @@
   
     <li><a href="/categories/technology/javascript/">javascript</a><small>1</small></li>
   
+    <li><a href="/categories/plan/">plan</a><small>1</small></li>
+  
     <li><a href="/categories/technology/">technology</a><small>1</small></li>
   
   </ul>
@@ -175,6 +179,10 @@
 <div class="widget tag">
   <h3 class="title">最新文章</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2016/05/11/5月plan/">5月plan</a>
+      </li>
     
       <li>
         <a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a>
@@ -189,9 +197,9 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/javascript/">javascript</a><small>1</small></li>
+    <li><a href="/tags/5月计划/">5月计划</a><small>1</small></li>
   
-    <li><a href="/tags/学习笔记/">学习笔记</a><small>1</small></li>
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>1</small></li>
   
   </ul>
 </div>
@@ -201,7 +209,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a>
+    <a href="/tags/5月计划/" style="font-size: 10px;">5月计划</a> <a href="/tags/javascript学习笔记/" style="font-size: 10px;">javascript学习笔记</a>
   </div>
 </div>
 
