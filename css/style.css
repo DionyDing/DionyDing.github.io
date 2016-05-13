@@ -118,12 +118,11 @@ a:hover {
 #header {
   color: #fff;
 }
-.alignleft {
-  float: none;
-}
+.alignleft1,
 a {
   color: #fff;
 }
+.alignleft1:hover,
 a:hover {
   color: #0cf;
   text-decoration: none;
@@ -141,25 +140,24 @@ h2 {
   margin-top: 10px;
   margin-left: 10%;
 }
-#main-nav {
+.alignright1 {
   width: 100%;
-  float: none;
   position: fixed;
   top: 0;
   left: 0;
   font-family: "Microsoft YaHei";
-  line-height: 4.5em;
+  line-height: 3.5em;
   background: url("http://o6yoa3nwp.bkt.clouddn.com/body.jpg") no-repeat 0 0;
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   background-size: 100%;
   z-index: 999;
 }
-#main-nav ul {
+.alignright1 ul {
   list-style: none;
   margin: 0 auto;
 }
-#main-nav ul li {
+.alignright1 ul li {
   float: left;
   margin-left: 3%;
   font-size: 1.5em;
