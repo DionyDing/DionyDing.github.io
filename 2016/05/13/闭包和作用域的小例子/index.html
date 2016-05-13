@@ -71,7 +71,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-05-13T13:17:31.000Z"><a href="/2016/05/13/闭包和作用域的小例子/">2016-05-13</a></time>
+        <time datetime="2016-05-13T14:17:31.000Z"><a href="/2016/05/13/闭包和作用域的小例子/">2016-05-13</a></time>
       
       
   
@@ -83,7 +83,7 @@
       
         <h3 id="this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this-a……噗……"><a href="#this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this-a……噗……" class="headerlink" title="this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this.a……噗……"></a>this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this.a……噗……</h3><p><pre style="font-size:20px;">eg：<br>function test(){<br>    var a=3;<br>    return{                //这里返回一个对象<br>        get:function (){<br>            return a;<br>        },<br>        set:function (a1){<br>            a=a1;<br>        }<br>    }<br>}<br>a;               //a为私有变量，访问不到，全局a为undefined，故返回undefined<br>test().get();    //返回a的值3<br>test().set(4);<br>test().get();    //<span style="color:red;">返回3，这是因为每次test()都会重新初始化重新将a置为初始值3，执行上文没有被保存</span><br>var obj=test();<br>obj.set(4);<br>obj.get();       //<span style="color:red;">返回4，var obj=test()会使得执行上文每次都会保存，不会重新初始化</span></pre></p>
 <h2 id=""><a href="#" class="headerlink" title=""></a></h2><hr>
-<h3 id="师傅今天考了我一道作用域的题，没答对。。。书白看了。。。"><a href="#师傅今天考了我一道作用域的题，没答对。。。书白看了。。。" class="headerlink" title="师傅今天考了我一道作用域的题，没答对。。。书白看了。。。"></a>师傅今天考了我一道作用域的题，没答对。。。书白看了。。。</h3><p><pre style="font-size:20px"><br>var name=1;<br>var obj={<br>name:2,<br>b:{<br>  name:3,<br>  c:{<br>    name:4,<br>    getName:function (){<br>            console.log(this.name);  //这里最开始为return this.name，这样的话setTimeout(obj.b.c.getName,1000)<br>                                     //会返回其唯一的标识时延的id，没有返回全局下name<br>            }<br>    }<br>  }<br>}<br></pre></p>
+<h3 id="师傅今天考了我一道作用域的题，没答对。。。书白看了。。。"><a href="#师傅今天考了我一道作用域的题，没答对。。。书白看了。。。" class="headerlink" title="师傅今天考了我一道作用域的题，没答对。。。书白看了。。。"></a>师傅今天考了我一道作用域的题，没答对。。。书白看了。。。</h3><p><pre style="font-size:20px">var name=1;<br>var obj={<br>name:2,<br>b:{<br>  name:3,<br>  c:{<br>    name:4,<br>    getName:function (){<br>            console.log(this.name);  //这里最开始为return this.name，这样的话setTimeout(obj.b.c.getName,1000)<br>                                     //会返回其唯一的标识时延的id，没有返回全局下name<br>            }<br>    }<br>  }<br>}<br></pre></p>
 <p><pre style="font-size:20px"><br>obj.b.c.getName();                  //4<br>var a1=obj.b;<br>a1.c.getName();                     //4<br>var b1=obj.b.c;<br>b1.getName();                       //4<br>setTimeout(obj.b.c.getName,1000);   //1<br>setTimeout(obj.b.c.getName(),1000); //4<br>var cGet=obj.b.c.getName;<br>cGet();                             //1<br></pre></p>
 <h4 id="obj-b-c-getName-，a1-c-getName-，b1-getName-调用getName-时this均指向当前对象，即最内层c对象，故返回c-name。"><a href="#obj-b-c-getName-，a1-c-getName-，b1-getName-调用getName-时this均指向当前对象，即最内层c对象，故返回c-name。" class="headerlink" title="obj.b.c.getName()，a1.c.getName()，b1.getName()调用getName()时this均指向当前对象，即最内层c对象，故返回c.name。"></a><code>obj.b.c.getName()</code>，<code>a1.c.getName()</code>，<code>b1.getName()</code>调用getName()时<code>this</code>均指向当前对象，即最内层c对象，故返回<code>c.name</code>。</h4><h4 id="setTimeout-obj-b-c-getName-1000-生效时，this指向window对象，相当于创建临时变量并把obj-b-c-getName赋给这个临时变量，注意这里没有-表示调用，临时变量中内容为function-console-log-this-name-，this指向全局，故返回全局下name，即window-name。"><a href="#setTimeout-obj-b-c-getName-1000-生效时，this指向window对象，相当于创建临时变量并把obj-b-c-getName赋给这个临时变量，注意这里没有-表示调用，临时变量中内容为function-console-log-this-name-，this指向全局，故返回全局下name，即window-name。" class="headerlink" title="setTimeout(obj.b.c.getName,1000)生效时，this指向window对象，相当于创建临时变量并把obj.b.c.getName赋给这个临时变量，注意这里没有()表示调用，临时变量中内容为function (){console.log(this.name);}，this指向全局，故返回全局下name，即window.name。"></a><code>setTimeout(obj.b.c.getName,1000)</code>生效时，<code>this</code>指向<code>window</code>对象，相当于创建临时变量并把<code>obj.b.c.getName</code>赋给这个临时变量，注意这里没有()表示调用，临时变量中内容为<code>function (){console.log(this.name);}</code>，<code>this</code>指向全局，故返回全局下name，即<code>window.name</code>。</h4><h4 id="setTimeout-obj-b-c-getName-1000-生效时相当于直接从obj-b-c下调用c的getName-方法，此时this在其中指向c。"><a href="#setTimeout-obj-b-c-getName-1000-生效时相当于直接从obj-b-c下调用c的getName-方法，此时this在其中指向c。" class="headerlink" title="setTimeout(obj.b.c.getName(),1000)生效时相当于直接从obj.b.c下调用c的getName()方法，此时this在其中指向c。"></a><code>setTimeout(obj.b.c.getName(),1000)</code>生效时相当于直接从<code>obj.b.c</code>下调用c的getName()方法，此时<code>this</code>在其中指向c。</h4><h4 id="cGet同样相当于把obj-b-c-getName下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。"><a href="#cGet同样相当于把obj-b-c-getName下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。" class="headerlink" title="cGet同样相当于把obj.b.c.getName下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。"></a>cGet同样相当于把<code>obj.b.c.getName</code>下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。</h4>
       
@@ -97,7 +97,7 @@
         
   
   <div class="categories">
-    <a href="/categories/technology-javascript-日常的问题/">technology,javascript,日常的问题</a>
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>, <a href="/categories/technology/javascript/日常的问题/">日常的问题</a>
   </div>
 
         
@@ -141,13 +141,13 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/technology/javascript/">javascript</a><small>3</small></li>
+    <li><a href="/categories/technology/javascript/">javascript</a><small>4</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>3</small></li>
+    <li><a href="/categories/technology/">technology</a><small>4</small></li>
   
-    <li><a href="/categories/technology-javascript-日常的问题/">technology,javascript,日常的问题</a><small>1</small></li>
+    <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
   
   </ul>
 </div>
