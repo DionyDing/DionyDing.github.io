@@ -116,50 +116,52 @@ a:hover {
   z-index: -1;
 }
 #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: url("http://o6yoa3nwp.bkt.clouddn.com/body.jpg") no-repeat 0 0;
-  -webkit-background-size: 100% auto;
-  -moz-background-size: 100% auto;
-  background-size: 100% auto;
-  z-index: 999;
-}
-#header .alignleft {
-  width: 485px;
-}
-#header a {
   color: #fff;
 }
-#header a:hover {
+.alignleft {
+  float: none;
+}
+a {
+  color: #fff;
+}
+a:hover {
   color: #0cf;
   text-decoration: none;
 }
-#header h1 {
+h1 {
   font-weight: normal;
   font-size: 2.5em;
   line-height: 1;
   margin-left: 10%;
 }
-#header h2 {
+h2 {
   font-weight: normal;
   font-size: 1.3em;
   line-height: 1;
   margin-top: 10px;
   margin-left: 10%;
 }
-#header #main-nav {
+#main-nav {
+  width: 100%;
+  float: none;
+  position: fixed;
+  top: 0;
+  left: 0;
   font-family: "Microsoft YaHei";
-  line-height: 2.5em;
-  margin-right: 10%;
+  line-height: 4.5em;
+  background: url("http://o6yoa3nwp.bkt.clouddn.com/body.jpg") no-repeat 0 0;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+  z-index: 999;
 }
-#header #main-nav ul {
+#main-nav ul {
   list-style: none;
+  margin: 0 auto;
 }
-#header #main-nav ul li {
+#main-nav ul li {
   float: left;
-  margin-left: 30px;
+  margin-left: 3%;
   font-size: 1.5em;
   font-weight: bolder;
 }
@@ -527,9 +529,6 @@ article footer .addthis iframe {
 #comment .title {
   font-weight: normal;
   margin-bottom: 15px;
-}
-#content {
-  margin: 270px auto 0;
 }
 #pagination {
   zoom: 1;
