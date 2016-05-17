@@ -71,6 +71,57 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-05-17T14:57:36.000Z"><a href="/2016/05/17/用纯css实现多级导航菜单/">2016-05-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="css代码部分："><a href="#css代码部分：" class="headerlink" title="css代码部分："></a>css代码部分：</h3><p><pre style="font-size:20px;"><br>html,body,div,ul,li,a{margin:0;padding: 0;text-decoration: none;}<br>        .nav{<br>            font-size: 28px;<br>            color: mediumpurple;<br>            text-align: center;<br>        }<br>        .nav li{<br>           float:left;<br>           list-style: none;<br>           position: relative;/<em>relative为后续下级菜单absolute定义提供基位置</em>/<br>           width:250px;}<br>        .nav a:hover{<br>            background-color: mediumpurple;<br>            color: white;<br>        }<br>        .firstMenu li a,.secondMenu li a,.thirdMenu li a{<br>            display: block;<br>            background: yellowgreen;<br>            border:2px solid transparent;<br>            padding: 5px 9px;<br>            background-clip: padding-box;<br>        }<br>        .thirdMenu,.secondMenu{display: none;}<br>        .secondMenu{<br>            position: absolute;<br>            top:100%;/<em>顶边与一级菜单底边对齐</em>/<br>            left:0;<br>        }<br>        .thirdMenu{<br>            position: absolute;<br>            left: 100%;/<em>左边与二级菜单右边对齐</em>/<br>            top:0;<br>        }<br>        .secondMenu li,.thirdMenu li{<br>            float: none;<br>        }<br>        /<em>控制下拉菜单悬停显示</em>/<br>        .firstMenu li:hover &gt; ul{<br>            display: block;<br>        }<br>        /<em>记录选中的菜单栏</em>/<br>        .nav li:hover&gt;a{<br>            background-color: mediumpurple;<br>            color: white;<br>        }<br></pre></p>
+<h3 id="html代码部分："><a href="#html代码部分：" class="headerlink" title="html代码部分："></a>html代码部分：</h3><p><pre style="font-size:20px;"><div class="nav"><br>    <ul class="firstMenu"><br>        <!--一级开始--><br>        <li><a href="#">power</a></li><br>        <li><a href="#">money</a></li><br>        <li><a href="#">love</a><br>            <ul class="secondMenu"><br>                <li><a href="#">sports star</a></li><br>                <li><a href="#">movie star</a></li><br>                <li><a href="#">rock star</a><br>                    <!--三级开始--><br>                    <ul class="thirdMenu"><br>                        <li><a href="#">123</a></li><br>                        <li><a href="#">abc</a></li><br>                        <li><a href="#">def</a></li><br>                    </ul><br>                    <!--三级结束--><br>                </li><br>            </ul><br>        </li><br>        <li><a href="#">fame</a><br>            <!--二级开始--><br>            <ul class="secondMenu"><br>                <li><a href="#">sports star</a></li><br>                <li><a href="#">movie star</a></li><br>                <li><a href="#">rock star</a><br>                    <!--三级开始--><br>                    <ul class="thirdMenu"><br>                        <li><a href="#">123</a></li><br>                        <li><a href="#">abc</a></li><br>                        <li><a href="#">def</a></li><br>                    </ul><br>                    <!--三级结束--><br>                </li><br>            </ul><br>            <!--二级结束--><br>        </li><br>        <!--一级结束--><br>    </ul><br>    </div><br></pre></p>
+<h3 id="需要说明的部分："><a href="#需要说明的部分：" class="headerlink" title="需要说明的部分："></a>需要说明的部分：</h3><p>1.li标签下的<a>标签设为display:block可以使文字部分及整个周围空白都可以点击，可点击范围不止局限于文字<br>2.background-clip：padding-box使背景色范围只到padding，通过把边框置为透明可以显示后层的背景<br>3.注释中内容的很重要<br>4.基本思想是鼠标悬停时显示下级菜单，否则隐藏。再结合position:absolute通过从当前父级li开始定位控制下级菜单的显示位置</a></p>
+<p><img src="http://o6yo3ducz.bkt.clouddn.com/%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%A7%E5%AF%BC%E8%88%AA.gif" title="javascript权威指南"></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/css/">css</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/纯css实现多级nav/">纯css实现多级nav</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-05-13T14:17:31.000Z"><a href="/2016/05/13/闭包和作用域的小例子/">2016-05-13</a></time>
       
       
@@ -399,11 +450,13 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
+    <li><a href="/categories/technology/css/">css</a><small>1</small></li>
+  
     <li><a href="/categories/technology/javascript/">javascript</a><small>4</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>4</small></li>
+    <li><a href="/categories/technology/">technology</a><small>5</small></li>
   
     <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
   
@@ -415,6 +468,10 @@
 <div class="widget tag">
   <h3 class="title">最新文章</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a>
+      </li>
     
       <li>
         <a href="/2016/05/13/闭包和作用域的小例子/">闭包和作用域的小例子</a>
@@ -432,10 +489,6 @@
         <a href="/2016/05/11/5月plan/">5月plan</a>
       </li>
     
-      <li>
-        <a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -449,6 +502,8 @@
   
     <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
   
+    <li><a href="/tags/纯css实现多级nav/">纯css实现多级nav</a><small>1</small></li>
+  
     <li><a href="/tags/闭包和作用域/">闭包和作用域</a><small>1</small></li>
   
   </ul>
@@ -459,7 +514,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
+    <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
   </div>
 </div>
 
