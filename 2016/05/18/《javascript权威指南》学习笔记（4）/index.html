@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>《javascript权威指南》学习笔记（1） | D_d</title>
+  <title>《javascript权威指南》学习笔记（4） | D_d</title>
   <meta name="author" content="D_d" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="《javascript权威指南》学习笔记（1）" />
+  <meta property="og:title" content="《javascript权威指南》学习笔记（4）" />
   <meta property="og:site_name" content="D_d" />
 
   
@@ -72,43 +72,34 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-05-10T14:16:09.000Z"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">2016-05-10</a></time>
+        <time datetime="2016-05-18T08:33:43.000Z"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">2016-05-18</a></time>
       
       
   
-    <h1 class="title">《javascript权威指南》学习笔记（1）</h1>
+    <h1 class="title">《javascript权威指南》学习笔记（4）</h1>
   
 
     </header>
     <div class="entry">
       
-        <h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现<code>join()</code>,<code>filter()</code>等ES5的新数组方法,<code>slice()</code>适用）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
-<li>索引类：<ul>
-<li><code>charAt(i)</code>：返回索引i处的字符</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>fromCharCode(num1,num2,…)</code>：nmmN代表Unicode编码，返回numN对应的字符</li>
-</ul>
-</li>
-<li>搜索类：<ul>
-<li><code>indexOf(value,~~start~~)</code>,<code>lastIndexOf(value,~~start~~)</code>：start参数可省略，返回value在对应字符串中所在的索引位置，start参数表示开始查找位置。当value为多字符时返回匹配到的多字符中首字符的位置</li>
-<li><code>search(&#39;子串&#39;/正则表达式)</code>：返回匹配到结果的起始位置</li>
-<li><code>match(&#39;子串&#39;/正则表达式)</code>：返回数组，包含匹配到的文本</li>
-</ul>
-</li>
-<li>截取类：<ul>
-<li><code>substring(start,end)</code>：截取start索引到end-1索引的子字符串（参数不可为负值）</li>
-<li><code>slice(start,end)</code>：截取start索引到end-1索引的子字符串（参数可为负值）</li>
-<li><code>substr(start,length)</code>：截取start索引起的lengrh长的子字符串（参数不可为负值）</li>
-</ul>
-</li>
-<li>其他：<ul>
-<li><code>replace(&#39;被替代子串(可为正则表达式)&#39;,&#39;新子串&#39;)</code>：用新子串替代旧子串，默认只替换一次，全局替换用正则表达式g指向全局</li>
-<li><code>split(&#39;seperator&#39;,~~howmany~~)</code>：将字符串以seperator为界分为多元素数组，seperator为空’ ‘对每个字母都分割，默认为整个字符串为一个数组元素，howmany参数可省略，表数组最大长度</li>
-<li><code>toUpperCase()</code>,<code>toLowerCase()</code>：将字符串转换为全部大写/小写<br><p></p></li>
-</ul>
-</li>
+        <h1 id="函数篇"><a href="#函数篇" class="headerlink" title="函数篇"></a>函数篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义<p style="font-size:20px;"></p></h3><ul>
+<li>声明：function name(){…}</li>
+<li>表达式：var fun=function name(){…},在函数表达式中，函数名称标识name对命名表达式是可选项，如果存在名称标识name只在函数体中生效（函数定义表达式适合用来定义只用到一次的函数）</li>
+<li>区别：函数声明会被提前到外部脚本或外部函数作用域顶部，可以在定义前调用。而函数表达式的var声明部分不会提前，所以函数表达式不可以在声明前调用。</li>
+<li>tips:<br>1.函数作为对象私有函数时，对应属性名以下划线做前缀，表明私有！<br>2.函数声明语句非真正的语句，不能出现在循环、条件判断、try/catch、with等语句中；但函数表达式可以出现在任何地方<p></p><h3 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数<p style="font-size:20px;"></p></h3></li>
+<li>变量作用域：内部函数可以访问外部函数变量，但外部函数不可以访问内部函数的变量<p></p><h3 id="对象属性中的函数"><a href="#对象属性中的函数" class="headerlink" title="对象属性中的函数"></a>对象属性中的函数<p style="font-size:20px;"></p></h3></li>
+<li>在方法中使用对象的属性对应的值，要用this.prop指向当前对象的属性，否则会寻找全局变量。<br>eg:<code>var calculator={op1:1,op2:2,add:function (){this.result=this.op1+this.op2;}}</code></li>
+<li>希望this指向外部对象时要先用that把this保存起来，不能直接用this<p></p><h3 id="不定实参函数（不定实参函数要加备注！）"><a href="#不定实参函数（不定实参函数要加备注！）" class="headerlink" title="不定实参函数（不定实参函数要加备注！）"></a>不定实参函数（不定实参函数要加备注！）<p style="font-size:20px;"></p></h3></li>
+<li>arguments为一个类数组，arguments在严格模式下为保留字，非严格模式下非保留字</li>
+<li>对不定参数个数的函数可用arguments.length访问参数长度，arguments[i]访问第i+1个参数</li>
+<li>arguments的其他属性（非严格模式可用）：<br>1.callee:返回当前正在执行的函数体（匿名函数通过这种方式递归调用自身）<br>2.caller：返回调用栈<p></p><h3 id="函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）"><a href="#函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）" class="headerlink" title="函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）"></a>函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）</h3><h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域<p style="font-size:20px;"></p></h3></li>
+<li>函数中声明的变量在整个函数体内可见，在函数外部是不可见的，内部函数可以访问外部函数变量，但外部函数不可以访问内部函数的变量</li>
+<li>立即执行的匿名函数不会污染全局的命名空间</li>
+<li>tips：<code>（function (){…}）();</code>其中第一对括号JS解释器会将其解释为函数表达式<p></p><h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包<p style="font-size:20px;"></p></h3></li>
+<li>函数体内部的变量可以保存在函数作用域内</li>
+<li>当函数嵌套了另一函数，以内部函数对象为返回值时，闭包所指向的作用域链与定义函数时的作用域链不是同一作用域链，所以局部变量不会被垃圾回收机制回收，一直存在于内存中<br>eg:getter,setter方法：<code>function counter(n){return {get count(){return n++;},set count(m){if(m&gt;n) n=m;else throw Error(&quot;必须大于n&quot;);}}}</code><br> var c=counter(1000);<br> c.count;            //1000<span style="color:red">不可用c.count(),无function声明不可用方法方式调用</span><br> c.count;            //1001<br> c.count=2000;<br> c.count;            //2000<p></p><h3 id="函数的bind方法"><a href="#函数的bind方法" class="headerlink" title="函数的bind方法"></a>函数的bind方法</h3><h3 id="fun-bind-o-para-将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略"><a href="#fun-bind-o-para-将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略" class="headerlink" title="fun.bind(o,~~para~~)将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略"></a><code>fun.bind(o,~~para~~)</code><span style="font-size:20px">将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略</span></h3><pre style="font-size:20px;">eg:function f(y){return this.x+y;}<br>var o={x:1};<br>g=f.bind(o);<br>g(2);         //3</pre><div style="font-size:20px;"></div></li>
+<li>Function()构造函数会创建匿名函数，return Function()构造器创建的函数this会返回全局<h3 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数<div style="font-size:20px;"></div></h3>高阶函数、操作函数的函数（接受函数作参数返回新函数）、不完全函数（完整函数拆分为多部分函数调用）目前对我来说太高深了!!!见书197,198页</li>
 </ul>
 
       

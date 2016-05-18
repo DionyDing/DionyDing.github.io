@@ -73,6 +73,72 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-05-18T08:33:43.000Z"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">2016-05-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="函数篇"><a href="#函数篇" class="headerlink" title="函数篇"></a>函数篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义<p style="font-size:20px;"></p></h3><ul>
+<li>声明：function name(){…}</li>
+<li>表达式：var fun=function name(){…},在函数表达式中，函数名称标识name对命名表达式是可选项，如果存在名称标识name只在函数体中生效（函数定义表达式适合用来定义只用到一次的函数）</li>
+<li>区别：函数声明会被提前到外部脚本或外部函数作用域顶部，可以在定义前调用。而函数表达式的var声明部分不会提前，所以函数表达式不可以在声明前调用。</li>
+<li>tips:<br>1.函数作为对象私有函数时，对应属性名以下划线做前缀，表明私有！<br>2.函数声明语句非真正的语句，不能出现在循环、条件判断、try/catch、with等语句中；但函数表达式可以出现在任何地方<p></p><h3 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数<p style="font-size:20px;"></p></h3></li>
+<li>变量作用域：内部函数可以访问外部函数变量，但外部函数不可以访问内部函数的变量<p></p><h3 id="对象属性中的函数"><a href="#对象属性中的函数" class="headerlink" title="对象属性中的函数"></a>对象属性中的函数<p style="font-size:20px;"></p></h3></li>
+<li>在方法中使用对象的属性对应的值，要用this.prop指向当前对象的属性，否则会寻找全局变量。<br>eg:<code>var calculator={op1:1,op2:2,add:function (){this.result=this.op1+this.op2;}}</code></li>
+<li>希望this指向外部对象时要先用that把this保存起来，不能直接用this<p></p><h3 id="不定实参函数（不定实参函数要加备注！）"><a href="#不定实参函数（不定实参函数要加备注！）" class="headerlink" title="不定实参函数（不定实参函数要加备注！）"></a>不定实参函数（不定实参函数要加备注！）<p style="font-size:20px;"></p></h3></li>
+<li>arguments为一个类数组，arguments在严格模式下为保留字，非严格模式下非保留字</li>
+<li>对不定参数个数的函数可用arguments.length访问参数长度，arguments[i]访问第i+1个参数</li>
+<li>arguments的其他属性（非严格模式可用）：<br>1.callee:返回当前正在执行的函数体（匿名函数通过这种方式递归调用自身）<br>2.caller：返回调用栈<p></p><h3 id="函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）"><a href="#函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）" class="headerlink" title="函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）"></a>函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）</h3><h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域<p style="font-size:20px;"></p></h3></li>
+<li>函数中声明的变量在整个函数体内可见，在函数外部是不可见的，内部函数可以访问外部函数变量，但外部函数不可以访问内部函数的变量</li>
+<li>立即执行的匿名函数不会污染全局的命名空间</li>
+<li>tips：<code>（function (){…}）();</code>其中第一对括号JS解释器会将其解释为函数表达式<p></p><h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包<p style="font-size:20px;"></p></h3></li>
+<li>函数体内部的变量可以保存在函数作用域内</li>
+<li>当函数嵌套了另一函数，以内部函数对象为返回值时，闭包所指向的作用域链与定义函数时的作用域链不是同一作用域链，所以局部变量不会被垃圾回收机制回收，一直存在于内存中<br>eg:getter,setter方法：<code>function counter(n){return {get count(){return n++;},set count(m){if(m&gt;n) n=m;else throw Error(&quot;必须大于n&quot;);}}}</code><br> var c=counter(1000);<br> c.count;            //1000<span style="color:red">不可用c.count(),无function声明不可用方法方式调用</span><br> c.count;            //1001<br> c.count=2000;<br> c.count;            //2000<p></p><h3 id="函数的bind方法"><a href="#函数的bind方法" class="headerlink" title="函数的bind方法"></a>函数的bind方法</h3><h3 id="fun-bind-o-para-将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略"><a href="#fun-bind-o-para-将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略" class="headerlink" title="fun.bind(o,~~para~~)将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略"></a><code>fun.bind(o,~~para~~)</code><span style="font-size:20px">将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略</span></h3><pre style="font-size:20px;">eg:function f(y){return this.x+y;}<br>var o={x:1};<br>g=f.bind(o);<br>g(2);         //3</pre><div style="font-size:20px;"></div></li>
+<li>Function()构造函数会创建匿名函数，return Function()构造器创建的函数this会返回全局<h3 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数<div style="font-size:20px;"></div></h3>高阶函数、操作函数的函数（接受函数作参数返回新函数）、不完全函数（完整函数拆分为多部分函数调用）目前对我来说太高深了!!!见书197,198页</li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-05-17T14:57:36.000Z"><a href="/2016/05/17/用纯css实现多级导航菜单/">2016-05-17</a></time>
       
       
@@ -185,8 +251,8 @@
     </header>
     <div class="entry">
       
-        <p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h1 id="对象篇"><a href="#对象篇" class="headerlink" title="对象篇"></a>对象篇</h1><h4 id="属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。"><a href="#属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。" class="headerlink" title="属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。"></a>属性名中有<strong>空格、连字符、保留字</strong>时，要用引号以字符串形式表示。</h4><hr>
+        <h1 id="对象篇"><a href="#对象篇" class="headerlink" title="对象篇"></a>对象篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h4 id="属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。"><a href="#属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。" class="headerlink" title="属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。"></a>属性名中有<strong>空格、连字符、保留字</strong>时，要用引号以字符串形式表示。</h4><hr>
 <h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="直接量：var-obj-…"><a href="#直接量：var-obj-…" class="headerlink" title="直接量：var obj={…}"></a>直接量：var obj={…}</h4><h4 id="关键字：new-构造函数。var-obj-new-Object-Array-Date"><a href="#关键字：new-构造函数。var-obj-new-Object-Array-Date" class="headerlink" title="关键字：new+构造函数。var obj=new Object()/Array()/Date()"></a>关键字：new+构造函数。var obj=new Object()/Array()/Date()</h4><h4 id="Object-create-原型对象-var-obj-inherit-原型对象-。（二者有一些区别，如inherit不能继承自空对象等）"><a href="#Object-create-原型对象-var-obj-inherit-原型对象-。（二者有一些区别，如inherit不能继承自空对象等）" class="headerlink" title="Object.create(原型对象)/var obj=inherit(原型对象)。（二者有一些区别，如inherit不能继承自空对象等）"></a>Object.create(原型对象)/var obj=inherit(原型对象)。（二者有一些区别，如inherit不能继承自空对象等）</h4><hr>
 <h3 id="查询：在查询时可能会查询原型链，设置时则不会更改原型链-setter方法设置不改变原型链"><a href="#查询：在查询时可能会查询原型链，设置时则不会更改原型链-setter方法设置不改变原型链" class="headerlink" title="查询：在查询时可能会查询原型链，设置时则不会更改原型链(setter方法设置不改变原型链)"></a>查询：在查询时可能会查询原型链，设置时则不会更改原型链(setter方法设置不改变原型链)</h3><h4 id="1-object-property-2-object-property-若属性名含引号-内也要含！"><a href="#1-object-property-2-object-property-若属性名含引号-内也要含！" class="headerlink" title="1.object.property;2.object[property](若属性名含引号[]内也要含！)"></a>1.<code>object.property</code>;2.<code>object[property]</code>(若属性名含引号[]内也要含！)</h4><h4 id="方式比-方式更强大一些："><a href="#方式比-方式更强大一些：" class="headerlink" title="[]方式比.方式更强大一些："></a>[]方式比.方式更强大一些：</h4><h4 id="方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；"><a href="#方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；" class="headerlink" title="[]方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；"></a>[]方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；</h4><h4 id="方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。"><a href="#方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。" class="headerlink" title=".方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。"></a>.方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。</h4><hr>
 <h3 id="删除属性：delete-obj-property，删除成功或无副作用（删除不存在的属性时）返回true"><a href="#删除属性：delete-obj-property，删除成功或无副作用（删除不存在的属性时）返回true" class="headerlink" title="删除属性：delete obj.property，删除成功或无副作用（删除不存在的属性时）返回true"></a>删除属性：<code>delete obj.property</code>，删除成功或无副作用（删除不存在的属性时）返回true</h3><hr>
@@ -244,8 +310,7 @@
     </header>
     <div class="entry">
       
-        <p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h1 id="数组篇"><a href="#数组篇" class="headerlink" title="数组篇"></a>数组篇</h1><p>数组有别于其他对象，具有length属性等特性，其索引最大长度为2<sup>32</sup>-2</p>
+        <h1 id="数组篇"><a href="#数组篇" class="headerlink" title="数组篇"></a>数组篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"><br>数组有别于其他对象，具有length属性等特性，其索引最大长度为2<sup>32</sup>-2</p>
 <h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="直接量：var-arr"><a href="#直接量：var-arr" class="headerlink" title="直接量：var arr=[]"></a>直接量：var arr=[]</h4><h4 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h4><h4 id="var-arr-new-Array-8-——创建长度为8的数组"><a href="#var-arr-new-Array-8-——创建长度为8的数组" class="headerlink" title="- var arr=new Array(8)——创建长度为8的数组"></a>- var arr=new Array(8)——创建长度为8的数组</h4><h4 id="var-arr-new-Array-8-10-——创建两个元素的数组"><a href="#var-arr-new-Array-8-10-——创建两个元素的数组" class="headerlink" title="- var arr=new Array(8,10)——创建两个元素的数组"></a>- var arr=new Array(8,10)——创建两个元素的数组</h4><hr>
 <h3 id="读写数组元素"><a href="#读写数组元素" class="headerlink" title="读写数组元素"></a>读写数组元素</h3><h4 id="主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。"><a href="#主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。" class="headerlink" title="主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。"></a>主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。</h4><hr>
 <h3 id="判断索引或属性是否存在于数组中"><a href="#判断索引或属性是否存在于数组中" class="headerlink" title="判断索引或属性是否存在于数组中"></a>判断索引或属性是否存在于数组中</h3><h4 id="index-property-in-arr：返回true-false-可用来判定不存在还是存在值为undefined"><a href="#index-property-in-arr：返回true-false-可用来判定不存在还是存在值为undefined" class="headerlink" title="index/property in arr：返回true/false,可用来判定不存在还是存在值为undefined"></a>index/property in arr：返回true/false,可用来判定不存在还是存在值为undefined</h4><hr>
@@ -362,8 +427,8 @@
     </header>
     <div class="entry">
       
-        <p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现<code>join()</code>,<code>filter()</code>等ES5的新数组方法,<code>slice()</code>适用）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
+        <h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现<code>join()</code>,<code>filter()</code>等ES5的新数组方法,<code>slice()</code>适用）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
 <li>索引类：<ul>
 <li><code>charAt(i)</code>：返回索引i处的字符</li>
 <li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
@@ -454,11 +519,11 @@
   
     <li><a href="/categories/technology/css/">css</a><small>1</small></li>
   
-    <li><a href="/categories/technology/javascript/">javascript</a><small>4</small></li>
+    <li><a href="/categories/technology/javascript/">javascript</a><small>5</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>5</small></li>
+    <li><a href="/categories/technology/">technology</a><small>6</small></li>
   
     <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
   
@@ -470,6 +535,10 @@
 <div class="widget tag">
   <h3 class="title">最新文章</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a>
+      </li>
     
       <li>
         <a href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a>
@@ -487,10 +556,6 @@
         <a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">《javascript权威指南》学习笔记（2）</a>
       </li>
     
-      <li>
-        <a href="/2016/05/11/5月plan/">5月plan</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -500,7 +565,7 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>3</small></li>
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>4</small></li>
   
     <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
   
