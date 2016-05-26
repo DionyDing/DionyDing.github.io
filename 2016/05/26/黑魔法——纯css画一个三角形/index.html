@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>javascript | D_d</title>
+  <title>黑魔法——纯css画一个三角形 | D_d</title>
   <meta name="author" content="D_d" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  
+  <meta property="og:title" content="黑魔法——纯css画一个三角形" />
   <meta property="og:site_name" content="D_d" />
 
   
@@ -66,85 +66,53 @@
 </nav>
 <br/><br/></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title category">javascript</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-05-26T14:13:26.000Z"><a href="/2016/05/26/黑魔法——纯css画一个三角形/">2016-05-26</a></time>
+      
+      
+  
+    <h1 class="title">黑魔法——纯css画一个三角形</h1>
+  
 
-
-  <div class="archive">
+    </header>
+    <div class="entry">
+      
+        <h3 id="今天看《CSS设计指南（第3版）》的时候发现了一个神奇黑魔法，居然可以用纯css画出一个三角形，感觉好神奇！"><a href="#今天看《CSS设计指南（第3版）》的时候发现了一个神奇黑魔法，居然可以用纯css画出一个三角形，感觉好神奇！" class="headerlink" title="今天看《CSS设计指南（第3版）》的时候发现了一个神奇黑魔法，居然可以用纯css画出一个三角形，感觉好神奇！"></a>今天看《CSS设计指南（第3版）》的时候发现了一个神奇黑魔法，居然可以用纯css画出一个三角形，感觉好神奇！</h3><h3 id="原理是令盒模型宽高都为0，再通过border边框把三个边置为透明，只留一个有色边框即为所需三角形，如图所示。可在需要添加三角形的地方以-after或-before伪元素添加，这个例子就是这样。"><a href="#原理是令盒模型宽高都为0，再通过border边框把三个边置为透明，只留一个有色边框即为所需三角形，如图所示。可在需要添加三角形的地方以-after或-before伪元素添加，这个例子就是这样。" class="headerlink" title="原理是令盒模型宽高都为0，再通过border边框把三个边置为透明，只留一个有色边框即为所需三角形，如图所示。可在需要添加三角形的地方以::after或::before伪元素添加，这个例子就是这样。"></a>原理是令盒模型宽高都为0，再通过border边框把三个边置为透明，只留一个有色边框即为所需三角形，如图所示。可在需要添加三角形的地方以<code>::after</code>或<code>::before</code>伪元素添加，这个例子就是这样。</h3><p><img src="http://o6yo3ducz.bkt.clouddn.com/triangleTheory.png" alt="三角形的原理图"></p>
+<p><pre style="font-size:20px;">CSS代码<br>.triangle:after {<br>            content: “”;        //content为必填属性<br>            border: 12px solid;<br>            //通过border边框把三个边置为透明，只留一个有色边框即为所需三角形，这里是红色三角形<br>            border-color: transparent red transparent transparent;<br>            height: 0;         //高必须为0<br>            width: 0;          //宽必须为0<br>            display: block;    //必须以block方式显示<br>        }<br></pre></p>
+<h3 id="HTML部分只需-lt-div-class-’triangle’-gt-lt-div-gt-即可显示一个三角形"><a href="#HTML部分只需-lt-div-class-’triangle’-gt-lt-div-gt-即可显示一个三角形" class="headerlink" title="HTML部分只需&lt;div class=’triangle’&gt;&lt;/div&gt;即可显示一个三角形~~~"></a>HTML部分只需&lt;div class=’triangle’&gt;&lt;/div&gt;即可显示一个三角形~~~</h3>
+      
+    </div>
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-26T14:07:20.000Z"><a href="/2016/05/26/《javascript权威指南》学习笔记（5）/">2016-05-26</a></time>
-            
-              <h1 class="title"><a href="/2016/05/26/《javascript权威指南》学习笔记（5）/">《javascript权威指南》学习笔记（5）</a></h1>
-            
-          </header>
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
         </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-18T08:33:43.000Z"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">2016-05-18</a></time>
-            
-              <h1 class="title"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-13T14:17:31.000Z"><a href="/2016/05/13/闭包和作用域的小例子/">2016-05-13</a></time>
-            
-              <h1 class="title"><a href="/2016/05/13/闭包和作用域的小例子/">闭包和作用域的小例子</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-13T12:39:55.000Z"><a href="/2016/05/13/《javascript权威指南》学习笔记（3）/">2016-05-13</a></time>
-            
-              <h1 class="title"><a href="/2016/05/13/《javascript权威指南》学习笔记（3）/">《javascript权威指南》学习笔记（3）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-12T12:18:11.000Z"><a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">2016-05-12</a></time>
-            
-              <h1 class="title"><a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">《javascript权威指南》学习笔记（2）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-10T14:16:09.000Z"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">2016-05-10</a></time>
-            
-              <h1 class="title"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/css/">css</a>
   </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/纯css画三角形/">纯css画三角形</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
