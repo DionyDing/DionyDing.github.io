@@ -88,7 +88,12 @@
 <li><code>setTimeout(function,time)</code>,<code>clearTimeout(some-setTimeout)</code>:指定time<strong>毫秒</strong>后执行function(只执行一次),clearTimeout为清除计时器</li>
 <li>Tips:<ul>
 <li>设定计时器时传入的参数function不必调用，指定时间会自动调用；若传入了调用的function会每次都返回执行的结果！！！</li>
-<li>setTimeout中时间延迟指定为0ms不会立即执行函数，会将其排队，等待前面的事件处理程序执行完后立即执行！！！<br>例子：<pre>/&lowast;<br>&lowast;函数f()的调用模式<br>&lowast;start毫秒后调用f()函数<br>&lowast;若设置了interval没有设置end函数会无限循环调用<br>&lowast;若设置了interval和end函数会在interval时间内重复调用<br>&lowast;若没有设置interval和end函数会只调用一次<br>&lowast;start缺省值为0ms<br>&lowast;/<br>function invoke(f,start,interval,end){<br>if(!start){start=0;}<br>if(arguments.length<3){settimeout(f,start);} else{="" settimeout(repeat,start);="" function="" repeat(){="" var="" h="setInterval(f,interval);" if(end){settimeout(function="" (){clearinterval(h);},end);}="" }="" <="" pre=""><h3 id="window对象的location属性-引用location对象-：表示该窗口中当前显示的文档的URL"><a href="#window对象的location属性-引用location对象-：表示该窗口中当前显示的文档的URL" class="headerlink" title="window对象的location属性(引用location对象)：表示该窗口中当前显示的文档的URL"></a>window对象的location属性(引用location对象)：表示该窗口中当前显示的文档的URL</h3></3){settimeout(f,start);}></pre></li>
+<li>setTimeout中时间延迟指定为0ms不会立即执行函数，会将其排队，等待前面的事件处理程序执行完后立即执行！！！<br>例子：<pre>/&lowast;<br>&lowast;函数f()的调用模式<br>&lowast;start毫秒后调用f()函数<br>&lowast;若设置了interval没有设置end函数会无限循环调用<br>&lowast;若设置了interval和end函数会在interval时间内重复调用<br>&lowast;若没有设置interval和end函数会只调用一次<br>&lowast;start缺省值为0ms<br>&lowast;/<br>function invoke(f,start,interval,end){<br>if(!start){start=0;}<br>if(arguments.length&lt;3){setTimeout(f,start);}<br>else{<pre><code>  setTimeout(repeat,start);
+  function repeat(){
+    var h=setInterval(f,interval);
+    if(end){setTimeout(function (){clearInterval(h);},end);}
+}
+</code></pre>}<br>}<br></pre><h3 id="window对象的location属性-引用location对象-：表示该窗口中当前显示的文档的URL"><a href="#window对象的location属性-引用location对象-：表示该窗口中当前显示的文档的URL" class="headerlink" title="window对象的location属性(引用location对象)：表示该窗口中当前显示的文档的URL"></a>window对象的location属性(引用location对象)：表示该窗口中当前显示的文档的URL</h3></li>
 </ul>
 </li>
 <li>location对象的href属性是一个字符串，值为当前文档的url(可以通过改变location.href实现页面跳转)；location对象的toString()方法会返回href属性的值（隐式调用toString()方法时可用location代替location.href）</li>
