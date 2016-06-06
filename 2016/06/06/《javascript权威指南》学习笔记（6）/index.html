@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>D_d</title>
+  <meta name="author" content="D_d" />
+
+  
+  <meta name="description" content="这里是丁丁的博客" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  
+  <meta property="og:site_name" content="D_d" />
+
+  
+  
+
+  
+    <meta property="og:image" content="undefined" />
+  
+
+  <link href="http://o6yoa3nwp.bkt.clouddn.com/favicon.ico" rel="icon" />
+ 
+
+  <link rel="alternate" href="/atom.xml" title="D_d" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><br/><br/><br/><br/><br/><br/><br/>
+<div class="alignleft1">
+  <h1><a href="/">D_d</a></h1><br/>
+  <h2><a href="/">——Welcome to D_d&#39;s Blog!——</a></h2><br/>
+</div>
+<nav id="main-nav" class="alignright1">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/">关于生活</a></li>
+    
+      <li><a href="/categories/technology">技术</a></li>
+    
+      <li><a href="/categories/technology/javascript">js</a></li>
+    
+      <li><a href="/categories/technology/css">HTML&amp;CSS</a></li>
+    
+      <li><a href="/categories/plan">哈哈哈计划赶不上变化</a></li>
+    
+  </ul>
+</nav>
+<br/><br/></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-06-06T03:27:02.524Z"><a href="/2016/06/06/《javascript权威指南》学习笔记（6）/">2016-06-06</a></time>
+      
+      
+  
+    <h1 class="title"></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<p>title: 《javascript权威指南》学习笔记（6）<br>date: 2016-06-06 11:25:10<br>categories: [technology,javascript]</p>
+<h2 id="tags-javascript学习笔记"><a href="#tags-javascript学习笔记" class="headerlink" title="tags: [javascript学习笔记]"></a>tags: [javascript学习笔记]</h2><h1 id="window对象篇"><a href="#window对象篇" class="headerlink" title="window对象篇"></a>window对象篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h3><ul>
+<li><code>setInterval(function,time)</code>,<code>clearInterval(some-setInterval)</code>:每隔time<strong>毫秒</strong>重复执行function,clearInterval为清除计时器</li>
+<li><code>setTimeout(function,time)</code>,<code>clearTimeout(some-setTimeout)</code>:指定time<strong>毫秒</strong>后执行function(只执行一次),clearTimeout为清除计时器</li>
+<li>Tips:<ul>
+<li>设定计时器时传入的参数function不必调用，指定时间会自动调用；若传入了调用的function会每次都返回执行的结果！！！</li>
+<li>setTimeout中时间延迟指定为0ms不会立即执行函数，会将其排队，等待前面的事件处理程序执行完后立即执行！！！<br>例子：<pre>/<em>
+</em>函数f()的调用模式<br><em>start毫秒后调用f()函数
+</em>若设置了interval没有设置end函数会无限循环调用<br><em>若设置了interval和end函数会在interval时间内重复调用
+</em>若没有设置interval和end函数会只调用一次<br><em>start缺省值为0ms
+</em>/<br>function invoke(f,start,interval,end){<br>if(!start){start=0;}<br>if(arguments.length&lt;3){setTimeout(f,start);}<br>else{<pre><code>setTimeout(repeat,start);
+function repeat(){
+  var h=setInterval(f,interval);
+  if(end){setTimeout(function (){clearInterval(h);},end);}
+}
+</code></pre>}<br>}<br></pre><h3 id="window对象的location属性-引用location对象-：表示该窗口中当前显示的文档的URL"><a href="#window对象的location属性-引用location对象-：表示该窗口中当前显示的文档的URL" class="headerlink" title="window对象的location属性(引用location对象)：表示该窗口中当前显示的文档的URL"></a>window对象的location属性(引用location对象)：表示该窗口中当前显示的文档的URL</h3></li>
+</ul>
+</li>
+<li>location对象的href属性是一个字符串，值为当前文档的url(可以通过改变location.href实现页面跳转)；location对象的toString()方法会返回href属性的值（隐式调用toString()方法时可用location代替location.href）</li>
+<li>location的其他属性，代表url的各个部分，均返回字符串（包括protocol,host,hostname,port,pathname,search等）<br>其中search属性返回问号之后的url，一般代表查询字段（可通过结合substring(start,end)方法取得参数，此处要用decodeURIComponent对其进行解码）</li>
+<li>location对象的方法：<ul>
+<li><code>location.assign（&quot;url&quot;）</code>:窗口载入并显示url</li>
+<li><code>location.replace（&quot;url&quot;）</code>:窗口载入并显示url,载入前会从历史记录中删除当前文档，使后退操作无法回到当前</li>
+<li><code>location.reload（）</code>:无参数，重新载入当前页面</li>
+</ul>
+</li>
+<li>Tips:不存在锚点#top，location.href=’#top’也可回到顶部（<a>标签中同理）<h3 id="window对象的history属性-引用history对象-：表示当前窗口的历史记录"><a href="#window对象的history属性-引用history对象-：表示当前窗口的历史记录" class="headerlink" title="window对象的history属性(引用history对象)：表示当前窗口的历史记录"></a>window对象的history属性(引用history对象)：表示当前窗口的历史记录</h3></a></li>
+<li>history.length:浏览历史列表中的元素数量</li>
+<li>history对象的方法：<ul>
+<li><code>history.back()</code>:无参数，回退一次</li>
+<li><code>history.forward()</code>:无参数，前进一次</li>
+<li><code>history.go(times)</code>:参数可正可负，正代表前进times次，负代表后退times次</li>
+</ul>
+</li>
+<li>Tips:若窗口中包含&lt;iframe&gt;，其中的记录会穿插在历史记录中，后退前进操作可能会导致子窗口生效，主窗口无效<h3 id="window对象的navigator属性-引用navigator对象-：表示浏览器信息"><a href="#window对象的navigator属性-引用navigator对象-：表示浏览器信息" class="headerlink" title="window对象的navigator属性(引用navigator对象)：表示浏览器信息"></a>window对象的navigator属性(引用navigator对象)：表示浏览器信息</h3>这里navigator的名字是为纪念Netscape navigator浏览器</li>
+<li>navigator的属性:<ul>
+<li>navigator.appName:除IE不同，其他均为Netscape</li>
+<li>navigator.appVersion:版本信息</li>
+<li>navigator.userAgent:http头部发送的user-agent字符串</li>
+<li>navigator.platform:浏览器的操作系统</li>
+<li>其他属性还有onLine,geolocation,cookieEnable等等<h3 id="window对象的screen属性-引用screen对象-：表示屏幕信息，大小、颜色数量等"><a href="#window对象的screen属性-引用screen对象-：表示屏幕信息，大小、颜色数量等" class="headerlink" title="window对象的screen属性(引用screen对象)：表示屏幕信息，大小、颜色数量等"></a>window对象的screen属性(引用screen对象)：表示屏幕信息，大小、颜色数量等</h3></li>
+</ul>
+</li>
+<li>screen.width/screen.height:像素为单位的窗口大小</li>
+<li>screen.availWidth/screen.availHeight:实际可用的窗口大小</li>
+<li>colorDepth:显示的BPP值（16,24,32…）<h3 id="对话框（会阻塞当前代码，用户体验不好）"><a href="#对话框（会阻塞当前代码，用户体验不好）" class="headerlink" title="对话框（会阻塞当前代码，用户体验不好）"></a>对话框（会阻塞当前代码，用户体验不好）</h3></li>
+<li><code>alert(&#39;information&#39;)</code>:提示消息</li>
+<li><code>confirm(&#39;information&#39;)</code>:确认信息，返回布尔值</li>
+<li><code>prompt(&#39;information&#39;)</code>:用户输入框</li>
+<li><code>showModalDialog(&#39;url&#39;,包含标题的内容（数组/对象），style内容如：&quot;dialogWidth;resizable=yes;&quot;等)</code>:模拟对话框<h3 id="错误处理："><a href="#错误处理：" class="headerlink" title="错误处理："></a>错误处理：</h3></li>
+<li>一般通过try/catch捕获抛出错误，过去采用window.onerror事件<h3 id="HTML元素中使用值为非保留值的id属性时，其值会成为可以被脚本访问的全局变量（name属性不会这样；且name属性可重复，id属性必须唯一）"><a href="#HTML元素中使用值为非保留值的id属性时，其值会成为可以被脚本访问的全局变量（name属性不会这样；且name属性可重复，id属性必须唯一）" class="headerlink" title="HTML元素中使用值为非保留值的id属性时，其值会成为可以被脚本访问的全局变量（name属性不会这样；且name属性可重复，id属性必须唯一）"></a>HTML元素中使用值为非保留值的id属性时，其值会成为可以被脚本访问的全局变量（name属性不会这样；且name属性可重复，id属性必须唯一）</h3><h3 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h3></li>
+<li>一个web窗口包含多个标签页，每个标签页都是独立的浏览上下文，每个上下文都有独立的window对象，相互之间互不干扰</li>
+<li>打开：<code>window.open(&#39;url&#39;~~,name,style,bool~~)</code>:省略url会打开空白页；name已存在会指向该页面，不存在会以此命名新窗口；bool在name为已存在生效，是否替换当前历史记录，默认false</li>
+<li>关闭：<code>window.close()</code>:显示指定window,避免与document.close()混淆</li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  <div class="widget tag">
+  <h3 class="title">关于 wo</h3>
+  <ul class="entry">
+    <li style="padding-left: 40px;"><img width="150px" src="http://o6yoa3nwp.bkt.clouddn.com/me.jpg" title="头像"/></li>
+    <br/><hr/><br/>
+    <li>丁丁</li>
+    <li>双子座</li>
+    <li>爱生活，爱技术，爱旅行，爱摄影</li><br/><hr/><br/>
+    <li style="text-align: center;"><a target="_blank" href="http://weibo.com/u/2258194143?refer_flag=1001030102_&is_all=1">go to 我的微博</a></li>
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/technology/css/">css</a><small>2</small></li>
+  
+    <li><a href="/categories/technology/javascript/">javascript</a><small>6</small></li>
+  
+    <li><a href="/categories/plan/">plan</a><small>1</small></li>
+  
+    <li><a href="/categories/technology/">technology</a><small>8</small></li>
+  
+    <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/06/06/《javascript权威指南》学习笔记（6）/"></a>
+      </li>
+    
+      <li>
+        <a href="/2016/05/26/黑魔法——纯css画一个三角形/">黑魔法——纯css画一个三角形</a>
+      </li>
+    
+      <li>
+        <a href="/2016/05/26/《javascript权威指南》学习笔记（5）/">《javascript权威指南》学习笔记（5）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>5</small></li>
+  
+    <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
+  
+    <li><a href="/tags/纯css实现多级nav/">纯css实现多级nav</a><small>1</small></li>
+  
+    <li><a href="/tags/纯css画三角形/">纯css画三角形</a><small>1</small></li>
+  
+    <li><a href="/tags/闭包和作用域/">闭包和作用域</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2016 D_d
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
