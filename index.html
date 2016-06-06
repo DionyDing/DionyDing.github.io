@@ -73,6 +73,161 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-06-06T14:09:42.000Z"><a href="/2016/06/06/《javascript权威指南》学习笔记（7）/">2016-06-06</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/06/06/《javascript权威指南》学习笔记（7）/">《javascript权威指南》学习笔记（7）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="document对象篇"><a href="#document对象篇" class="headerlink" title="document对象篇"></a>document对象篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="window对象的document属性引用了Document对象，document对象表示窗口的内容，它是一个巨大的API中的核心对象，叫做文档对象模型（Document-Object-Model）"><a href="#window对象的document属性引用了Document对象，document对象表示窗口的内容，它是一个巨大的API中的核心对象，叫做文档对象模型（Document-Object-Model）" class="headerlink" title="window对象的document属性引用了Document对象，document对象表示窗口的内容，它是一个巨大的API中的核心对象，叫做文档对象模型（Document Object Model）"></a>window对象的document属性引用了Document对象，document对象表示窗口的内容，它是一个巨大的API中的核心对象，叫做文档对象模型（Document Object Model）</h3><h3 id="选取文档元素"><a href="#选取文档元素" class="headerlink" title="选取文档元素"></a>选取文档元素</h3><ul>
+<li>通过ID：<code>document.getElementById(&#39;xxx&#39;)</code></li>
+<li>通过CSS类：<code>document.getElementsByClassName(&#39;xxx&#39;)</code>，返回同类名的NodeList对象，可传入多个类名以空格分隔，具体到选中某一个使用<code>document.getElementsByClassName(&#39;xxx&#39;)[i]</code></li>
+<li>通过标签名：<code>document.getElementsByTagName(&#39;xxx&#39;)[i]</code>，可传入星号通配符’*’</li>
+<li>通过名字：<code>document.getElementsByName(&#39;xxx&#39;)[i]</code>（name属性只在少数HTML中有效，如：表单元素、&lt;img&gt;、&lt;iframe&gt;）</li>
+<li>通过CSS选择器：借助querySelectorAll方法<h3 id="文档结构"><a href="#文档结构" class="headerlink" title="文档结构"></a>文档结构</h3>Document对象的Element对象和文档中表示文本的Text对象都是Node对象，Node对象有以下重要属性</li>
+<li>作为节点树：<ul>
+<li>parentNode：当前节点的父节点</li>
+<li>childNodes:子节点，类数组对象，NodeList对象，具体到某个子节点childNodes[i]</li>
+<li>firstChild,lastChild:第一个/最后一个子节点（无返回Null）eg：&lt;p&gt;123&lt;这里<code>document.getElementByTagName(&#39;p&#39;)[0].firstChild</code>为Text节点</li>
+<li>nextSibling，previousSibling:下一个/上一个兄弟节点(使用时注意每两个节点间有一个空节点)</li>
+<li>length：节点长度（如;Node.childNodes.length）</li>
+<li>nodeType：节点类型（9为document节点，1为Element节点…Text节点为无标签的文字节点，comment节点为注释节点）</li>
+<li>nodeValue：文本内容</li>
+<li>nodeName：返回大写形式的元素标签名</li>
+</ul>
+</li>
+<li>作为元素树：<ul>
+<li>firstElementChild,lastElementChild:代表Element的首个子节点/最后一个子节点</li>
+<li>nextElementSibling，previousElementSibling:代表兄弟Element</li>
+<li>children:子Element</li>
+<li>childElementCount:子Element数量<h3 id="HTML元素属性（HTML属性名大、小写不敏感，但JS属性名大、小写敏感）"><a href="#HTML元素属性（HTML属性名大、小写不敏感，但JS属性名大、小写敏感）" class="headerlink" title="HTML元素属性（HTML属性名大、小写不敏感，但JS属性名大、小写敏感）"></a>HTML元素属性（HTML属性名大、小写不敏感，但JS属性名大、小写敏感）</h3></li>
+</ul>
+</li>
+<li>数据集属性：这里非标准属性，使用的代价是文档不再为合法有效的HTML，针对这点，H5解决方案为：以”data-“为前缀的小写属性是合法的，使用dataset属性设定（dataset.x对应data-x），这样不会在合法性上让步<ul>
+<li><code>Node.getAttribute(&#39;xxx&#39;)</code>:查询非标准HTML属性，这里返回字符串，若需要数值类型要强制转换</li>
+<li><code>Node.setAttribute(&#39;attribute&#39;,&#39;value&#39;)</code>:设置非标准HTML属性</li>
+<li><code>Node.hasAttribute(&#39;xxx&#39;)</code>:判断属性名是否存在</li>
+<li><code>Node.removeAttribute(&#39;xxx&#39;)</code>:删除属性</li>
+</ul>
+</li>
+<li>Element对象有attributes类数组，eg:<code>Element.attributes[i]</code>/<code>Element.attributes.width</code>/<code>Element.attributes[onload]</code><h3 id="元素的内容"><a href="#元素的内容" class="headerlink" title="元素的内容"></a>元素的内容</h3></li>
+<li>Element的innerHTML返回元素的内容（通常innerHTML效率非常高，但用‘+=’追加文本效率低下，因为它既要序列化又要解析）</li>
+<li>H5有outerHTML属性，返回被查询元素的开头和结尾标签（存在一些兼容性问题）</li>
+<li>textContent：不适于IE，返回返回所有后代Text节点的串联纯文本<br>innerText：只适用于IE，返回纯文本内容，不返回&lt;script&gt;下内容会忽略多余空格<h3 id="创建、插入、删除节点"><a href="#创建、插入、删除节点" class="headerlink" title="创建、插入、删除节点"></a>创建、插入、删除节点</h3></li>
+<li>创建：<ul>
+<li><code>document.createElement(&#39;标签名&#39;);</code></li>
+<li><code>document.createTextNode(&#39;content&#39;)</code>:创建Text节点；</li>
+<li><code>Node.cloneNode(bool)</code>:true为复制所有后代节点；false为浅复制（默认）</li>
+</ul>
+</li>
+<li>插入节点：<ul>
+<li><code>Node.appendChild(a)</code>:将a节点插入为Node节点的最后一个子节点</li>
+<li><code>Node.insertBefore(new,old)</code>:<span style="color:red">Node为待插入节点的父节点，在父节点上调用该方法！</span>在old节点前插入New节点</li>
+<li>Tips:<span style="color:red">将文档中已存在的节点重新插入，会自动从当前位置删除该节点并在新位置插入！</span></li>
+</ul>
+</li>
+<li>删除节点：<ul>
+<li><code>Node.removeChild(a)</code>:在Node节点上删除其子节点a</li>
+<li><code>Node.replaceChild(new,old)</code>:<span style="color:red">Node为待替换节点的父节点，在父节点上调用该方法！</span>以new节点代替old节点</li>
+</ul>
+</li>
+<li>DocumentFragment:<ul>
+<li>一种特殊的Node，类似于文档片段，使一组节点被当做一个节点看待，创建并插入多节点时性能更佳，它是独立的，不是其他任何文档的一部分，其ParentNode为Null，可以有任意多子节点</li>
+<li>创建：<code>document.createDocumentFragment()</code></li>
+<li>插入和删除采用<code>appendChild(a)</code>，<code>insertBefore(new,old)</code>，<code>removeChild(a)</code>，<code>replaceChild(new,old)</code>，<span style="color:red">操作的是DocumentFragment的子孙节点</span><h3 id="窗口坐标（元素位置以像素度量，右为X轴正向，下为Y轴正向）"><a href="#窗口坐标（元素位置以像素度量，右为X轴正向，下为Y轴正向）" class="headerlink" title="窗口坐标（元素位置以像素度量，右为X轴正向，下为Y轴正向）"></a>窗口坐标（元素位置以像素度量，右为X轴正向，下为Y轴正向）</h3></li>
+</ul>
+</li>
+<li>文档坐标：原点为文档左上角<br>视口坐标（窗口坐标）：原点为不包括工具栏的浏览器窗口左上角（通常查询到的坐标为视口坐标）<br>二者相差滚动条偏移量（window对象的pageXoffset,pageYoffset返回滚动条偏移量，<body>节点或文档根节点document.documentElement的scrollTop,scrollLeft返回滚动条偏移量）</body></li>
+<li>元素的尺寸、位置坐标(HTML元素的属性)<ul>
+<li>offset前缀：对内联元素会生效<ul>
+<li>offsetWidth,offsetHeight：包括border,padding,content的元素宽高</li>
+<li>offsetLeft,offsetTop：文档坐标，基点为文档左上角，但对于已定位元素后代，会基于祖先元素定位</li>
+<li>offsetParent：已定位元素相对的父元素</li>
+</ul>
+</li>
+<li>client前缀：对内联元素总为0<ul>
+<li>clientWidth,clientHeight:包括padding,content的元素宽高</li>
+<li>clientLeft,clientTop:padding外边距到border内边距的距离，一般为border宽度，除非左或上有滚动条会包含滚动条宽度</li>
+</ul>
+</li>
+<li>scroll前缀：<ul>
+<li>scrollWidth,scrollHeight:包括padding,content的元素宽高，若有溢出内容包括溢出内容的宽高</li>
+<li>scrollLeft,scrollTop:滚动条偏移量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>滚动条<ul>
+<li>window对象下，<code>scrollTo(x,y)</code>:滚动至(x,y)坐标处</li>
+<li>window对象下，<code>scrollBy(x,y)</code>:相对参数，在当前滚动条基础上增加</li>
+</ul>
+</li>
+<li>查询元素的几何尺寸<ul>
+<li><code>element.getBoundingClientRect()</code>:无参数，返回一个对象，其left,top为左上角坐标，right,bottom为右下角坐标</li>
+<li>Tips:该方法不是实时的，仅为当前静态情况</li>
+</ul>
+</li>
+<li>window对象的innerWidth,innerHeight返回不含工具栏但包括滚动条的页面宽高<h3 id="HTML表单"><a href="#HTML表单" class="headerlink" title="HTML表单"></a>HTML表单</h3></li>
+<li>可通过<code>document.forms[i]</code>/<code>document.forms.elements[i]</code>访问</li>
+<li>JS的Form对象有<code>submit()</code>和<code>reset()</code>方法，直接调用不会触发onsubmit,onreset事件</li>
+<li>对onsubmit,onreset事件处理程序，可通过false取消动作，借此检查用户输入</li>
+<li>下拉列表和下拉框<ul>
+<li>&lt;select&gt;的type属性有单选select-one/多选select-multiple值，当multiple属性存在时，值为select-multiple</li>
+<li>&lt;select&gt;的selectedIndex属性：返回被选中选项（若type为select-multiple失效）</li>
+<li>通过options[i]的text,value属性返回对应文本内容及值</li>
+<li>指定options.length会截断列表元素（大于length值的元素会被删除），options[i]=null;会删除当前元素并使后续元素移动填补空缺</li>
+<li>添加列表元素可通过以下方式：（传统创建插入方式同样有效）<br><code>var a=new Option(&#39;text&#39;,&#39;value&#39;,defaultSelected,selected);</code>//后两个参数为布尔值<br><code>options[options.length]=a;</code><h3 id="查询选中的内容"><a href="#查询选中的内容" class="headerlink" title="查询选中的内容"></a>查询选中的内容</h3></li>
+</ul>
+</li>
+<li><code>window.getselection()</code>方法可返回选中文本，但对&lt;textarea&gt;和&lt;input&gt;内部的文本会失效<h3 id="可编辑内容（以下存在兼容性问题，需要用一些编辑器组件）"><a href="#可编辑内容（以下存在兼容性问题，需要用一些编辑器组件）" class="headerlink" title="可编辑内容（以下存在兼容性问题，需要用一些编辑器组件）"></a>可编辑内容（以下存在兼容性问题，需要用一些编辑器组件）</h3></li>
+<li>HTML元素有contentEditable属性使内容可编辑</li>
+<li>Document有designMode属性，值为on可编辑，值为off不可编辑<h3 id="document-write-方法"><a href="#document-write-方法" class="headerlink" title="document.write()方法"></a><code>document.write()</code>方法</h3></li>
+<li>解析文档时可用<code>document.write()</code>方法，可以在&lt;script&gt;顶层代码中调用<code>document.write()</code></li>
+<li>若定义函数时没有调用而在事件处理程序中调用含<code>document.write()</code>的函数，结果可能会擦除当前文档</li>
+<li>在defer和async属性存在的&lt;script&gt;中也不可调用</li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-06-06T03:25:10.000Z"><a href="/2016/06/06/《javascript权威指南》学习笔记（6）/">2016-06-06</a></time>
       
       
@@ -621,84 +776,13 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-05-10T14:16:09.000Z"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">2016-05-10</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现<code>join()</code>,<code>filter()</code>等ES5的新数组方法,<code>slice()</code>适用）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
-<li>索引类：<ul>
-<li><code>charAt(i)</code>：返回索引i处的字符</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>fromCharCode(num1,num2,…)</code>：nmmN代表Unicode编码，返回numN对应的字符</li>
-</ul>
-</li>
-<li>搜索类：<ul>
-<li><code>indexOf(value,~~start~~)</code>,<code>lastIndexOf(value,~~start~~)</code>：start参数可省略，返回value在对应字符串中所在的索引位置，start参数表示开始查找位置。当value为多字符时返回匹配到的多字符中首字符的位置</li>
-<li><code>search(&#39;子串&#39;/正则表达式)</code>：返回匹配到结果的起始位置</li>
-<li><code>match(&#39;子串&#39;/正则表达式)</code>：返回数组，包含匹配到的文本</li>
-</ul>
-</li>
-<li>截取类：<ul>
-<li><code>substring(start,end)</code>：截取start索引到end-1索引的子字符串（参数不可为负值）</li>
-<li><code>slice(start,end)</code>：截取start索引到end-1索引的子字符串（参数可为负值）</li>
-<li><code>substr(start,length)</code>：截取start索引起的lengrh长的子字符串（参数不可为负值）</li>
-</ul>
-</li>
-<li>其他：<ul>
-<li><code>replace(&#39;被替代子串(可为正则表达式)&#39;,&#39;新子串&#39;)</code>：用新子串替代旧子串，默认只替换一次，全局替换用正则表达式g指向全局</li>
-<li><code>split(&#39;seperator&#39;,~~howmany~~)</code>：将字符串以seperator为界分为多元素数组，seperator为空’ ‘对每个字母都分割，默认为整个字符串为一个数组元素，howmany参数可省略，表数组最大长度</li>
-<li><code>toUpperCase()</code>,<code>toLowerCase()</code>：将字符串转换为全部大写/小写<br><p></p></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
 </nav>
 </div></div>
     <aside id="sidebar" class="alignright">
@@ -729,11 +813,11 @@
   
     <li><a href="/categories/technology/css/">css</a><small>2</small></li>
   
-    <li><a href="/categories/technology/javascript/">javascript</a><small>7</small></li>
+    <li><a href="/categories/technology/javascript/">javascript</a><small>8</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>9</small></li>
+    <li><a href="/categories/technology/">technology</a><small>10</small></li>
   
     <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
   
@@ -745,6 +829,10 @@
 <div class="widget tag">
   <h3 class="title">最新文章</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2016/06/06/《javascript权威指南》学习笔记（7）/">《javascript权威指南》学习笔记（7）</a>
+      </li>
     
       <li>
         <a href="/2016/06/06/《javascript权威指南》学习笔记（6）/">《javascript权威指南》学习笔记（6）</a>
@@ -762,10 +850,6 @@
         <a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a>
       </li>
     
-      <li>
-        <a href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -775,7 +859,7 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>6</small></li>
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>7</small></li>
   
     <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
   

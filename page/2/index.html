@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>用纯css实现多级导航菜单 | D_d</title>
+  <title>第 2 页 | D_d</title>
   <meta name="author" content="D_d" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="用纯css实现多级导航菜单" />
+  
   <meta property="og:site_name" content="D_d" />
 
   
@@ -66,26 +66,51 @@
 </nav>
 <br/><br/></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
   
   <div class="post-content">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-05-17T14:57:36.000Z"><a href="/2016/05/17/用纯css实现多级导航菜单/">2016-05-17</a></time>
+        <time datetime="2016-05-10T14:16:09.000Z"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">2016-05-10</a></time>
       
       
   
-    <h1 class="title">用纯css实现多级导航菜单</h1>
+    <h1 class="title"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p><img src="http://o6yo3ducz.bkt.clouddn.com/%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%A7%E5%AF%BC%E8%88%AA.gif" title="纯css实现多级导航"></p>
-<h3 id="css代码部分："><a href="#css代码部分：" class="headerlink" title="css代码部分："></a>css代码部分：</h3><p><pre style="font-size:20px;"><br>html,body,div,ul,li,a{margin:0;padding: 0;text-decoration: none;}<br>        .nav{<br>            font-size: 28px;<br>            color: mediumpurple;<br>            text-align: center;<br>        }<br>        .nav li{<br>           float:left;<br>           list-style: none;<br>           /<em>relative为后续下级菜单absolute定义提供基位置</em>/<br>           position: relative;<br>           width:250px;}<br>        .nav a:hover{<br>            background-color: mediumpurple;<br>            color: white;<br>        }<br>        .firstMenu li a,.secondMenu li a,.thirdMenu li a{<br>            display: block;<br>            background: yellowgreen;<br>            border:2px solid transparent;<br>            padding: 5px 9px;<br>            background-clip: padding-box;<br>        }<br>        .thirdMenu,.secondMenu{display: none;}<br>        .secondMenu{<br>            position: absolute;<br>            top:100%;/<em>顶边与一级菜单底边对齐</em>/<br>            left:0;<br>        }<br>        .thirdMenu{<br>            position: absolute;<br>            left: 100%;/<em>左边与二级菜单右边对齐</em>/<br>            top:0;<br>        }<br>        .secondMenu li,.thirdMenu li{<br>            float: none;<br>        }<br>        /<em>控制下拉菜单悬停显示</em>/<br>        .firstMenu li:hover &gt; ul{<br>            display: block;<br>        }<br>        /<em>记录选中的菜单栏</em>/<br>        .nav li:hover&gt;a{<br>            background-color: mediumpurple;<br>            color: white;<br>        }<br></pre></p>
-<h3 id="html代码部分："><a href="#html代码部分：" class="headerlink" title="html代码部分："></a>html代码部分：</h3><p><pre style="font-size:20px;">&lt;div class=”nav”&gt;<br>    &lt;ul class=”firstMenu”&gt;<br>        &lt;!–一级开始–&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;power&lt;/a&gt;&lt;/li&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;money&lt;/a&gt;&lt;/li&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;love&lt;/a&gt;<br>            &lt;!–二级开始–&gt;<br>            &lt;ul class=”secondMenu”&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;sports star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;movie star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;rock star&lt;/a&gt;<br>                    &lt;!–三级开始–&gt;<br>                    &lt;ul class=”thirdMenu”&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;123&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;abc&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;def&lt;/a&gt;&lt;/l&gt;<br>                    &lt;/ul&gt;<br>                    &lt;!–三级结束–&gt;<br>                &lt;/li&gt;<br>            &lt;/ul&gt;<br>            &lt;!–二级结束–&gt;<br>        &lt;/li&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;fame&lt;/a&gt;<br>            &lt;!–二级开始–&gt;<br>            &lt;ul class=”secondMenu”&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;sports star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;movie star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;rock star&lt;/a&gt;<br>                    &lt;!–三级开始–&gt;<br>                    &lt;ul class=”thirdMenu”&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;123&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;abc&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;def&lt;/a&gt;&lt;/li&gt;<br>                    &lt;/ul&gt;<br>                    &lt;!–三级结束–&gt;<br>                &lt;/li&gt;<br>            &lt;/ul&gt;<br>            &lt;!–二级结束–&gt;<br>        &lt;/li&gt;<br>        &lt;!–一级结束–&gt;<br>    &lt;/ul&gt;<br>    &lt;/div&gt;<br></pre></p>
-<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：<div style="font-size:18px;"></div></h3><p>1.&lt;li&gt;标签下的&lt;a&gt;标签设为display:block可以使文字部分及整个周围空白都可以点击，可点击范围不止局限于文字<br>2.background-clip：padding-box使背景色范围只到padding，通过把边框置为透明可以显示后层的背景<br>3.注释中内容的很重要<br>4.基本思想是鼠标悬停时显示下级菜单，否则隐藏。再结合position:absolute通过从当前父级&lt;li&gt;开始定位（父级position要设为relative）控制下级菜单的显示位置<br></p>
+        <h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现<code>join()</code>,<code>filter()</code>等ES5的新数组方法,<code>slice()</code>适用）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
+<li>索引类：<ul>
+<li><code>charAt(i)</code>：返回索引i处的字符</li>
+<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
+<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
+<li><code>fromCharCode(num1,num2,…)</code>：nmmN代表Unicode编码，返回numN对应的字符</li>
+</ul>
+</li>
+<li>搜索类：<ul>
+<li><code>indexOf(value,~~start~~)</code>,<code>lastIndexOf(value,~~start~~)</code>：start参数可省略，返回value在对应字符串中所在的索引位置，start参数表示开始查找位置。当value为多字符时返回匹配到的多字符中首字符的位置</li>
+<li><code>search(&#39;子串&#39;/正则表达式)</code>：返回匹配到结果的起始位置</li>
+<li><code>match(&#39;子串&#39;/正则表达式)</code>：返回数组，包含匹配到的文本</li>
+</ul>
+</li>
+<li>截取类：<ul>
+<li><code>substring(start,end)</code>：截取start索引到end-1索引的子字符串（参数不可为负值）</li>
+<li><code>slice(start,end)</code>：截取start索引到end-1索引的子字符串（参数可为负值）</li>
+<li><code>substr(start,length)</code>：截取start索引起的lengrh长的子字符串（参数不可为负值）</li>
+</ul>
+</li>
+<li>其他：<ul>
+<li><code>replace(&#39;被替代子串(可为正则表达式)&#39;,&#39;新子串&#39;)</code>：用新子串替代旧子串，默认只替换一次，全局替换用正则表达式g指向全局</li>
+<li><code>split(&#39;seperator&#39;,~~howmany~~)</code>：将字符串以seperator为界分为多元素数组，seperator为空’ ‘对每个字母都分割，默认为整个字符串为一个数组元素，howmany参数可省略，表数组最大长度</li>
+<li><code>toUpperCase()</code>,<code>toLowerCase()</code>：将字符串转换为全部大写/小写<br><p></p></li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -98,13 +123,13 @@
         
   
   <div class="categories">
-    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/css/">css</a>
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/纯css实现多级nav/">纯css实现多级nav</a>
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
   </div>
 
         <!-- partial('post/share') -->
@@ -115,6 +140,16 @@
 
 
 
+
+
+
+<nav id="pagination">
+  
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</nav>
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
