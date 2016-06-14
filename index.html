@@ -73,6 +73,176 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-06-14T14:13:05.327Z"><a href="/2016/06/14/《javascript权威指南》学习笔记（9）/">2016-06-14</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/06/14/《javascript权威指南》学习笔记（9）/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<p>title: 《javascript权威指南》学习笔记（9）<br>date: 2016-06-14 22:05:20<br>categories: [technology,javascript]</p>
+<h2 id="tags-javascript学习笔记"><a href="#tags-javascript学习笔记" class="headerlink" title="tags: [javascript学习笔记]"></a>tags: [javascript学习笔记]</h2><h1 id="event事件对象篇"><a href="#event事件对象篇" class="headerlink" title="event事件对象篇"></a>event事件对象篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h2 id="event代表事件状态，例如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态等"><a href="#event代表事件状态，例如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态等" class="headerlink" title="event代表事件状态，例如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态等"></a>event代表事件状态，例如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态等</h2><p><div style="color:red;font-size:20px;">event对象只在事件发生的过程中才有效！</div></p>
+<h3 id="事件概述"><a href="#事件概述" class="headerlink" title="事件概述"></a>事件概述</h3><ul>
+<li>事件是Web浏览器通知应用程序发生了什么事情</li>
+<li>提及事件必须指明事件类型和目标<br>事件类型：说明发生了什么类型事件的字符串<br>时间目标：发生事件的对象或与之相关的对象</li>
+<li>事件传播的三个阶段：<ul>
+<li>捕获：目标处理程序调用之前，沿DOM树向下，从外向内捕获</li>
+<li>目标对象本身的事件处理程序调用</li>
+<li>冒泡：文档元素上发生某类型事件时会沿DOM树向上冒泡，当前DOM直到&lt;body&gt;,再到document，再到window<h3 id="注册事件处理程序"><a href="#注册事件处理程序" class="headerlink" title="注册事件处理程序"></a>注册事件处理程序</h3></li>
+</ul>
+</li>
+<li>addEventListener(‘eventType’,function,<del>bool</del>):三个参数为事件类型，发生时执行的函数，是否为捕获阶段（可省略，默认false）<br>IE9前使用attachEvent(‘oneventType’,function);（tips:这里function中this指向window，addEventListener()中this指向事件目标）<br>可为同一事件注册多个函数，执行时会按注册顺序调用；<br>参数相同的情况下多次调用addEventListener()只注册一次</li>
+<li>通过JS中对应属性设置：事件处理程序属性名称由”on”+”eventType”组成，全部小写</li>
+<li>通过HTML属性设置：事件处理程序属性名称由”on”+”eventType”组成，全部小写。但为保持内容与行为分离，不应采用这种方式<h3 id="事件移除与取消"><a href="#事件移除与取消" class="headerlink" title="事件移除与取消"></a>事件移除与取消</h3></li>
+<li>移除：removeEventListener(‘eventType’,function,<del>bool</del>)参数必须和注册时相同</li>
+<li>设置HTML属性注册事件处理程序，将返回值置为false，浏览器会取消默认行为，但这只对属性注册的程序有效</li>
+<li>取消事件默认行为：preventDefault()</li>
+<li>阻止事件传播：stopPropagation(),可在传播期间任何时间调用<br>IE9以下不支持，通过将cancelBuble置为true阻止<h3 id="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"><a href="#事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数" class="headerlink" title="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"></a>事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数</h3><h3 id="事件处理程序的调用顺序"><a href="#事件处理程序的调用顺序" class="headerlink" title="事件处理程序的调用顺序"></a>事件处理程序的调用顺序</h3></li>
+<li>通过JS对应属性及HTML属性注册的程序优先调用</li>
+<li>addEventListener()按注册顺序调用</li>
+<li>attachEvent()可能按任意顺序调用<h3 id="事件传播"><a href="#事件传播" class="headerlink" title="事件传播"></a>事件传播</h3></li>
+<li>三个阶段：捕获、事件处理程序调用、冒泡</li>
+<li>当需要在大量单独的文档元素上注册处理程序时，可在其共同的祖先元素上注册</li>
+<li>特殊冒泡行为：<ul>
+<li>focus,blur,scroll不冒泡</li>
+<li>load冒泡至document对象停止，文档全部加载完才会冒泡至window对象</li>
+</ul>
+</li>
+<li>捕获常用于处理鼠标拖放，因为拖放目标不能是元素内部的子元素<h3 id="文档加载事件"><a href="#文档加载事件" class="headerlink" title="文档加载事件"></a>文档加载事件</h3></li>
+<li>load:直到文档和所有图片加载完毕才发生（load发生前触发脚本可以提升web应用启动时间）</li>
+<li>DOMContentLoaded：文档加载完毕且所有延迟脚本执行完毕触发</li>
+<li>readystatechange：状态改变触发，在load事件前触发<h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3></li>
+<li>click：按下并释放鼠标按键时触发</li>
+<li>contextmenu：单击鼠标右键上下文菜单即将出现时触发，可取消默认行为</li>
+<li>dbclick：双击鼠标触发</li>
+<li>mousedown：按下鼠标按键时触发</li>
+<li>mouseup：释放鼠标按键时触发</li>
+<li>mouseout：离开元素时触发（mouseleave为不冒泡的mouseout）</li>
+<li>mouseover：进入元素悬停时触发（mouseenter为不冒泡的mouseover）</li>
+<li>mousemove：移动鼠标时触发</li>
+<li>tips：<br>传递给鼠标事件的event对象有clientX,clientY属性，指示鼠标位置的窗口坐标<br>event对象有altkey,ctrlkey,shiftkey,metakey等属性指定鼠标事件发生时该键有没有按下<h3 id="鼠标滚轮事件"><a href="#鼠标滚轮事件" class="headerlink" title="鼠标滚轮事件"></a>鼠标滚轮事件</h3></li>
+<li>mousewheel:默认滚动或缩放文档，可阻止默认操作<br>传递给事件处理程序的事件对象event有wheelDelta属性，指定滚轮有多远<br>Firefox中用DOMMouseScroll取代mousewheel，用detail取代wheelDelta<h3 id="文本事件"><a href="#文本事件" class="headerlink" title="文本事件"></a>文本事件</h3></li>
+<li>keydown:按下键盘（包括辅助键、功能键、字母数字键）</li>
+<li>keypress:keydown产生可打印字符时，在keydown和keyup之间触发，文本真正插入前触发，表输入单个字符（可能需用string.fromCharCode()转为字符串才生效）</li>
+<li>keyup:键盘释放（包括辅助键、功能键、字母数字键）</li>
+<li>textinput：无论何时用户输入文本都会触发，不管来源（有兼容性问题）</li>
+<li>相关event对象有keycode属性，指定按下的键是哪个<ul>
+<li>可打印字符keycode值为unicode编码</li>
+<li>字母键keycode值总为大写</li>
+</ul>
+</li>
+<li>相关event对象有altkey,ctrlkey,shiftkey,metakey属性，事件发生时对应辅助键按下值为true<h3 id="事件处理程序定义时要传入参数e代表event对象！"><a href="#事件处理程序定义时要传入参数e代表event对象！" class="headerlink" title="事件处理程序定义时要传入参数e代表event对象！"></a>事件处理程序定义时要传入参数e代表event对象！</h3><h3 id="event对象的target属性：触发事件的元素（IE下为srcElement属性）"><a href="#event对象的target属性：触发事件的元素（IE下为srcElement属性）" class="headerlink" title="event对象的target属性：触发事件的元素（IE下为srcElement属性）"></a>event对象的target属性：触发事件的元素（IE下为srcElement属性）</h3><h3 id="event对象的currentTarget属性：事件绑定的节点"><a href="#event对象的currentTarget属性：事件绑定的节点" class="headerlink" title="event对象的currentTarget属性：事件绑定的节点"></a>event对象的currentTarget属性：事件绑定的节点</h3><h3 id="以上两者在事件委托时不同（事件委托-事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）"><a href="#以上两者在事件委托时不同（事件委托-事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）" class="headerlink" title="以上两者在事件委托时不同（事件委托/事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）"></a>以上两者在事件委托时不同（事件委托/事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）</h3>一个事件委托的例子：<pre><br>window.onload=function (){<br>var oUL=document.getElementById(‘ul’);<br>oUL.addEventListener(‘mouseover’,overFun,false);<br>oUL.addEventListener(‘mouseout’,outFun,false);<br>function overFun(e){<br>  var e=e||window.e;<br>  var target=e.target||e.srcElement  //兼容IE<br>  if(target.nodeName.toLowerCase()==’li’){<pre><code>target.style.background=&apos;red&apos;;
+</code></pre>  }<br>}<br>function outFun(e){<pre><code>var e=e||window.e;
+var target=e.target||e.srcElement  //兼容IE
+if(target.nodeName.toLowerCase()==&apos;li&apos;){
+  target.style.background=&apos;yellowgreen&apos;;
+}
+</code></pre>  }<br>}<br></pre></li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-06-14T14:05:11.000Z"><a href="/2016/06/14/《javascript权威指南》学习笔记（8）/">2016-06-14</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/06/14/《javascript权威指南》学习笔记（8）/">《javascript权威指南》学习笔记（8）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="脚本化CSS篇"><a href="#脚本化CSS篇" class="headerlink" title="脚本化CSS篇"></a>脚本化CSS篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="一些CSS内容"><a href="#一些CSS内容" class="headerlink" title="一些CSS内容"></a>一些CSS内容</h3><ul>
+<li>font复合属性：包括font-style,font-weight,font-variant,font-size/line-height,font-family;可忽略其中任意属性，不同属性空格分隔，同一属性的多值逗号分隔</li>
+<li>text-transform:uppercase/lowercase/capitalize/none/inherit,设置文本大小写</li>
+<li>box-sizing:border-box/content-box/inherit,宽高指定的范围</li>
+<li>overflow:visible(溢出可绘制)/hidden(裁剪隐藏溢出)/scroll(一直显示滚动条，溢出滚动条查看)/auto(内容溢出时显示滚动条)</li>
+<li><p>clip:裁剪绝对定位的元素（必有position:absolute!），值rect(top right bottom left)(矩形框中内容可见)/auto(不剪裁)<br><img src="http://o6yo3ducz.bkt.clouddn.com/clip%E5%B1%9E%E6%80%A7rect%E7%A4%BA%E6%84%8F%E5%9B%BE.png" title="clip属性rect值示意图" width="290px"></p>
+</li>
+<li><p>透明度：opacity:0~1;为兼容IE设置filter:alpha(opacity=0~100)</p>
+</li>
+<li>CSS3有支持计算的属性：cal(val)，但存在一些兼容性问题，eg:<code>width:cal(50%-12px);</code></li>
+<li>对已定位元素，只设置left，right可隐性指定宽度，但同时设置left，width，right不合理时，width会覆盖right（top,height,bottom同理，但一般不指定高度，由内容撑起）</li>
+<li>对定位而言，left,top基于左上角定位，bottom,right基于右下角定位，指容器border内侧到定位元素border外侧的距离</li>
+<li>z-index相当于z轴维度，默认为0，可正可负，正显示于文档流之上，负显示于文档流之下，值越大越靠上，相同值按文档流次序显示；只对有定位元素生效，无定位（position:static）元素无效，<span style="red">且只对兄弟元素应用堆叠效果</span></li>
+<li>通过@font-face可下载并使用自定义字体</li>
+<li>text-shadow,box-shadow属性可用position,left,top,z-index:-1,background-color等属性模拟<h3 id="脚本化的CSS（xxx-style-xxx更改的为内联样式，即直接在HTML元素的style属性下更改）"><a href="#脚本化的CSS（xxx-style-xxx更改的为内联样式，即直接在HTML元素的style属性下更改）" class="headerlink" title="脚本化的CSS（xxx.style.xxx更改的为内联样式，即直接在HTML元素的style属性下更改）"></a>脚本化的CSS（xxx.style.xxx更改的为内联样式，即直接在HTML元素的style属性下更改）</h3></li>
+<li>JS中style属性的值本质为一个CSSStyleDeclaration对象，形式为字符串形式</li>
+<li>含连字符的属性在JS的脚本化CSS中要去掉连字符，连字符间的单词首字母要大写，eg:font-weight-&gt;fontWeight<br>Float为JS保留字，采用CSSFloat代替；class为JS保留字，用className代替</li>
+<li>定位属性的值在脚本化CSS中要包含px等单位</li>
+<li>xxx.style.cssText可以查询<strong>内联样式</strong></li>
+<li>HTML元素有方法<code>setAttribute（&#39;attr&#39;,&#39;value&#39;）</code>和<code>getAttribute（&#39;attr&#39;）</code>用来设置和获取属性</li>
+<li>计算样式：是一组属性值，经过结合内联样式和链接样式等中所有可用样式得到显示时实际所用的属性值<br>只读，不可写；值为非百分比的绝对值；不计算复合样式；<br>使用：<code>window.getComputedStyle(element,null/&#39;:after&#39;/&#39;:firstline&#39;…);</code></li>
+<li>H5定义了classList属性，解决多类名问题。其中有add(),remove()等方法添加删除类名；还有contains()检测是否包含类名；及toggle()不存在则添加存在则删除类名；</li>
+<li>document.stylesheets:只读类数组对象，包括&lt;link&gt;和&lt;style&gt;下的样式表<br><span style="color:red;">有disable属性，值为true会被浏览器忽略</span><br><code>document.stylesheets[i].cssRules[]</code>对象包含样式表所有规则，IE中为<code>document.stylesheets[i].Rules[]</code></li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-06-06T14:09:42.000Z"><a href="/2016/06/06/《javascript权威指南》学习笔记（7）/">2016-06-06</a></time>
       
       
@@ -659,123 +829,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-05-12T12:18:11.000Z"><a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">2016-05-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">《javascript权威指南》学习笔记（2）</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h1 id="数组篇"><a href="#数组篇" class="headerlink" title="数组篇"></a>数组篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"><br>数组有别于其他对象，具有length属性等特性，其索引最大长度为2<sup>32</sup>-2</p>
-<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="直接量：var-arr"><a href="#直接量：var-arr" class="headerlink" title="直接量：var arr=[]"></a>直接量：var arr=[]</h4><h4 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h4><h4 id="var-arr-new-Array-8-——创建长度为8的数组"><a href="#var-arr-new-Array-8-——创建长度为8的数组" class="headerlink" title="- var arr=new Array(8)——创建长度为8的数组"></a>- var arr=new Array(8)——创建长度为8的数组</h4><h4 id="var-arr-new-Array-8-10-——创建两个元素的数组"><a href="#var-arr-new-Array-8-10-——创建两个元素的数组" class="headerlink" title="- var arr=new Array(8,10)——创建两个元素的数组"></a>- var arr=new Array(8,10)——创建两个元素的数组</h4><hr>
-<h3 id="读写数组元素"><a href="#读写数组元素" class="headerlink" title="读写数组元素"></a>读写数组元素</h3><h4 id="主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。"><a href="#主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。" class="headerlink" title="主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。"></a>主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。</h4><hr>
-<h3 id="判断索引或属性是否存在于数组中"><a href="#判断索引或属性是否存在于数组中" class="headerlink" title="判断索引或属性是否存在于数组中"></a>判断索引或属性是否存在于数组中</h3><h4 id="index-property-in-arr：返回true-false-可用来判定不存在还是存在值为undefined"><a href="#index-property-in-arr：返回true-false-可用来判定不存在还是存在值为undefined" class="headerlink" title="index/property in arr：返回true/false,可用来判定不存在还是存在值为undefined"></a>index/property in arr：返回true/false,可用来判定不存在还是存在值为undefined</h4><hr>
-<h3 id="添加与删除数组元素"><a href="#添加与删除数组元素" class="headerlink" title="添加与删除数组元素"></a>添加与删除数组元素</h3><h4 id="添加："><a href="#添加：" class="headerlink" title="添加："></a>添加：</h4><h4 id="push-element1-element2-…-：尾部添加element1-element2-…等元素，参数可为1个到多个"><a href="#push-element1-element2-…-：尾部添加element1-element2-…等元素，参数可为1个到多个" class="headerlink" title="- push(element1,element2,…)：尾部添加element1,element2,…等元素，参数可为1个到多个"></a>- push(element1,element2,…)：尾部添加element1,element2,…等元素，参数可为1个到多个</h4><h4 id="unshift-element1-element2-…-：头部添加element1-element2-…等元素，参数可为1个到多个"><a href="#unshift-element1-element2-…-：头部添加element1-element2-…等元素，参数可为1个到多个" class="headerlink" title="- unshift(element1,element2,…)：头部添加element1,element2,…等元素，参数可为1个到多个"></a>- unshift(element1,element2,…)：头部添加element1,element2,…等元素，参数可为1个到多个</h4><h4 id="删除："><a href="#删除：" class="headerlink" title="删除："></a>删除：</h4><h4 id="pop-howmany-：尾部删除howmany个元素，省略howmany默认为1"><a href="#pop-howmany-：尾部删除howmany个元素，省略howmany默认为1" class="headerlink" title="- pop(howmany)：尾部删除howmany个元素，省略howmany默认为1"></a>- pop(howmany)：尾部删除howmany个元素，省略howmany默认为1</h4><h4 id="shift-howmany-：头部删除howmany个元素，省略howmany默认为1"><a href="#shift-howmany-：头部删除howmany个元素，省略howmany默认为1" class="headerlink" title="- shift(howmany)：头部删除howmany个元素，省略howmany默认为1"></a>- shift(howmany)：头部删除howmany个元素，省略howmany默认为1</h4><h4 id="delete-a-i-：不会改变length属性也不会从高索引下移元素，会使数组变为稀疏数组"><a href="#delete-a-i-：不会改变length属性也不会从高索引下移元素，会使数组变为稀疏数组" class="headerlink" title="- delete a[i]：不会改变length属性也不会从高索引下移元素，会使数组变为稀疏数组"></a>- delete a[i]：不会改变length属性也不会从高索引下移元素，会使数组变为稀疏数组</h4><h4 id="splice-index-howmany-items-：会修改数组本身，返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容"><a href="#splice-index-howmany-items-：会修改数组本身，返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容" class="headerlink" title="- splice[index,howmany,items]：会修改数组本身，返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容"></a>- splice[index,howmany,<del>items</del>]：会修改数组本身，返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容</h4><hr>
-<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><h4 id="for循环，for-in循环，forEach循环（允许以不同顺序遍历，具体见后，数组的方法）"><a href="#for循环，for-in循环，forEach循环（允许以不同顺序遍历，具体见后，数组的方法）" class="headerlink" title="for循环，for in循环，forEach循环（允许以不同顺序遍历，具体见后，数组的方法）"></a>for循环，for in循环，forEach循环（允许以不同顺序遍历，具体见后，数组的方法）</h4><hr>
-<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><h4 id="JS不支持真正的多维数组，采用数组的数组进行近似。eg-var-arr-1-2-3-4-5-6-此时可以采用arr-i-length获取i行的列长"><a href="#JS不支持真正的多维数组，采用数组的数组进行近似。eg-var-arr-1-2-3-4-5-6-此时可以采用arr-i-length获取i行的列长" class="headerlink" title="JS不支持真正的多维数组，采用数组的数组进行近似。eg:var arr=[[1,2,3],[4,5,6]],此时可以采用arr[i].length获取i行的列长"></a>JS不支持真正的多维数组，采用数组的数组进行近似。eg:var arr=[[1,2,3],[4,5,6]],此时可以采用arr[i].length获取i行的列长</h4><hr>
-<h3 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h3><h4 id="join-‘sep’-：在每个数组元素之间加入’sep’后把数组转换为字符串，不改变原数组。直接整个转换为字符串’sep’设为’’。无参数默认为’-’分割。join为split的逆向方法"><a href="#join-‘sep’-：在每个数组元素之间加入’sep’后把数组转换为字符串，不改变原数组。直接整个转换为字符串’sep’设为’’。无参数默认为’-’分割。join为split的逆向方法" class="headerlink" title="- join(‘sep’)：在每个数组元素之间加入’sep’后把数组转换为字符串，不改变原数组。直接整个转换为字符串’sep’设为’’。无参数默认为’,’分割。join为split的逆向方法"></a>- join(<del>‘sep’</del>)：在每个数组元素之间加入’sep’后把数组转换为字符串，<span style="color:red">不改变原数组</span>。直接整个转换为字符串’sep’设为’’。无参数默认为’,’分割。<strong>join为split的逆向方法</strong></h4><h4 id="reverse-：颠倒数组顺序，会改变原数组。"><a href="#reverse-：颠倒数组顺序，会改变原数组。" class="headerlink" title="- reverse()：颠倒数组顺序，会改变原数组。"></a>- reverse()：颠倒数组顺序，<span style="color:red">会改变原数组</span>。</h4><h4 id="sort-function-：可传入function参数自定义排序规则，默认按ASCII码顺序排列。会改变原数组。eg-arr-sort-function-a-b-return-a-b-按由小到大排列-这里按负数，0，正数排列-，return-b-a按由大到小的顺序。"><a href="#sort-function-：可传入function参数自定义排序规则，默认按ASCII码顺序排列。会改变原数组。eg-arr-sort-function-a-b-return-a-b-按由小到大排列-这里按负数，0，正数排列-，return-b-a按由大到小的顺序。" class="headerlink" title="- sort(function)：可传入function参数自定义排序规则，默认按ASCII码顺序排列。会改变原数组。eg:arr.sort(function (a,b){return a-b})按由小到大排列(这里按负数，0，正数排列)，return b-a按由大到小的顺序。"></a>- sort(<del>function</del>)：可传入function参数自定义排序规则，默认按ASCII码顺序排列。<span style="color:red">会改变原数组</span>。eg:<code>arr.sort(function (a,b){return a-b})</code>按由小到大排列(这里按负数，0，正数排列)，return b-a按由大到小的顺序。</h4><h4 id="concat-items-：在当前数组后面拼接数组元素，不改变原数组。items中可包含多个数组元素-若items中有’-’则最外一层-会自动去掉"><a href="#concat-items-：在当前数组后面拼接数组元素，不改变原数组。items中可包含多个数组元素-若items中有’-’则最外一层-会自动去掉" class="headerlink" title="- concat(items)：在当前数组后面拼接数组元素，不改变原数组。items中可包含多个数组元素,若items中有’[]’则最外一层[]会自动去掉"></a>- concat(items)：在当前数组后面拼接数组元素，<span style="color:red">不改变原数组</span>。items中可包含多个数组元素,若items中有’[]’则最外一层[]会自动去掉</h4><h4 id="slice-start-end-：start及end为索引值，返回start到end-1之间的数组元素。不改变原数组。end可省略，省略默认截取到最后。可接收负参数，最后一个元素对应索引为-1"><a href="#slice-start-end-：start及end为索引值，返回start到end-1之间的数组元素。不改变原数组。end可省略，省略默认截取到最后。可接收负参数，最后一个元素对应索引为-1" class="headerlink" title="- slice(start,end)：start及end为索引值，返回start到end-1之间的数组元素。不改变原数组。end可省略，省略默认截取到最后。可接收负参数，最后一个元素对应索引为-1"></a>- slice(start,<del>end</del>)：start及end为索引值，返回start到end-1之间的数组元素。<span style="color:red">不改变原数组</span>。end可省略，省略默认截取到最后。可接收负参数，最后一个元素对应索引为-1</h4><h4 id="splice-index-howmany-items-：为对象方法会改变原数组。返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容"><a href="#splice-index-howmany-items-：为对象方法会改变原数组。返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容" class="headerlink" title="- splice[index,howmany,items]：为对象方法会改变原数组。返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容"></a>- splice[index,howmany,<del>items</del>]：为对象方法会改变原数组。返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容</h4><h4 id="push-unshift-pop-shift-为添加与删除数组元素的方法，会改变原数组。"><a href="#push-unshift-pop-shift-为添加与删除数组元素的方法，会改变原数组。" class="headerlink" title="- push(),unshift(),pop(),shift()为添加与删除数组元素的方法，会改变原数组。"></a>- push(),unshift(),pop(),shift()为添加与删除数组元素的方法，<span style="color:red">会改变原数组</span>。</h4><h4 id="toString-为对象方法，在此相当于无参数join-。toLocaleString-在此与toString-效果相同"><a href="#toString-为对象方法，在此相当于无参数join-。toLocaleString-在此与toString-效果相同" class="headerlink" title="- toString()为对象方法，在此相当于无参数join()。toLocaleString()在此与toString()效果相同"></a>- toString()为对象方法，在此相当于无参数join()。toLocaleString()在此与toString()效果相同</h4><h4 id="isArray-可判定是否为数组调用：Array-isArray-arr-。无isString-isFunction-等，判定用typeof-及instanceof"><a href="#isArray-可判定是否为数组调用：Array-isArray-arr-。无isString-isFunction-等，判定用typeof-及instanceof" class="headerlink" title="- isArray()可判定是否为数组调用：Array.isArray(arr)。无isString(),isFunction()等，判定用typeof()及instanceof"></a>- isArray()可判定是否为数组<strong>调用：Array.isArray(arr)</strong>。<span style="color:red">无isString(),isFunction()等，判定用typeof()及instanceof</span></h4><h4 id="ES5中的新方法："><a href="#ES5中的新方法：" class="headerlink" title="ES5中的新方法："></a>ES5中的新方法：</h4><h4 id="IndexOf-value-start-lastIndexOf-value-start-：查找value对应的索引值，start参数可省略，表开始查找的索引位置。与字符串中的同名方法相同"><a href="#IndexOf-value-start-lastIndexOf-value-start-：查找value对应的索引值，start参数可省略，表开始查找的索引位置。与字符串中的同名方法相同" class="headerlink" title="- IndexOf(value,start),lastIndexOf(value,start)：查找value对应的索引值，start参数可省略，表开始查找的索引位置。与字符串中的同名方法相同"></a>- IndexOf(value,<del>start</del>),lastIndexOf(value,start)：查找value对应的索引值，start参数可省略，表开始查找的索引位置。与字符串中的同名方法相同</h4><h4 id="以下方法参数均为function类型"><a href="#以下方法参数均为function类型" class="headerlink" title="- 以下方法参数均为function类型"></a>- 以下方法参数均为function类型</h4><h4 id="–-forEach-遍历所有数组元素。function参数中的参数最多为3个，顺序为value-index-arr。forEach-不可break，要通过try-catch方法达到break效果"><a href="#–-forEach-遍历所有数组元素。function参数中的参数最多为3个，顺序为value-index-arr。forEach-不可break，要通过try-catch方法达到break效果" class="headerlink" title="– forEach():遍历所有数组元素。function参数中的参数最多为3个，顺序为value,index,arr。forEach()不可break，要通过try,catch方法达到break效果"></a>– forEach():遍历所有数组元素。function参数中的参数最多为3个，顺序为value,index,arr。forEach()不可break，要通过try,catch方法达到break效果</h4><h4 id="–-map-：传递元素值给函数。类似映射关系"><a href="#–-map-：传递元素值给函数。类似映射关系" class="headerlink" title="– map()：传递元素值给函数。类似映射关系"></a>– map()：传递元素值给函数。类似映射关系</h4><h4 id="–-filter-：function的return值为一个逻辑判定型的bool值。相当于过滤器。eg-arr-filter-function-x-return-x-gt-3-会找到满足条件大于3的元素组成新数组"><a href="#–-filter-：function的return值为一个逻辑判定型的bool值。相当于过滤器。eg-arr-filter-function-x-return-x-gt-3-会找到满足条件大于3的元素组成新数组" class="headerlink" title="– filter()：function的return值为一个逻辑判定型的bool值。相当于过滤器。eg:arr.filter(function (x){return x&gt;3;});会找到满足条件大于3的元素组成新数组"></a>– filter()：function的return值为一个逻辑判定型的bool值。相当于过滤器。eg:<code>arr.filter(function (x){return x&gt;3;})</code>;会找到满足条件大于3的元素组成新数组</h4><h4 id="–-every-：function的return值为一个逻辑判定型的bool值。函数返回true-false。判定是否每个元素都满足条件"><a href="#–-every-：function的return值为一个逻辑判定型的bool值。函数返回true-false。判定是否每个元素都满足条件" class="headerlink" title="– every()：function的return值为一个逻辑判定型的bool值。函数返回true/false。判定是否每个元素都满足条件"></a>– every()：function的return值为一个逻辑判定型的bool值。函数返回true/false。判定是否每个元素都满足条件</h4><h4 id="–-some-：function的return值为一个逻辑判定型的bool值。函数返回true-false。判定是否数组中存在满足条件的元素"><a href="#–-some-：function的return值为一个逻辑判定型的bool值。函数返回true-false。判定是否数组中存在满足条件的元素" class="headerlink" title="– some()：function的return值为一个逻辑判定型的bool值。函数返回true/false。判定是否数组中存在满足条件的元素"></a>– some()：function的return值为一个逻辑判定型的bool值。函数返回true/false。判定是否数组中存在满足条件的元素</h4><h4 id="–-reduce-reduceRight-：将数组元素以指定方式组合。function参数后可跟一个参数作为初始值传入function定义的方法。function参数的参数可含2-4个值，分别为：preValue（上次reduce-的结果）-curValue（当前传入的值）-curIndex（当前索引值）-arr（当前数组）。reduceRight-为后向开始"><a href="#–-reduce-reduceRight-：将数组元素以指定方式组合。function参数后可跟一个参数作为初始值传入function定义的方法。function参数的参数可含2-4个值，分别为：preValue（上次reduce-的结果）-curValue（当前传入的值）-curIndex（当前索引值）-arr（当前数组）。reduceRight-为后向开始" class="headerlink" title="– reduce()/reduceRight()：将数组元素以指定方式组合。function参数后可跟一个参数作为初始值传入function定义的方法。function参数的参数可含2-4个值，分别为：preValue（上次reduce()的结果）,curValue（当前传入的值）,curIndex（当前索引值）,arr（当前数组）。reduceRight()为后向开始"></a>– reduce()/reduceRight()：将数组元素以指定方式组合。function参数后可跟一个参数作为初始值传入function定义的方法。function参数的参数可含2-4个值，分别为：preValue（上次reduce()的结果）,curValue（当前传入的值）,curIndex（当前索引值）,arr（当前数组）。reduceRight()为后向开始</h4><hr>
-<h3 id="类数组"><a href="#类数组" class="headerlink" title="类数组"></a>类数组</h3><h4 id="类数组与数组相似，有length-prototype属性，以整数下标为属性名。可通过Array-prototype-数组方法-call-类数组对象，传参-使用数组方法"><a href="#类数组与数组相似，有length-prototype属性，以整数下标为属性名。可通过Array-prototype-数组方法-call-类数组对象，传参-使用数组方法" class="headerlink" title="类数组与数组相似，有length,prototype属性，以整数下标为属性名。可通过Array.prototype.数组方法.call(类数组对象，传参)使用数组方法"></a>类数组与数组相似，有length,prototype属性，以整数下标为属性名。可通过Array.prototype.数组方法.call(类数组对象，传参)使用数组方法</h4><hr>
-<h4 id="字符串可看做只读数组，可调用部分不改变原数组的数组方法，通过Array-prototype-join-slice-filter等ES5的数组新方法-call-字符串对象，传参-直接调用数组方法（其他数组方法目前没发现可用于这种方式）"><a href="#字符串可看做只读数组，可调用部分不改变原数组的数组方法，通过Array-prototype-join-slice-filter等ES5的数组新方法-call-字符串对象，传参-直接调用数组方法（其他数组方法目前没发现可用于这种方式）" class="headerlink" title="字符串可看做只读数组，可调用部分不改变原数组的数组方法，通过Array.prototype.join/slice/filter等ES5的数组新方法.call(字符串对象，传参)直接调用数组方法（其他数组方法目前没发现可用于这种方式）"></a>字符串可看做只读数组，可调用部分不改变原数组的数组方法，通过<code>Array.prototype.join/slice/filter等ES5的数组新方法.call(字符串对象，传参)</code>直接调用数组方法（其他数组方法目前没发现可用于这种方式）</h4>
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="photo">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      
-        <img src="http://o6yo3ducz.bkt.clouddn.com/May-plan.jpeg">
-      
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-05-11T09:39:19.000Z"><a href="/2016/05/11/5月plan/">2016-05-11</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2016/05/11/5月plan/">5月plan</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="1-《javascript权威指南》基础部分看完√进度："><a href="#1-《javascript权威指南》基础部分看完√进度：" class="headerlink" title="1.《javascript权威指南》基础部分看完√进度： "></a>1.《javascript权威指南》基础部分看完√<br><br>进度： <progress value="100" max="100"></progress></h2><h2 id="2-之前的笔记要复习下√"><a href="#2-之前的笔记要复习下√" class="headerlink" title="2.之前的笔记要复习下√"></a>2.之前的笔记要复习下√</h2><h2 id="3-前面的学习笔记要更新到博客上√进度："><a href="#3-前面的学习笔记要更新到博客上√进度：" class="headerlink" title="3.前面的学习笔记要更新到博客上√进度： "></a>3.前面的学习笔记要更新到博客上√<br><br>进度： <progress value="100" max="100"></progress></h2><h2 id="暂时就这样"><a href="#暂时就这样" class="headerlink" title="暂时就这样~"></a>暂时就这样~</h2>
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-  
-  <div class="categories">
-    <a href="/categories/plan/">plan</a>
-  </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -813,11 +866,11 @@
   
     <li><a href="/categories/technology/css/">css</a><small>2</small></li>
   
-    <li><a href="/categories/technology/javascript/">javascript</a><small>8</small></li>
+    <li><a href="/categories/technology/javascript/">javascript</a><small>9</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>10</small></li>
+    <li><a href="/categories/technology/">technology</a><small>11</small></li>
   
     <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
   
@@ -831,6 +884,14 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/06/14/《javascript权威指南》学习笔记（9）/"></a>
+      </li>
+    
+      <li>
+        <a href="/2016/06/14/《javascript权威指南》学习笔记（8）/">《javascript权威指南》学习笔记（8）</a>
+      </li>
+    
+      <li>
         <a href="/2016/06/06/《javascript权威指南》学习笔记（7）/">《javascript权威指南》学习笔记（7）</a>
       </li>
     
@@ -842,14 +903,6 @@
         <a href="/2016/05/26/黑魔法——纯css画一个三角形/">黑魔法——纯css画一个三角形</a>
       </li>
     
-      <li>
-        <a href="/2016/05/26/《javascript权威指南》学习笔记（5）/">《javascript权威指南》学习笔记（5）</a>
-      </li>
-    
-      <li>
-        <a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -859,7 +912,7 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>7</small></li>
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>8</small></li>
   
     <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
   

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>plan | D_d</title>
+  <title>《javascript权威指南》学习笔记（8） | D_d</title>
   <meta name="author" content="D_d" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  
+  <meta property="og:title" content="《javascript权威指南》学习笔记（8）" />
   <meta property="og:site_name" content="D_d" />
 
   
@@ -66,25 +66,76 @@
 </nav>
 <br/><br/></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title category">plan</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-06-14T14:05:11.000Z"><a href="/2016/06/14/《javascript权威指南》学习笔记（8）/">2016-06-14</a></time>
+      
+      
+  
+    <h1 class="title">《javascript权威指南》学习笔记（8）</h1>
+  
 
+    </header>
+    <div class="entry">
+      
+        <h1 id="脚本化CSS篇"><a href="#脚本化CSS篇" class="headerlink" title="脚本化CSS篇"></a>脚本化CSS篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="一些CSS内容"><a href="#一些CSS内容" class="headerlink" title="一些CSS内容"></a>一些CSS内容</h3><ul>
+<li>font复合属性：包括font-style,font-weight,font-variant,font-size/line-height,font-family;可忽略其中任意属性，不同属性空格分隔，同一属性的多值逗号分隔</li>
+<li>text-transform:uppercase/lowercase/capitalize/none/inherit,设置文本大小写</li>
+<li>box-sizing:border-box/content-box/inherit,宽高指定的范围</li>
+<li>overflow:visible(溢出可绘制)/hidden(裁剪隐藏溢出)/scroll(一直显示滚动条，溢出滚动条查看)/auto(内容溢出时显示滚动条)</li>
+<li><p>clip:裁剪绝对定位的元素（必有position:absolute!），值rect(top right bottom left)(矩形框中内容可见)/auto(不剪裁)<br><img src="http://o6yo3ducz.bkt.clouddn.com/clip%E5%B1%9E%E6%80%A7rect%E7%A4%BA%E6%84%8F%E5%9B%BE.png" title="clip属性rect值示意图" width="290px"></p>
+</li>
+<li><p>透明度：opacity:0~1;为兼容IE设置filter:alpha(opacity=0~100)</p>
+</li>
+<li>CSS3有支持计算的属性：cal(val)，但存在一些兼容性问题，eg:<code>width:cal(50%-12px);</code></li>
+<li>对已定位元素，只设置left，right可隐性指定宽度，但同时设置left，width，right不合理时，width会覆盖right（top,height,bottom同理，但一般不指定高度，由内容撑起）</li>
+<li>对定位而言，left,top基于左上角定位，bottom,right基于右下角定位，指容器border内侧到定位元素border外侧的距离</li>
+<li>z-index相当于z轴维度，默认为0，可正可负，正显示于文档流之上，负显示于文档流之下，值越大越靠上，相同值按文档流次序显示；只对有定位元素生效，无定位（position:static）元素无效，<span style="red">且只对兄弟元素应用堆叠效果</span></li>
+<li>通过@font-face可下载并使用自定义字体</li>
+<li>text-shadow,box-shadow属性可用position,left,top,z-index:-1,background-color等属性模拟<h3 id="脚本化的CSS（xxx-style-xxx更改的为内联样式，即直接在HTML元素的style属性下更改）"><a href="#脚本化的CSS（xxx-style-xxx更改的为内联样式，即直接在HTML元素的style属性下更改）" class="headerlink" title="脚本化的CSS（xxx.style.xxx更改的为内联样式，即直接在HTML元素的style属性下更改）"></a>脚本化的CSS（xxx.style.xxx更改的为内联样式，即直接在HTML元素的style属性下更改）</h3></li>
+<li>JS中style属性的值本质为一个CSSStyleDeclaration对象，形式为字符串形式</li>
+<li>含连字符的属性在JS的脚本化CSS中要去掉连字符，连字符间的单词首字母要大写，eg:font-weight-&gt;fontWeight<br>Float为JS保留字，采用CSSFloat代替；class为JS保留字，用className代替</li>
+<li>定位属性的值在脚本化CSS中要包含px等单位</li>
+<li>xxx.style.cssText可以查询<strong>内联样式</strong></li>
+<li>HTML元素有方法<code>setAttribute（&#39;attr&#39;,&#39;value&#39;）</code>和<code>getAttribute（&#39;attr&#39;）</code>用来设置和获取属性</li>
+<li>计算样式：是一组属性值，经过结合内联样式和链接样式等中所有可用样式得到显示时实际所用的属性值<br>只读，不可写；值为非百分比的绝对值；不计算复合样式；<br>使用：<code>window.getComputedStyle(element,null/&#39;:after&#39;/&#39;:firstline&#39;…);</code></li>
+<li>H5定义了classList属性，解决多类名问题。其中有add(),remove()等方法添加删除类名；还有contains()检测是否包含类名；及toggle()不存在则添加存在则删除类名；</li>
+<li>document.stylesheets:只读类数组对象，包括&lt;link&gt;和&lt;style&gt;下的样式表<br><span style="color:red;">有disable属性，值为true会被浏览器忽略</span><br><code>document.stylesheets[i].cssRules[]</code>对象包含样式表所有规则，IE中为<code>document.stylesheets[i].Rules[]</code></li>
+</ul>
 
-  <div class="archive">
+      
+    </div>
     
-      <article class="photo">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-05-11T09:39:19.000Z"><a href="/2016/05/11/5月plan/">2016-05-11</a></time>
-            
-              <h1 class="title"><a href="/2016/05/11/5月plan/">5月plan</a></h1>
-            
-          </header>
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
         </div>
-      </article>
-    
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
   </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
