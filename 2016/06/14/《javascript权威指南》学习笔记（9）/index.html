@@ -93,16 +93,16 @@
 <li>冒泡：文档元素上发生某类型事件时会沿DOM树向上冒泡，当前DOM直到&lt;body&gt;,再到document，再到window<h3 id="注册事件处理程序"><a href="#注册事件处理程序" class="headerlink" title="注册事件处理程序"></a>注册事件处理程序</h3></li>
 </ul>
 </li>
-<li>addEventListener(‘eventType’,function,<del>bool</del>):三个参数为事件类型，发生时执行的函数，是否为捕获阶段（可省略，默认false）<br>IE9前使用attachEvent(‘oneventType’,function);（tips:这里function中this指向window，addEventListener()中this指向事件目标）<br>可为同一事件注册多个函数，执行时会按注册顺序调用；<br>参数相同的情况下多次调用addEventListener()只注册一次</li>
+<li><code>addEventListener(&#39;eventType&#39;,function,~~bool~~)</code>:三个参数为事件类型，发生时执行的函数，是否为捕获阶段（可省略，默认false）<br>IE9前使用<code>attachEvent(&#39;oneventType&#39;,function);</code>（tips:这里function中this指向window，<code>addEventListener()</code>中this指向事件目标）<br>可为同一事件注册多个函数，执行时会按注册顺序调用；<br>参数相同的情况下多次调用<code>addEventListener()</code>只注册一次</li>
 <li>通过JS中对应属性设置：事件处理程序属性名称由”on”+”eventType”组成，全部小写</li>
 <li>通过HTML属性设置：事件处理程序属性名称由”on”+”eventType”组成，全部小写。但为保持内容与行为分离，不应采用这种方式<h3 id="事件移除与取消"><a href="#事件移除与取消" class="headerlink" title="事件移除与取消"></a>事件移除与取消</h3></li>
-<li>移除：removeEventListener(‘eventType’,function,<del>bool</del>)参数必须和注册时相同</li>
+<li>移除：<code>removeEventListener(&#39;eventType&#39;,function,~~bool~~)</code>参数必须和注册时相同</li>
 <li>设置HTML属性注册事件处理程序，将返回值置为false，浏览器会取消默认行为，但这只对属性注册的程序有效</li>
-<li>取消事件默认行为：preventDefault()</li>
-<li>阻止事件传播：stopPropagation(),可在传播期间任何时间调用<br>IE9以下不支持，通过将cancelBuble置为true阻止<h3 id="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"><a href="#事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数" class="headerlink" title="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"></a>事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数</h3><h3 id="事件处理程序的调用顺序"><a href="#事件处理程序的调用顺序" class="headerlink" title="事件处理程序的调用顺序"></a>事件处理程序的调用顺序</h3></li>
+<li>取消事件默认行为：<code>preventDefault()</code></li>
+<li>阻止事件传播：<code>stopPropagation()</code>,可在传播期间任何时间调用<br>IE9以下不支持，通过将cancelBuble置为true阻止<h3 id="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"><a href="#事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数" class="headerlink" title="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"></a>事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数</h3><h3 id="事件处理程序的调用顺序"><a href="#事件处理程序的调用顺序" class="headerlink" title="事件处理程序的调用顺序"></a>事件处理程序的调用顺序</h3></li>
 <li>通过JS对应属性及HTML属性注册的程序优先调用</li>
-<li>addEventListener()按注册顺序调用</li>
-<li>attachEvent()可能按任意顺序调用<h3 id="事件传播"><a href="#事件传播" class="headerlink" title="事件传播"></a>事件传播</h3></li>
+<li><code>addEventListener()</code>按注册顺序调用</li>
+<li><code>attachEvent()</code>可能按任意顺序调用<h3 id="事件传播"><a href="#事件传播" class="headerlink" title="事件传播"></a>事件传播</h3></li>
 <li>三个阶段：捕获、事件处理程序调用、冒泡</li>
 <li>当需要在大量单独的文档元素上注册处理程序时，可在其共同的祖先元素上注册</li>
 <li>特殊冒泡行为：<ul>
