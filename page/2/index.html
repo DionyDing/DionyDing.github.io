@@ -73,6 +73,65 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-05-13T12:39:55.000Z"><a href="/2016/05/13/《javascript权威指南》学习笔记（3）/">2016-05-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/05/13/《javascript权威指南》学习笔记（3）/">《javascript权威指南》学习笔记（3）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="对象篇"><a href="#对象篇" class="headerlink" title="对象篇"></a>对象篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h4 id="属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。"><a href="#属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。" class="headerlink" title="属性名中有空格、连字符、保留字时，要用引号以字符串形式表示。"></a>属性名中有<strong>空格、连字符、保留字</strong>时，要用引号以字符串形式表示。</h4><hr>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="直接量：var-obj-…"><a href="#直接量：var-obj-…" class="headerlink" title="直接量：var obj={…}"></a>直接量：var obj={…}</h4><h4 id="关键字：new-构造函数。var-obj-new-Object-Array-Date"><a href="#关键字：new-构造函数。var-obj-new-Object-Array-Date" class="headerlink" title="关键字：new+构造函数。var obj=new Object()/Array()/Date()"></a>关键字：new+构造函数。var obj=new Object()/Array()/Date()</h4><h4 id="Object-create-原型对象-var-obj-inherit-原型对象-。（二者有一些区别，如inherit不能继承自空对象等）"><a href="#Object-create-原型对象-var-obj-inherit-原型对象-。（二者有一些区别，如inherit不能继承自空对象等）" class="headerlink" title="Object.create(原型对象)/var obj=inherit(原型对象)。（二者有一些区别，如inherit不能继承自空对象等）"></a>Object.create(原型对象)/var obj=inherit(原型对象)。（二者有一些区别，如inherit不能继承自空对象等）</h4><hr>
+<h3 id="查询：在查询时可能会查询原型链，设置时则不会更改原型链-setter方法设置不改变原型链"><a href="#查询：在查询时可能会查询原型链，设置时则不会更改原型链-setter方法设置不改变原型链" class="headerlink" title="查询：在查询时可能会查询原型链，设置时则不会更改原型链(setter方法设置不改变原型链)"></a>查询：在查询时可能会查询原型链，设置时则不会更改原型链(setter方法设置不改变原型链)</h3><h4 id="1-object-property-2-object-property-若属性名含引号-内也要含！"><a href="#1-object-property-2-object-property-若属性名含引号-内也要含！" class="headerlink" title="1.object.property;2.object[property](若属性名含引号[]内也要含！)"></a>1.<code>object.property</code>;2.<code>object[property]</code>(若属性名含引号[]内也要含！)</h4><h4 id="方式比-方式更强大一些："><a href="#方式比-方式更强大一些：" class="headerlink" title="[]方式比.方式更强大一些："></a>[]方式比.方式更强大一些：</h4><h4 id="方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；"><a href="#方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；" class="headerlink" title="[]方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；"></a>[]方式可以访问保留字为名的属性，可以在运行时动态更改其内的属性名；</h4><h4 id="方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。"><a href="#方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。" class="headerlink" title=".方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。"></a>.方式不可以访问保留字为名的属性，运行时不可以动态更改属性名只能做为索引。</h4><hr>
+<h3 id="删除属性：delete-obj-property，删除成功或无副作用（删除不存在的属性时）返回true"><a href="#删除属性：delete-obj-property，删除成功或无副作用（删除不存在的属性时）返回true" class="headerlink" title="删除属性：delete obj.property，删除成功或无副作用（删除不存在的属性时）返回true"></a>删除属性：<code>delete obj.property</code>，删除成功或无副作用（删除不存在的属性时）返回true</h3><hr>
+<h3 id="属性检测"><a href="#属性检测" class="headerlink" title="属性检测"></a>属性检测</h3><h4 id="hasOwnProperty-是否为对象自有属性（不属于继承属性）"><a href="#hasOwnProperty-是否为对象自有属性（不属于继承属性）" class="headerlink" title="- hasOwnProperty():是否为对象自有属性（不属于继承属性）"></a>- hasOwnProperty():是否为对象自有属性（不属于继承属性）</h4><h4 id="propertyIsEnumerable-是否为对象自有属性且可枚举"><a href="#propertyIsEnumerable-是否为对象自有属性且可枚举" class="headerlink" title="- propertyIsEnumerable():是否为对象自有属性且可枚举"></a>- propertyIsEnumerable():是否为<strong>对象自有属性</strong>且<strong>可枚举</strong></h4><h4 id="判断属性是否undefined-严格不等于可区分null和undefined"><a href="#判断属性是否undefined-严格不等于可区分null和undefined" class="headerlink" title="- !==:判断属性是否undefined(严格不等于可区分null和undefined)"></a>- !==:判断属性是否undefined(严格不等于可区分null和undefined)</h4><h4 id="property-in-object-区分存在但值为undefined还是不存在"><a href="#property-in-object-区分存在但值为undefined还是不存在" class="headerlink" title="- property in object:区分存在但值为undefined还是不存在"></a>- property in object:区分存在但值为undefined还是不存在</h4><h4 id="keys-返回所有对象自有的可枚举属性名组成的数组"><a href="#keys-返回所有对象自有的可枚举属性名组成的数组" class="headerlink" title="- keys():返回所有对象自有的可枚举属性名组成的数组"></a>- keys():返回所有对象自有的可枚举属性名组成的数组</h4><h4 id="getOwnPropertyNames-返回所有对象自有的属性名组成的数组（包括不可枚举的）"><a href="#getOwnPropertyNames-返回所有对象自有的属性名组成的数组（包括不可枚举的）" class="headerlink" title="- getOwnPropertyNames():返回所有对象自有的属性名组成的数组（包括不可枚举的）"></a>- getOwnPropertyNames():返回所有对象自有的属性名组成的数组（包括不可枚举的）</h4><h4 id="for-in循环会遍历原型链上的可枚举属性，可通过if-obj-hasOwnProperty-prop-过滤"><a href="#for-in循环会遍历原型链上的可枚举属性，可通过if-obj-hasOwnProperty-prop-过滤" class="headerlink" title="for in循环会遍历原型链上的可枚举属性，可通过if(obj.hasOwnProperty(prop))过滤"></a><strong>for in循环会遍历原型链上的可枚举属性，可通过<code>if(obj.hasOwnProperty(prop))</code>过滤</strong></h4><hr>
+<h3 id="getter与setter属性：查询及设置属性，不需function关键字声明"><a href="#getter与setter属性：查询及设置属性，不需function关键字声明" class="headerlink" title="getter与setter属性：查询及设置属性，不需function关键字声明"></a>getter与setter属性：查询及设置属性，不需function关键字声明</h3><p><pre style="font-size:20px"><br>var obj={<br>    x:1,<br>    get propX(){<br>        return this.x;<br>    },<br>    set propX(x){        //setter只允许一个参数<br>        this.x=x;<br>    }<br>}<br></pre></p>
+<h4 id="调用时：obj-propX-这样是getter-obj-propX-value-这样是setter-。采用obj-propX-会报错obj-propX不是function"><a href="#调用时：obj-propX-这样是getter-obj-propX-value-这样是setter-。采用obj-propX-会报错obj-propX不是function" class="headerlink" title="调用时：obj.propX(这样是getter),obj.propX=value(这样是setter)。采用obj.propX()会报错obj.propX不是function!"></a>调用时：<code>obj.propX</code>(这样是getter),<code>obj.propX=value</code>(这样是setter)。采用obj.propX()会报错obj.propX不是function!</h4><hr>
+<h3 id="属性的特性"><a href="#属性的特性" class="headerlink" title="属性的特性"></a>属性的特性</h3><h3 id="数据对象属性：writable-configurable-enumerable-value"><a href="#数据对象属性：writable-configurable-enumerable-value" class="headerlink" title="-数据对象属性：writable,configurable,enumerable,value"></a>-数据对象属性：writable,configurable,enumerable,value</h3><h3 id="存取器对象属性：set-configurable-enumerable-get"><a href="#存取器对象属性：set-configurable-enumerable-get" class="headerlink" title="-存取器对象属性：set,configurable,enumerable,get"></a>-存取器对象属性：set,configurable,enumerable,get</h3><h4 id="采用defineProperty-对象-quot-属性-quot-特性-方式定义需定义特性的属性，特性可省略，默认值value为undefined，其他为false"><a href="#采用defineProperty-对象-quot-属性-quot-特性-方式定义需定义特性的属性，特性可省略，默认值value为undefined，其他为false" class="headerlink" title="采用defineProperty(对象,&quot;属性&quot;,~~{特性}~~)方式定义需定义特性的属性，特性可省略，默认值value为undefined，其他为false"></a>采用<code>defineProperty(对象,&quot;属性&quot;,~~{特性}~~)</code>方式定义需定义特性的属性，特性可省略，默认值value为undefined，其他为false</h4><h4 id="直接量定义的属性的特性除value外默认为true"><a href="#直接量定义的属性的特性除value外默认为true" class="headerlink" title="直接量定义的属性的特性除value外默认为true"></a>直接量定义的属性的特性除value外默认为true</h4><h4 id="多属性可用defineProperties-…"><a href="#多属性可用defineProperties-…" class="headerlink" title="多属性可用defineProperties(…)"></a>多属性可用defineProperties(…)</h4><h3 id="属性特性的查询："><a href="#属性特性的查询：" class="headerlink" title="属性特性的查询："></a>属性特性的查询：</h3><h4 id="Object-getOwnPropertyDescriptor-object-property-：返回object自有属性特性"><a href="#Object-getOwnPropertyDescriptor-object-property-：返回object自有属性特性" class="headerlink" title="-Object.getOwnPropertyDescriptor(object,property)：返回object自有属性特性"></a>-<code>Object.getOwnPropertyDescriptor(object,property)</code>：返回object自有属性特性</h4><hr>
+<h3 id="原型属性"><a href="#原型属性" class="headerlink" title="原型属性"></a>原型属性</h3><h4 id="Object-getPrototypeOf-object-：遍历原型链的属性"><a href="#Object-getPrototypeOf-object-：遍历原型链的属性" class="headerlink" title="-Object.getPrototypeOf(object)：遍历原型链的属性"></a>-<code>Object.getPrototypeOf(object)</code>：遍历原型链的属性</h4><h4 id="object1-IsPrototypeOf-object2-：object1是否为object2的原型"><a href="#object1-IsPrototypeOf-object2-：object1是否为object2的原型" class="headerlink" title="-object1.IsPrototypeOf(object2)：object1是否为object2的原型"></a>-<code>object1.IsPrototypeOf(object2)</code>：object1是否为object2的原型</h4><hr>
+<h3 id="可扩展性：要结合configurable和writable"><a href="#可扩展性：要结合configurable和writable" class="headerlink" title="可扩展性：要结合configurable和writable"></a>可扩展性：要结合configurable和writable</h3><h4 id="通过isExtensible-判断可扩展性"><a href="#通过isExtensible-判断可扩展性" class="headerlink" title="通过isExtensible()判断可扩展性"></a>通过isExtensible()判断可扩展性</h4><h4 id="阻止扩展preventExtensions-——这里转为不可扩展无法转回"><a href="#阻止扩展preventExtensions-——这里转为不可扩展无法转回" class="headerlink" title="阻止扩展preventExtensions()——这里转为不可扩展无法转回"></a>阻止扩展preventExtensions()——这里转为不可扩展无法转回</h4><h4 id="更严格锁定object-freeze"><a href="#更严格锁定object-freeze" class="headerlink" title="更严格锁定object.freeze()"></a>更严格锁定object.freeze()</h4><hr>
+<h3 id="序列化对象"><a href="#序列化对象" class="headerlink" title="序列化对象"></a>序列化对象</h3><h4 id="JSON-stringify-obj-将js对象转为JSON对象-JSON-parse-obj-将JSON对象转为js对象"><a href="#JSON-stringify-obj-将js对象转为JSON对象-JSON-parse-obj-将JSON对象转为js对象" class="headerlink" title="-JSON.stringify(obj)将js对象转为JSON对象,JSON.parse(obj)将JSON对象转为js对象"></a>-JSON.stringify(obj)将js对象转为JSON对象,JSON.parse(obj)将JSON对象转为js对象</h4><hr>
+<h3 id="对象的方法"><a href="#对象的方法" class="headerlink" title="对象的方法"></a>对象的方法</h3><h4 id="toString-返回对象值的字符串（对象返回-“object-Object”-数组转为字符串-函数转为函数源代码的字符串）"><a href="#toString-返回对象值的字符串（对象返回-“object-Object”-数组转为字符串-函数转为函数源代码的字符串）" class="headerlink" title="toString():返回对象值的字符串（对象返回[“object Object”],数组转为字符串,函数转为函数源代码的字符串）"></a>toString():返回对象值的字符串（对象返回[“object Object”],数组转为字符串,函数转为函数源代码的字符串）</h4><h4 id="toLocaleString-返回对象本地化字符串（一般与toString-相同，Date-和Number特殊）"><a href="#toLocaleString-返回对象本地化字符串（一般与toString-相同，Date-和Number特殊）" class="headerlink" title="toLocaleString():返回对象本地化字符串（一般与toString()相同，Date()和Number特殊）"></a>toLocaleString():返回对象本地化字符串（一般与toString()相同，Date()和Number特殊）</h4><h4 id="valueOf-对象转为原始值，尤其转换为数字时"><a href="#valueOf-对象转为原始值，尤其转换为数字时" class="headerlink" title="valueOf():对象转为原始值，尤其转换为数字时"></a>valueOf():对象转为原始值，尤其转换为数字时</h4>
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-05-12T12:18:11.000Z"><a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">2016-05-12</a></time>
       
       
@@ -296,11 +355,11 @@
   
     <li><a href="/categories/technology/css/">css</a><small>2</small></li>
   
-    <li><a href="/categories/technology/javascript/">javascript</a><small>10</small></li>
+    <li><a href="/categories/technology/javascript/">javascript</a><small>11</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>12</small></li>
+    <li><a href="/categories/technology/">technology</a><small>13</small></li>
   
     <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
   
@@ -312,6 +371,10 @@
 <div class="widget tag">
   <h3 class="title">最新文章</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2016/07/05/《javascript权威指南》学习笔记（10）/">《javascript权威指南》学习笔记（10）</a>
+      </li>
     
       <li>
         <a href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a>
@@ -329,10 +392,6 @@
         <a href="/2016/06/06/《javascript权威指南》学习笔记（6）/">《javascript权威指南》学习笔记（6）</a>
       </li>
     
-      <li>
-        <a href="/2016/05/26/黑魔法——纯css画一个三角形/">黑魔法——纯css画一个三角形</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -342,7 +401,7 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>9</small></li>
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>10</small></li>
   
     <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
   

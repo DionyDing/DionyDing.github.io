@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>《javascript权威指南》学习笔记（8） | D_d</title>
+  <title>《javascript权威指南》学习笔记（10） | D_d</title>
   <meta name="author" content="D_d" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="《javascript权威指南》学习笔记（8）" />
+  <meta property="og:title" content="《javascript权威指南》学习笔记（10）" />
   <meta property="og:site_name" content="D_d" />
 
   
@@ -72,40 +72,72 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-06-14T14:05:11.000Z"><a href="/2016/06/14/《javascript权威指南》学习笔记（8）/">2016-06-14</a></time>
+        <time datetime="2016-07-05T02:53:43.000Z"><a href="/2016/07/05/《javascript权威指南》学习笔记（10）/">2016-07-05</a></time>
       
       
   
-    <h1 class="title">《javascript权威指南》学习笔记（8）</h1>
+    <h1 class="title">《javascript权威指南》学习笔记（10）</h1>
   
 
     </header>
     <div class="entry">
       
-        <h1 id="脚本化CSS篇"><a href="#脚本化CSS篇" class="headerlink" title="脚本化CSS篇"></a>脚本化CSS篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h3 id="一些CSS内容"><a href="#一些CSS内容" class="headerlink" title="一些CSS内容"></a>一些CSS内容</h3><ul>
-<li>font复合属性：包括font-style,font-weight,font-variant,font-size/line-height,font-family;可忽略其中任意属性，不同属性空格分隔，同一属性的多值逗号分隔</li>
-<li>text-transform:uppercase/lowercase/capitalize/none/inherit,设置文本大小写</li>
-<li>box-sizing:border-box/content-box/inherit,宽高指定的范围</li>
-<li>overflow:visible(溢出可绘制)/hidden(裁剪隐藏溢出)/scroll(一直显示滚动条，溢出滚动条查看)/auto(内容溢出时显示滚动条)</li>
-<li><p>clip:裁剪绝对定位的元素（必有position:absolute!），值rect(top right bottom left)(矩形框中内容可见，左上角为基点)/auto(不剪裁)<br><img src="http://o6yo3ducz.bkt.clouddn.com/clip%E5%B1%9E%E6%80%A7rect%E7%A4%BA%E6%84%8F%E5%9B%BE.png" title="clip属性rect值示意图" width="290px"></p>
+        <h1 id="脚本化HTTP篇"><a href="#脚本化HTTP篇" class="headerlink" title="脚本化HTTP篇"></a>脚本化HTTP篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<p>HTTP：规定了Web浏览器如何从Web服务器获取文档，向Web服务器提交表单内容，Web服务器如何相应这些请求和提交（我的理解就是Web浏览器和服务器之间的交互）</p>
+<h3 id="lt-img-gt-lt-script-gt-lt-iframe-gt-的src属性为url时会发起http的GET请求"><a href="#lt-img-gt-lt-script-gt-lt-iframe-gt-的src属性为url时会发起http的GET请求" class="headerlink" title="&lt;img&gt;,&lt;script&gt;,&lt;iframe&gt;的src属性为url时会发起http的GET请求"></a>&lt;img&gt;,&lt;script&gt;,&lt;iframe&gt;的src属性为url时会发起http的GET请求</h3><h3 id="Ajax特点："><a href="#Ajax特点：" class="headerlink" title="Ajax特点："></a>Ajax特点：</h3><p>使用脚本操纵HTTP和Web服务器进行数据交换，不会导致页面重载</p>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><ul>
+<li>XMLHttpRequest对象不可跨域，通过JSONP实现跨域</li>
+<li>P代表函数名包裹/填充数据，用JS函数包裹对应响应数据，一般函数名为callback</li>
+<li>JSON表明服务器响应必须用JSON格式</li>
+<li>XHR2可以通过选择合适的CORS（Cross-origin Resource Sharing）允许跨域，测试XHR.withCredentials可以判断浏览器是否支持<h3 id="JSONP原理"><a href="#JSONP原理" class="headerlink" title="JSONP原理"></a>JSONP原理</h3>&lt;script&gt;可以不受限于同源策略跨域通信，此时服务器响应采用JSON编码的数据格式，故这种Ajax传输协议叫做JSONP<br>Tips：只可用于处理GET请求<h3 id="XMLHttpRequest对象（实现Ajax技术）"><a href="#XMLHttpRequest对象（实现Ajax技术）" class="headerlink" title="XMLHttpRequest对象（实现Ajax技术）"></a>XMLHttpRequest对象（实现Ajax技术）</h3>定义了用脚本操纵Http的API，包含GET请求及POST请求的能力，能用文本或document对象的形式返回服务器响应<h3 id="与Ajax同类的Comet技术"><a href="#与Ajax同类的Comet技术" class="headerlink" title="与Ajax同类的Comet技术"></a>与Ajax同类的Comet技术</h3></li>
+<li>在Comet中，web服务器发起通信并异步发送消息到客户端，若web应用需响应服务端，会使用Ajax技术发送、请求数据</li>
+<li>Tips：Ajax中浏览器从服务器“拉”数据，Comet中服务器向浏览器“推”数据<h3 id="XMLHttpRequest对象实现Ajax请求"><a href="#XMLHttpRequest对象实现Ajax请求" class="headerlink" title="XMLHttpRequest对象实现Ajax请求"></a>XMLHttpRequest对象实现Ajax请求</h3>1.实例化XMLHttpRequest：var xhr=new XMLHttpRequest();<br>2.调用其open()方法：xhr.open(‘method’,’url’,<del>bool</del>);<ul>
+<li>method参数为http请求方式，GET/POST，不区分大小写，但一般大写</li>
+<li>url为请求地址，跨域会报错</li>
+<li>bool为一个可选参数，是否异步，设为false会同步，但同步时send()会阻塞UI一般不用<br>3.若为POST方式需设置请求头以方便服务器正常解码：xhr.setRequestHeader(‘content-Type’,’xxx’);<br>４.监听readystate：<pre><br>xhr.onreadystatechange=function (){<br>if(xhr.readystate==4&amp;&amp;xhr.status==200){<br>//请求完成不一定成功，xhr.status==200才成功<br>response……<br>}<br>}</pre><br>5.向服务器发送可选请求体：xhr.send();</li>
+</ul>
 </li>
-<li><p>透明度：opacity:0~1;为兼容IE设置filter:alpha(opacity=0~100)</p>
+<li>这一步才会启动网络，发送请求</li>
+<li>GET方式无请求体，POST方式有请求体,可携带请求体参数</li>
+<li>发送请求后，会返回响应response<h3 id="XMLHttpRequest对象的响应"><a href="#XMLHttpRequest对象的响应" class="headerlink" title="XMLHttpRequest对象的响应"></a>XMLHttpRequest对象的响应</h3></li>
+<li>完整的http响应由状态码，响应头，响应主体组成</li>
+<li>响应返回后，有一系列响应属性生效。此时为在响应返回时得到通知，要监听readystate事件</li>
+<li>响应属性如下：<ul>
+<li>status/statusText：以数字/文本形式返回http状态码</li>
+<li>responseText/responseXML：响应主体文本/Document形式</li>
+<li>getResponseHeader()/getAllResponseHeader():查询响应头</li>
+</ul>
 </li>
-<li>CSS3有支持计算的属性：cal(val)，但存在一些兼容性问题，eg:<code>width:cal(50%-12px);</code></li>
-<li>对已定位元素，只设置left，right可隐性指定宽度，但同时设置left，width，right不合理时，width会覆盖right（top,height,bottom同理，但一般不指定高度，由内容撑起）</li>
-<li>对定位而言，left,top基于左上角定位，bottom,right基于右下角定位，指容器border内侧到定位元素border外侧的距离</li>
-<li>z-index相当于z轴维度，默认为0，可正可负，正显示于文档流之上，负显示于文档流之下，值越大越靠上，相同值按文档流次序显示；只对有定位元素生效，无定位（position:static）元素无效，<span style="red">且只对兄弟元素应用堆叠效果</span></li>
-<li>通过@font-face可下载并使用自定义字体</li>
-<li>text-shadow,box-shadow属性可用position,left,top,z-index:-1,background-color等属性模拟<h3 id="脚本化的CSS（xxx-style-xxx更改的为内联样式，即直接在HTML元素的style属性下更改）"><a href="#脚本化的CSS（xxx-style-xxx更改的为内联样式，即直接在HTML元素的style属性下更改）" class="headerlink" title="脚本化的CSS（xxx.style.xxx更改的为内联样式，即直接在HTML元素的style属性下更改）"></a>脚本化的CSS（xxx.style.xxx更改的为内联样式，即直接在HTML元素的style属性下更改）</h3></li>
-<li>JS中style属性的值本质为一个CSSStyleDeclaration对象，形式为字符串形式</li>
-<li>含连字符的属性在JS的脚本化CSS中要去掉连字符，连字符间的单词首字母要大写，eg:font-weight-&gt;fontWeight<br>Float为JS保留字，采用CSSFloat代替；class为JS保留字，用className代替</li>
-<li>定位属性的值在脚本化CSS中要包含px等单位</li>
-<li>xxx.style.cssText可以查询<strong>内联样式</strong></li>
-<li>HTML元素有方法<code>setAttribute（&#39;attr&#39;,&#39;value&#39;）</code>和<code>getAttribute（&#39;attr&#39;）</code>用来设置和获取属性</li>
-<li>计算样式：是一组属性值，经过结合内联样式和链接样式等中所有可用样式得到显示时实际所用的属性值<br>只读，不可写；值为非百分比的绝对值；不计算复合样式；<br>使用：<code>window.getComputedStyle(element,null/&#39;:after&#39;/&#39;:firstline&#39;…);</code></li>
-<li>H5定义了classList属性，解决多类名问题。其中有add(),remove()等方法添加删除类名；还有contains()检测是否包含类名；及toggle()不存在则添加存在则删除类名；</li>
-<li>document.stylesheets:只读类数组对象，包括&lt;link&gt;和&lt;style&gt;下的样式表<br><span style="color:red;">有disable属性，值为true会被浏览器忽略</span><br><code>document.stylesheets[i].cssRules[]</code>对象包含样式表所有规则，IE中为<code>document.stylesheets[i].Rules[]</code></li>
+<li>readystate属性：代表http请求状态<ul>
+<li>0：open()未调用</li>
+<li>1：open()以调用</li>
+<li>2：收到响应头</li>
+<li>3：收到响应体</li>
+<li>4：响应完成</li>
+<li>Tips:理论上每次改变都会触发事件，但实际上不同浏览器有差别0、1一般不触发，4所有浏览器都会触发<h3 id="http请求无法完成的触发事件"><a href="#http请求无法完成的触发事件" class="headerlink" title="http请求无法完成的触发事件"></a>http请求无法完成的触发事件</h3></li>
+</ul>
+</li>
+<li>timeout：超时触发事件</li>
+<li>abort：请求中止触发事件</li>
+<li>error：重定向太多阻止请求触发事件<h3 id="中止请求"><a href="#中止请求" class="headerlink" title="中止请求"></a>中止请求</h3></li>
+<li>如果用户在指定时间内还没有输入字符，应中止表单请求</li>
+<li>abort()方法取消正在进行的HTTP请求<h3 id="编码请求主体"><a href="#编码请求主体" class="headerlink" title="编码请求主体"></a>编码请求主体</h3></li>
+<li>url编码：<ul>
+<li>POST方式提交表单要进行URL编码，即16进制转义码替换特殊字符，’=’分开名字和值，’&amp;’分开名值对</li>
+<li>对表单数据有正式的请求头，’content-Type’为’application/x-www-form-unlencoded’</li>
+<li>将名值对用encodeURIComponent(‘xxx’);编码</li>
+</ul>
+</li>
+<li>JSON编码<ul>
+<li>JSON.stringify(‘xxx’);编码</li>
+<li>JSON.parse(‘xxx’);解码</li>
+</ul>
+</li>
+<li>上传文件<ul>
+<li>POST请求发送文件内容时，type=’file’时有files属性，它是File对象的类数组对象</li>
+<li>XHR2允许在send()中传入File对象实现上传文件。文件类型为二进制大对象（Blob）的子类型</li>
+</ul>
+</li>
 </ul>
 
       
