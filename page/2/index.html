@@ -73,6 +73,123 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-05-18T08:33:43.000Z"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">2016-05-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="函数篇"><a href="#函数篇" class="headerlink" title="函数篇"></a>函数篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义<p style="font-size:20px;"></p></h3><ul>
+<li>声明：function name(){…}</li>
+<li>表达式：var fun=function name(){…},在函数表达式中，函数名称标识name对命名表达式是可选项，如果存在名称标识name只在函数体中生效（函数定义表达式适合用来定义只用到一次的函数）</li>
+<li>区别：函数声明会被提前到外部脚本或外部函数作用域顶部，可以在定义前调用。而函数表达式的var声明部分不会提前，所以函数表达式不可以在声明前调用。</li>
+<li>tips:<br>1.函数作为对象私有函数时，对应属性名以下划线做前缀，表明私有！<br>2.函数声明语句非真正的语句，不能出现在循环、条件判断、try/catch、with等语句中；但函数表达式可以出现在任何地方<p></p><h3 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数<p style="font-size:20px;"></p></h3></li>
+<li>变量作用域：内部函数可以访问外部函数变量，但外部函数不可以访问内部函数的变量<p></p><h3 id="对象属性中的函数"><a href="#对象属性中的函数" class="headerlink" title="对象属性中的函数"></a>对象属性中的函数<p style="font-size:20px;"></p></h3></li>
+<li>在方法中使用对象的属性对应的值，要用this.prop指向当前对象的属性，否则会寻找全局变量。<br>eg:<code>var calculator={op1:1,op2:2,add:function (){this.result=this.op1+this.op2;}}</code></li>
+<li>希望this指向外部对象时要先用that把this保存起来，不能直接用this<p></p><h3 id="不定实参函数（不定实参函数要加备注！）"><a href="#不定实参函数（不定实参函数要加备注！）" class="headerlink" title="不定实参函数（不定实参函数要加备注！）"></a>不定实参函数（不定实参函数要加备注！）<p style="font-size:20px;"></p></h3></li>
+<li>arguments为一个类数组，arguments在严格模式下为保留字，非严格模式下非保留字</li>
+<li>对不定参数个数的函数可用arguments.length访问参数长度，arguments[i]访问第i+1个参数</li>
+<li>arguments的其他属性（非严格模式可用）：<br>1.callee:返回当前正在执行的函数体（匿名函数通过这种方式递归调用自身）<br>2.caller：返回调用栈<p></p><h3 id="函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）"><a href="#函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）" class="headerlink" title="函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）"></a>函数还可以作为参数值传入另一函数（如sort（）参数可传入函数）</h3><h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域<p style="font-size:20px;"></p></h3></li>
+<li>函数中声明的变量在整个函数体内可见，在函数外部是不可见的，内部函数可以访问外部函数变量，但外部函数不可以访问内部函数的变量</li>
+<li>立即执行的匿名函数不会污染全局的命名空间</li>
+<li>tips：<code>（function (){…}）();</code>其中第一对括号JS解释器会将其解释为函数表达式<p></p><h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包<p style="font-size:20px;"></p></h3></li>
+<li>函数体内部的变量可以保存在函数作用域内</li>
+<li>当函数嵌套了另一函数，以内部函数对象为返回值时，闭包所指向的作用域链与定义函数时的作用域链不是同一作用域链，所以局部变量不会被垃圾回收机制回收，一直存在于内存中<br>eg:getter,setter方法：<code>function counter(n){return {get count(){return n++;},set count(m){if(m&gt;n) n=m;else throw Error(&quot;必须大于n&quot;);}}}</code><br><pre>var c=counter(1000);<br> c.count;            //1000<span style="color:red">不可用c.count(),无function声明不可用方法方式调用</span><br> c.count;            //1001<br> c.count=2000;<br> c.count;            //2000</pre><p></p><h3 id="函数的bind方法"><a href="#函数的bind方法" class="headerlink" title="函数的bind方法"></a>函数的bind方法</h3><h3 id="fun-bind-o-para-将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略"><a href="#fun-bind-o-para-将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略" class="headerlink" title="fun.bind(o,~~para~~)将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略"></a><code>fun.bind(o,~~para~~)</code><span style="font-size:20px">将函数作为对象o的私有方法绑定给指定对象o，返回新方法。第二个参数为function的首个参数，可省略</span></h3><pre style="font-size:20px;">eg:function f(y){return this.x+y;}<br>var o={x:1};<br>g=f.bind(o);<br>g(2);         //3</pre><div style="font-size:20px;"></div></li>
+<li>Function()构造函数会创建匿名函数，return Function()构造器创建的函数this会返回全局<h3 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数<div style="font-size:20px;"></div></h3>高阶函数、操作函数的函数（接受函数作参数返回新函数）、不完全函数（完整函数拆分为多部分函数调用）目前对我来说太高深了!!!见书197,198页</li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-05-17T14:57:36.000Z"><a href="/2016/05/17/用纯css实现多级导航菜单/">2016-05-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><img src="http://o6yo3ducz.bkt.clouddn.com/%E7%BA%AFcss%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%A7%E5%AF%BC%E8%88%AA.gif" title="纯css实现多级导航"></p>
+<h3 id="css代码部分："><a href="#css代码部分：" class="headerlink" title="css代码部分："></a>css代码部分：</h3><p><pre style="font-size:20px;"><br>html,body,div,ul,li,a{margin:0;padding: 0;text-decoration: none;}<br>        .nav{<br>            font-size: 28px;<br>            color: mediumpurple;<br>            text-align: center;<br>        }<br>        .nav li{<br>           float:left;<br>           list-style: none;<br>           /<em>relative为后续下级菜单absolute定义提供基位置</em>/<br>           position: relative;<br>           width:250px;}<br>        .nav a:hover{<br>            background-color: mediumpurple;<br>            color: white;<br>        }<br>        .firstMenu li a,.secondMenu li a,.thirdMenu li a{<br>            display: block;<br>            background: yellowgreen;<br>            border:2px solid transparent;<br>            padding: 5px 9px;<br>            background-clip: padding-box;<br>        }<br>        .thirdMenu,.secondMenu{display: none;}<br>        .secondMenu{<br>            position: absolute;<br>            top:100%;/<em>顶边与一级菜单底边对齐</em>/<br>            left:0;<br>        }<br>        .thirdMenu{<br>            position: absolute;<br>            left: 100%;/<em>左边与二级菜单右边对齐</em>/<br>            top:0;<br>        }<br>        .secondMenu li,.thirdMenu li{<br>            float: none;<br>        }<br>        /<em>控制下拉菜单悬停显示</em>/<br>        .firstMenu li:hover &gt; ul{<br>            display: block;<br>        }<br>        /<em>记录选中的菜单栏</em>/<br>        .nav li:hover&gt;a{<br>            background-color: mediumpurple;<br>            color: white;<br>        }<br></pre></p>
+<h3 id="html代码部分："><a href="#html代码部分：" class="headerlink" title="html代码部分："></a>html代码部分：</h3><p><pre style="font-size:20px;">&lt;div class=”nav”&gt;<br>    &lt;ul class=”firstMenu”&gt;<br>        &lt;!–一级开始–&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;power&lt;/a&gt;&lt;/li&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;money&lt;/a&gt;&lt;/li&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;love&lt;/a&gt;<br>            &lt;!–二级开始–&gt;<br>            &lt;ul class=”secondMenu”&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;sports star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;movie star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;rock star&lt;/a&gt;<br>                    &lt;!–三级开始–&gt;<br>                    &lt;ul class=”thirdMenu”&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;123&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;abc&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;def&lt;/a&gt;&lt;/l&gt;<br>                    &lt;/ul&gt;<br>                    &lt;!–三级结束–&gt;<br>                &lt;/li&gt;<br>            &lt;/ul&gt;<br>            &lt;!–二级结束–&gt;<br>        &lt;/li&gt;<br>        &lt;li&gt;&lt;a href=”#”&gt;fame&lt;/a&gt;<br>            &lt;!–二级开始–&gt;<br>            &lt;ul class=”secondMenu”&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;sports star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;movie star&lt;/a&gt;&lt;/li&gt;<br>                &lt;li&gt;&lt;a href=”#”&gt;rock star&lt;/a&gt;<br>                    &lt;!–三级开始–&gt;<br>                    &lt;ul class=”thirdMenu”&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;123&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;abc&lt;/a&gt;&lt;/li&gt;<br>                        &lt;li&gt;&lt;a href=”#”&gt;def&lt;/a&gt;&lt;/li&gt;<br>                    &lt;/ul&gt;<br>                    &lt;!–三级结束–&gt;<br>                &lt;/li&gt;<br>            &lt;/ul&gt;<br>            &lt;!–二级结束–&gt;<br>        &lt;/li&gt;<br>        &lt;!–一级结束–&gt;<br>    &lt;/ul&gt;<br>    &lt;/div&gt;<br></pre></p>
+<h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：<div style="font-size:18px;"></div></h3><p>1.&lt;li&gt;标签下的&lt;a&gt;标签设为display:block可以使文字部分及整个周围空白都可以点击，可点击范围不止局限于文字<br>2.background-clip：padding-box使背景色范围只到padding，通过把边框置为透明可以显示后层的背景<br>3.注释中内容的很重要<br>4.基本思想是鼠标悬停时显示下级菜单，否则隐藏。再结合position:absolute通过从当前父级&lt;li&gt;开始定位（父级position要设为relative）控制下级菜单的显示位置<br></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/css/">css</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/纯css实现多级nav/">纯css实现多级nav</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-05-13T14:17:31.000Z"><a href="/2016/05/13/闭包和作用域的小例子/">2016-05-13</a></time>
       
       
@@ -406,11 +523,11 @@
   
     <li><a href="/categories/technology/css/">css</a><small>2</small></li>
   
-    <li><a href="/categories/technology/javascript/">javascript</a><small>12</small></li>
+    <li><a href="/categories/technology/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>14</small></li>
+    <li><a href="/categories/technology/">technology</a><small>16</small></li>
   
     <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
   
@@ -424,6 +541,14 @@
   <ul class="entry">
     
       <li>
+        <a href="/2016/07/09/《javascript权威指南》学习笔记（13）/">《javascript权威指南》学习笔记（13）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/09/《javascript权威指南》学习笔记（12）/">《javascript权威指南》学习笔记（12）</a>
+      </li>
+    
+      <li>
         <a href="/2016/07/08/《javascript权威指南》学习笔记（11）/">《javascript权威指南》学习笔记（11）</a>
       </li>
     
@@ -435,14 +560,6 @@
         <a href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a>
       </li>
     
-      <li>
-        <a href="/2016/06/14/《javascript权威指南》学习笔记（8）/">《javascript权威指南》学习笔记（8）</a>
-      </li>
-    
-      <li>
-        <a href="/2016/06/06/《javascript权威指南》学习笔记（7）/">《javascript权威指南》学习笔记（7）</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -452,7 +569,7 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>11</small></li>
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>13</small></li>
   
     <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
   

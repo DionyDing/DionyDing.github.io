@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>《javascript权威指南》学习笔记（13） | D_d</title>
+  <meta name="author" content="D_d" />
+
+  
+  <meta name="description" content="这里是丁丁的博客" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="《javascript权威指南》学习笔记（13）" />
+  <meta property="og:site_name" content="D_d" />
+
+  
+  
+
+  
+    <meta property="og:image" content="undefined" />
+  
+
+  <link href="http://o6yoa3nwp.bkt.clouddn.com/favicon.ico" rel="icon" />
+ 
+
+  <link rel="alternate" href="/atom.xml" title="D_d" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><br/><br/><br/><br/><br/><br/><br/>
+<div class="alignleft1">
+  <h1><a href="/">D_d</a></h1><br/>
+  <h2><a href="/">——Welcome to D_d&#39;s Blog!——</a></h2><br/>
+</div>
+<nav id="main-nav" class="alignright1">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/">关于生活</a></li>
+    
+      <li><a href="/categories/technology">技术</a></li>
+    
+      <li><a href="/categories/technology/javascript">js</a></li>
+    
+      <li><a href="/categories/technology/css">HTML&amp;CSS</a></li>
+    
+      <li><a href="/categories/plan">哈哈哈计划赶不上变化</a></li>
+    
+  </ul>
+</nav>
+<br/><br/></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-07-09T02:30:25.000Z"><a href="/2016/07/09/《javascript权威指南》学习笔记（13）/">2016-07-09</a></time>
+      
+      
+  
+    <h1 class="title">《javascript权威指南》学习笔记（13）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="canvas图形篇"><a href="#canvas图形篇" class="headerlink" title="canvas图形篇"></a>canvas图形篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<p>采用图形状态与绘制指令分离的思想，要定义画布宽高，单位默认为px<br>与svg的区别：canvas通过调用它提供的方法绘图，而svg是通过构建XML树实现，二者可相互模拟</p>
+<p><div style="color:red;font-size:18px;"><br>绘制API大多定义在canvasRenderingContext2D对象上而不是&lt;canvas&gt;元素上，画布元素和上下文对象是分开的不同对象！每个&lt;canvas&gt;元素只有一个上下文对象！<br></div><br>例子：<pre><br>var canvas=document.getElementById(‘canvas’);  //画布对象<br>var c=canvas.getContext(‘2d’);  //上下文对象<br></pre></p>
+<h3 id="线段与多边形API"><a href="#线段与多边形API" class="headerlink" title="线段与多边形API"></a>线段与多边形API</h3><ul>
+<li>c.beginPath():开始定义新路径</li>
+<li>c.lineTo(x,y):上次绘制终点与（x,y）点连线</li>
+<li>c.closePath():连接终点与起点闭合路径</li>
+<li>c.moveTo(x,y):开始新的子路径，（x,y）为起点<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3></li>
+<li>rect(x,y,width,height):<span style="color:red;">会改变当前路径</span>添加该矩形到当前路径下，（x,y）为左上角顶点</li>
+<li>fillRect(x,y,width,height)：<span style="color:red;">不改变当前路径</span>使用当前fillStyle填充矩形</li>
+<li>strokeRect(x,y,width,height)：<span style="color:red;">不改变当前路径</span>使用当前strokeStyle填充矩形</li>
+<li>clearRect(x,y,width,height):<span style="color:red;">不改变当前路径</span>忽略填充样式，采用透明黑色像素填充矩形，即显示空白<h3 id="图形属性"><a href="#图形属性" class="headerlink" title="图形属性"></a>图形属性</h3>不是传递给fill()与stroke()的参数，而是上下文对象的通用图形状态！是图形状态与绘制指令分离的思想！</li>
+<li>c.fillStyle/c.strokeStyle:指定填充/勾勒时的颜色/图案/渐变</li>
+<li>c.lineWidth:勾勒线宽，值为number类型，默认单位px</li>
+<li>c.globalAlpha:绘制像素时的透明度，值在0~1之间，在原alpha的基础上乘以该值</li>
+<li>c.textAlign/c.textBaseline:文本水平/垂直对齐方式</li>
+<li>c.font：绘制文本时的CSS文字属性</li>
+<li>c.shadowColor/c.shadowOffsetX/c.shadowOffsetY/c.shadowBlur:阴影属性</li>
+<li>c.lineCap/c.lineJoin:线段端点/相交端点显示方式<br>c.fill()/c.stroke()后才会显示出来<h3 id="保存与恢复图形状态"><a href="#保存与恢复图形状态" class="headerlink" title="保存与恢复图形状态"></a>保存与恢复图形状态</h3></li>
+<li>c.save()保存当前图形状态</li>
+<li>c.restore()恢复原来的图形状态<br>-Tips:<ul>
+<li>可在多状态间切换</li>
+<li>当前定义的路径及不属于图形状态的当前点不能保存/恢复<h3 id="坐标系变换"><a href="#坐标系变换" class="headerlink" title="坐标系变换"></a>坐标系变换</h3></li>
+</ul>
+</li>
+<li>可通过c.translate()/c.rotate()/c.scale()实现坐标系变换<h3 id="曲线绘制"><a href="#曲线绘制" class="headerlink" title="曲线绘制"></a>曲线绘制</h3></li>
+<li>c.arc(x,y,r,startAngle,endAngle,boolDerection):绘制圆心（x,y）,半径r,起始角度startAngle弧度,中止角度endAngle弧度,方向false为顺时针/true为逆时针的弧</li>
+<li>c.arcTo(x1,y1,x2,y2,r):绘制与当前点到（x1,y1）及（x1,y1）到（x2,y2）的连线均相切且半径为r的弧<br>绘制圆角时使用较方便</li>
+<li>c.bezierCurveTo()/c.quadraticCurveTo():绘制贝塞尔曲线<h3 id="勾勒与填充"><a href="#勾勒与填充" class="headerlink" title="勾勒与填充"></a>勾勒与填充</h3></li>
+<li>纯色填充/勾勒：填充c.fillStyle=”rgb(2,8,90)/#f09”；勾勒c.strokeStyle=”#fff”</li>
+<li>图案填充/勾勒：通过上下文对象的createPattern()方法<ul>
+<li>c.fillStyle/strokeStyle=c.createPattern(“Element”,”repeat/repeat-x/repeat-y/no-repeat”):Element参数为&lt;img&gt;&lt;canvas&gt;&lt;video&gt;&lt;canvas&gt;或Image()构造函数创建的对象；第二个参数为重复方式</li>
+</ul>
+</li>
+<li>渐变填充/勾勒：通过上下文对象的createLinear/RadialGradient()方法<ul>
+<li>var chage=c.createLinearGradient(x1,y1,x2,y2);<br>(x1,y1)为渐变起点,(x2,y2)为渐变终点<br>(0,0,170,0)表示横向渐变，（0，0，0，50）标识竖向渐变，（0，0，50，50）表示对角渐变</li>
+<li>var chage=c.createRadialGradient(x1,y1,r1,x2,y2,r2);<br>第二个圆要包含第一个圆，可不同心</li>
+<li>change.addColorStop(0~1,’color’)：0~1表位置<br><span style="color:red;">添加渐变位置，至少有两处！</span></li>
+</ul>
+</li>
+<li>调用c.fill()/c.stroke()方法实现指定样式的填充与勾勒</li>
+<li>Tips:填充与勾勒均不改变路径！且不可用于阴影！<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3></li>
+<li>c.font属性指定字体，字号等（同CSS的font复合属性）</li>
+<li>c.fillStyle/c.strokeStyle指定填充/勾勒样式</li>
+<li>还有c.textAlign/c.textBaseline属性</li>
+<li>c.fillText(‘text’,x,y):填充（x,y）位置的text文本</li>
+<li>c.strokeText(‘text’,x,y):勾勒（x,y）位置的text文本</li>
+<li>c.measureText(‘text’).width:绘制文本前测量文本宽度<h3 id="线段绘制相关属性"><a href="#线段绘制相关属性" class="headerlink" title="线段绘制相关属性"></a>线段绘制相关属性</h3></li>
+<li>c.lineCap:子路径端点连接方式，其可能值如下：<ul>
+<li>butt:线段端点直接结束</li>
+<li>square:端点再延长线段宽度的一半</li>
+<li>round：端点再延长半径为线段宽度的一半半圆</li>
+</ul>
+</li>
+<li>c.lineJoin:子路径相交顶点间连接方式，其可能值如下：<ul>
+<li>miter：尖</li>
+<li>round：圆</li>
+<li>square：顶点处截断的方形<h3 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h3></li>
+</ul>
+</li>
+<li>c.clip():将当前路径定义为裁剪区域，该区域外不会绘制</li>
+<li>每次调用只会缩小裁剪区域，不会放大，可在之前用c.save()保存当前图形，需要时用c.restore()恢复<h3 id="阴影-图形和渐变不用于阴影"><a href="#阴影-图形和渐变不用于阴影" class="headerlink" title="阴影(图形和渐变不用于阴影)"></a>阴影(图形和渐变不用于阴影)</h3></li>
+<li>c.shadowColor：指定阴影颜色，默认全透明黑色</li>
+<li>c.offsetX/c.offsetY:阴影X轴Y轴偏移，偏移越大阴影越大，值为number类型<br>偏移不受rotate()等坐标变换影响</li>
+<li>c.shadowBlur:阴影模糊度，值越大越模糊，值为number类型</li>
+<li>Tips:要使用c.fill()/c.stroke()填充/勾勒！<h3 id="一个绘制多边形的例子"><a href="#一个绘制多边形的例子" class="headerlink" title="一个绘制多边形的例子"></a>一个绘制多边形的例子</h3>在（x,y）为中心r为半径的圆内绘制正n边形，其中c代表上下文对象<pre><br>function polygon(c,n,x,y,r){<br>var angle=2<em>MATH.PI/n; //n边形内角<br>c.beginPath();<br>c.moveTo(x+r</em>MATH.sin(angle),y-r<em>MATH.sin(angle));<br>for(var i=1;i&lt;n;i++){<br>var angleNow=(i+1)</em>angle;<br>c.lineTo(x+r<em>MATH.sin(angleNow),y-r</em>MATH.cos(angleNow))<br>}<br>c.closePath();<br>}<br></pre><br>这里只定义了路径，没有勾勒填充</li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  <div class="widget tag">
+  <h3 class="title">关于 wo</h3>
+  <ul class="entry">
+    <li style="padding-left: 40px;"><img width="150px" src="http://o6yoa3nwp.bkt.clouddn.com/me.jpg" title="头像"/></li>
+    <br/><hr/><br/>
+    <li>丁丁</li>
+    <li>双子座</li>
+    <li>爱生活，爱技术，爱旅行，爱摄影</li><br/><hr/><br/>
+    <li style="text-align: center;"><a target="_blank" href="http://weibo.com/u/2258194143?refer_flag=1001030102_&is_all=1">go to 我的微博</a></li>
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/technology/css/">css</a><small>2</small></li>
+  
+    <li><a href="/categories/technology/javascript/">javascript</a><small>14</small></li>
+  
+    <li><a href="/categories/plan/">plan</a><small>1</small></li>
+  
+    <li><a href="/categories/technology/">technology</a><small>16</small></li>
+  
+    <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/07/09/《javascript权威指南》学习笔记（13）/">《javascript权威指南》学习笔记（13）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/09/《javascript权威指南》学习笔记（12）/">《javascript权威指南》学习笔记（12）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/08/《javascript权威指南》学习笔记（11）/">《javascript权威指南》学习笔记（11）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/《javascript权威指南》学习笔记（10）/">《javascript权威指南》学习笔记（10）</a>
+      </li>
+    
+      <li>
+        <a href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>13</small></li>
+  
+    <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
+  
+    <li><a href="/tags/纯css实现多级nav/">纯css实现多级nav</a><small>1</small></li>
+  
+    <li><a href="/tags/纯css画三角形/">纯css画三角形</a><small>1</small></li>
+  
+    <li><a href="/tags/闭包和作用域/">闭包和作用域</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2016 D_d
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
