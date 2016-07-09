@@ -86,9 +86,10 @@
         <h1 id="多媒体篇"><a href="#多媒体篇" class="headerlink" title="多媒体篇"></a>多媒体篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
 <h3 id="缓存图片"><a href="#缓存图片" class="headerlink" title="缓存图片"></a>缓存图片</h3><ul>
 <li>利用Image()构造函数创建一个屏幕外图片对象，将该对象的src属性置为期望的url，此时图片将添加至文档中，是不可见的，但浏览器还是会加载图片将其缓存。当图片加入文档中时才会显示。</li>
-<li>一个例子:<pre>var img=new Image();<pre><code>img.src=&apos;url&apos;;
+<li>一个例子:<pre>var img=new Image();
+img.src='url';
 document.body.appendChild(img);
-</code></pre></pre></li>
+</pre></li>
 <li>Tips:同类构造函数还有Audio(),但无Video()构造函数<h3 id="脚本化的音频和视频"><a href="#脚本化的音频和视频" class="headerlink" title="脚本化的音频和视频"></a>脚本化的音频和视频</h3></li>
 <li>设置src属性时，加载媒体的过程开始，若有其他媒体在load/play会中止这些媒体</li>
 <li>H5引入&lt;audio&gt;&lt;video&gt;作为音频和视频元素（有control属性，置为true显示播放控件）</li>
