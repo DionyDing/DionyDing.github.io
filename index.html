@@ -149,7 +149,14 @@
 <li>c.shadowColor：指定阴影颜色，默认全透明黑色</li>
 <li>c.offsetX/c.offsetY:阴影X轴Y轴偏移，偏移越大阴影越大，值为number类型<br>偏移不受rotate()等坐标变换影响</li>
 <li>c.shadowBlur:阴影模糊度，值越大越模糊，值为number类型</li>
-<li>Tips:要使用c.fill()/c.stroke()填充/勾勒！<h3 id="一个绘制多边形的例子"><a href="#一个绘制多边形的例子" class="headerlink" title="一个绘制多边形的例子"></a>一个绘制多边形的例子</h3>在（x,y）为中心r为半径的圆内绘制正n边形，其中c代表上下文对象<pre><br>function polygon(c,n,x,y,r){<br>var angle=2<em>MATH.PI/n; //n边形内角<br>c.beginPath();<br>c.moveTo(x+r</em>MATH.sin(angle),y-r<em>MATH.sin(angle));<br>for(var i=1;i&lt;n;i++){<br>var angleNow=(i+1)</em>angle;<br>c.lineTo(x+r<em>MATH.sin(angleNow),y-r</em>MATH.cos(angleNow))<br>}<br>c.closePath();<br>}<br></pre><br>这里只定义了路径，没有勾勒填充</li>
+<li>Tips:要使用c.fill()/c.stroke()填充/勾勒！<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3></li>
+<li>c.drawImage(src,x,y,<del>width,height,desX,desY,desWidth,desHeight</del>):可传入3/5/9个参数<ul>
+<li>3个参数：src为&lt;img&gt;&lt;video&gt;&lt;canvas&gt;或Image()构造函数创建的图片</li>
+<li>5个参数：加上宽高</li>
+<li>9个参数：将第2—5个参数的原矩形复制到第6—9个参数的目标矩形，此时坐标系为画布的坐标</li>
+</ul>
+</li>
+<li>dcument.canvas.toDataURL():<span style="color:red;">这个方法不是上下文对象的，而是canvas标签的！</span>编码为图片URL字符串，有一个可选参数指定图片MIME类型如默认值image/png等，存在安全限制禁止跨域<h3 id="一个绘制多边形的例子"><a href="#一个绘制多边形的例子" class="headerlink" title="一个绘制多边形的例子"></a>一个绘制多边形的例子</h3>在（x,y）为中心r为半径的圆内绘制正n边形，其中c代表上下文对象<pre><br>function polygon(c,n,x,y,r){<br>var angle=2<em>MATH.PI/n; //n边形内角<br>c.beginPath();<br>c.moveTo(x+r</em>MATH.sin(angle),y-r<em>MATH.sin(angle));<br>for(var i=1;i&lt;n;i++){<br>var angleNow=(i+1)</em>angle;<br>c.lineTo(x+r<em>MATH.sin(angleNow),y-r</em>MATH.cos(angleNow))<br>}<br>c.closePath();<br>}<br></pre><br>这里只定义了路径，没有勾勒填充</li>
 </ul>
 
       
@@ -201,7 +208,7 @@
         <h3 id="SVG初级篇"><a href="#SVG初级篇" class="headerlink" title="SVG初级篇"></a>SVG初级篇</h3><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
 <p>SVG代表可伸缩的矢量图形，是一种用于描述图形的XML语法，IE9以下不支持。通过对画图形时的必要路径的精准的分辨率无关的描述实现绘图<br>早期使用&lt;object/&gt;插入svg图像，现在可以直接写入文档中</p>
 <p><div style="color:red;font-size:18px;"><br>用JS创建svg图形时，使用XML语法，要使用createElementNS()处理DOM创建，直接用createElement()创建，显示时会出现问题<br></div><br>简单示例<pre><br>&lt;svg width=”15” height=”15”&gt;<br> &lt;rect x=”0” y=”0” width=”5” height=”5” fill=”red”/&gt;<br> &lt;circle cx=”7.5” cy=”7.5” r=”2.5” fill=”green”/&gt;<br> &lt;text x=”12.5” y=”12.5”&gt;D_d&lt;/text&gt;<br> &lt;line x1=”0” y1=”0” x2=”15” y2=”15”/&gt;<br> &lt;path d=”M0 0 L0 5 A15,15 0 0 0 7,7Z” stroke=”blue” stroke-width=”2”&gt;&lt;/path&gt;<br>&lt;/svg&gt;<br></pre><br>可配合transform实现动态效果</p>
-<p>缺！饼图！代码！！！</p>
+<h3 id="一个SVG饼图的例子"><a href="#一个SVG饼图的例子" class="headerlink" title="一个SVG饼图的例子"></a>一个SVG饼图的例子</h3><p><pre><br>function pieChart(data,width,height,cx,cy,r,colors){<br>var svgns=’<a href="http://www.w3.org/2000/svg" target="_blank" rel="external">http://www.w3.org/2000/svg</a>‘;<br>var chart=document.createElementsNS(svgns,’svg:svg’); //创建&lt;svg&gt;元素<br>chart.setAttribute(‘width’,width);<br>chart.setAttribute(‘height’,height);<br>chart.setAttribute(‘viewBox’,’0 0’+width+’ ‘+height);<br>var angles=[];  //用以存储每个扇形对应的角度<br>var total=0;    //用以存储data的合计值<br>for(var i=0;i<data.length;i++) total+="data[i];" for(var="" i="0;i<data.length;i++)" angles[i]="data[i]/total*2*MATH.PI;" var="" startangle="0;" endangle="startAngle+angles[i];" 计算扇形和圆的相交点，12点方向为0度，顺时针方向为正方向="" x1="cx+r*MATH.sin(startAngle);" y1="cy-r*MATH.cos(startAngle);" x2="cx+r*MATH.sin(endAngle);" y2="cy-r*MATH.cos(endAngle);" 判断优弧与劣弧,优弧big值为1="" big="(endAngle-startAngle">MATH.PI)?1:0;<br> var path=document.createElementsNS(svgns,’path’);<br> var d=’M’+cx+’,’+cy+’ L’+x1+’,’+’y1’+’ A’+r+’,’+r+’ 0 ‘+big+’ 1 ‘+x2+’,’+’y2’+’ Z’;<br> path.setAttribute(‘d’,d);<br> path.setAttribute(‘fill’,colors[i]);<br> path.setAttribute(‘stroke’,’’black);<br> path.setAttribute(‘stroke-width’,’2’);<br> chart.appendChild(path);<br> }<br>}<br></data.length;i++)></pre><br>效果图如下：</p>
 
       
     </div>
