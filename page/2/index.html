@@ -73,6 +73,69 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2016-05-26T14:07:20.000Z"><a href="/2016/05/26/《javascript权威指南》学习笔记（5）/">2016-05-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/05/26/《javascript权威指南》学习笔记（5）/">《javascript权威指南》学习笔记（5）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="第13章-客户端Javascript"><a href="#第13章-客户端Javascript" class="headerlink" title="第13章 客户端Javascript"></a>第13章 客户端Javascript</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="DHTML-动态的HTML"><a href="#DHTML-动态的HTML" class="headerlink" title="DHTML:动态的HTML"></a>DHTML:动态的HTML</h3><h3 id="在HTML中嵌入JS"><a href="#在HTML中嵌入JS" class="headerlink" title="在HTML中嵌入JS"></a>在HTML中嵌入JS</h3><p>1.内联：&lt;script&gt;&lt;/script&gt;之间加入JS代码<br>2.外部文件：&lt;script&gt;的src属性指定js文件路径<br>3.HTML的事件处理程序属性指定（如：onclick属性等）<br>4.在url中使用”javascript:”协议，如<code>&lt;a href=&quot;javascript:&quot;&gt;</code>（ <code>javascript:void(0)</code>防止页面跳转时到顶部，师傅说兼容性不好，直接<code>javascript:</code>比较好）</p>
+<ul>
+<li>Tips：<ul>
+<li>&lt;script&gt;标签的type属性默认为text/javascript，无特殊不需额外指定</li>
+<li>使用HTML的事件处理程序属性不是一个好习惯，要保持内容(html)和行为(js)分离(css为表现)<h3 id="延迟JS执行"><a href="#延迟JS执行" class="headerlink" title="延迟JS执行"></a>延迟JS执行</h3>&lt;script&gt;有<code>defer</code>和<code>async</code>属性，它们是布尔属性，没有值</li>
+</ul>
+</li>
+<li><code>defer</code>(延迟):延迟脚本执行，直到文档载入和解析完成，并可以操作（会按序执行）</li>
+<li><code>async</code>(异步):在下载脚本时不阻塞文档解析，脚本下载完成后尽快执行，也就是说下载脚本和解析文档同时进行（可能不会按序执行）<br>Tips：</li>
+<li>当两个属性同时存在，会忽略<code>defer</code>遵从<code>async</code></li>
+<li>这两个属性存在时，禁止使用<code>document.write()</code><h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3>程序响应一个事件需要写一个函数，再注册这个函数，这样会在事件发生时调用它。注册可以直接通过HTML中的HTML的事件处理程序属性完成（不是个好习惯），一般在js文件中进行注册</li>
+<li>写事件处理程序时不需调用这个函数，在事件发生时会自动调用</li>
+<li>事件处理程序属性以on开始，后跟事件的名字（click,change,load,keypress等等）</li>
+<li><code>addEventListener()</code>在IE9+才支持，<code>attachEvent()</code>在IE8中使用。这时候使用jquery等框架兼容性会更好<h3 id="JS的线程机制"><a href="#JS的线程机制" class="headerlink" title="JS的线程机制"></a>JS的线程机制</h3>JS没有定义任何线程机制，按单线程工作。但HTML5支持WebWorker并发控制方式，模拟多线程，可以用来执行复杂的计算任务而不冻结界面<h3 id="浏览器同源策略"><a href="#浏览器同源策略" class="headerlink" title="浏览器同源策略"></a>浏览器同源策略</h3>本域内的脚本仅有权限访问本域内的资源（同IP，同协议，同端口视为一个域）<h3 id="XSS（跨站脚本）攻击"><a href="#XSS（跨站脚本）攻击" class="headerlink" title="XSS（跨站脚本）攻击"></a>XSS（跨站脚本）攻击</h3>攻击者向目标Web站点注入HTML标签或脚本<br>eg：<a href="http://xxx.xxx.xxx?" target="_blank" rel="external">http://xxx.xxx.xxx?</a><span style="color:red">%3Cscript%3Ealert(‘evil’)%3C/script%3</span>,红色部分为攻击者注入<br>防范：使用任何不可信数据动态创建文档前，从中移除html标签<h3 id="拒绝服务攻击"><a href="#拒绝服务攻击" class="headerlink" title="拒绝服务攻击"></a>拒绝服务攻击</h3>使用如<code>alert()</code>对话框等无意义内容无限循环占用浏览器，使得浏览器无法正常工作<br>但由于没有人会返回滥用这种脚本的网站，这种攻击不常见</li>
+</ul>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+  
+  <div class="categories">
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2016-05-18T08:33:43.000Z"><a href="/2016/05/18/《javascript权威指南》学习笔记（4）/">2016-05-18</a></time>
       
       
@@ -523,13 +586,13 @@
   
     <li><a href="/categories/technology/css/">css</a><small>2</small></li>
   
-    <li><a href="/categories/technology/javascript/">javascript</a><small>14</small></li>
+    <li><a href="/categories/technology/javascript/">javascript</a><small>15</small></li>
   
     <li><a href="/categories/plan/">plan</a><small>1</small></li>
   
-    <li><a href="/categories/technology/">technology</a><small>16</small></li>
+    <li><a href="/categories/technology/">technology</a><small>17</small></li>
   
-    <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>1</small></li>
+    <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>2</small></li>
   
   </ul>
 </div>
@@ -539,6 +602,10 @@
 <div class="widget tag">
   <h3 class="title">最新文章</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2016/07/12/工具小常识xampp-gulp/">工具小常识xampp&amp;gulp</a>
+      </li>
     
       <li>
         <a href="/2016/07/09/《javascript权威指南》学习笔记（13）/">《javascript权威指南》学习笔记（13）</a>
@@ -556,10 +623,6 @@
         <a href="/2016/07/05/《javascript权威指南》学习笔记（10）/">《javascript权威指南》学习笔记（10）</a>
       </li>
     
-      <li>
-        <a href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -569,7 +632,11 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
+    <li><a href="/tags/gulp/">gulp</a><small>1</small></li>
+  
     <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>13</small></li>
+  
+    <li><a href="/tags/xampp/">xampp</a><small>1</small></li>
   
     <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
   
@@ -587,7 +654,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
+    <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/xampp/" style="font-size: 10px;">xampp</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
   </div>
 </div>
 

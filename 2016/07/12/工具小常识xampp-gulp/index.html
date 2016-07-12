@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>《javascript权威指南》学习笔记（1） | D_d</title>
+  <title>工具小常识xampp&amp;gulp | D_d</title>
   <meta name="author" content="D_d" />
 
   
@@ -14,7 +14,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="《javascript权威指南》学习笔记（1）" />
+  <meta property="og:title" content="工具小常识xampp&amp;gulp" />
   <meta property="og:site_name" content="D_d" />
 
   
@@ -72,41 +72,47 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2016-05-10T14:16:09.000Z"><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">2016-05-10</a></time>
+        <time datetime="2016-07-12T13:27:45.000Z"><a href="/2016/07/12/工具小常识xampp-gulp/">2016-07-12</a></time>
       
       
   
-    <h1 class="title">《javascript权威指南》学习笔记（1）</h1>
+    <h1 class="title">工具小常识xampp&amp;gulp</h1>
   
 
     </header>
     <div class="entry">
       
-        <h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现<code>join()</code>,<code>filter()</code>等ES5的新数组方法,<code>slice()</code>适用）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
-<li>索引类：<ul>
-<li><code>charAt(i)</code>：返回索引i处的字符</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>fromCharCode(num1,num2,…)</code>：nmmN代表Unicode编码，返回numN对应的字符</li>
+        <h1 id="XAMPP"><a href="#XAMPP" class="headerlink" title="XAMPP"></a>XAMPP</h1><ul>
+<li>修改Index指向的内容：<br>在安装目录下的htdocs文件夹下添加指向待添加项目文件夹的链接，注意这里并不是快捷方式，直接创建快捷方式会出错，要在cmd下使用mklink命令创建指向链接（直接在cmd下输入mklink会提示如何输参数）</li>
+</ul>
+<hr>
+<h1 id="gulp的使用"><a href="#gulp的使用" class="headerlink" title="gulp的使用"></a>gulp的使用</h1><h3 id="一些git上使用的常用命令-安装npm的国内镜像cnpm可以加快速度"><a href="#一些git上使用的常用命令-安装npm的国内镜像cnpm可以加快速度" class="headerlink" title="一些git上使用的常用命令(安装npm的国内镜像cnpm可以加快速度)"></a>一些git上使用的常用命令(安装npm的国内镜像cnpm可以加快速度)</h3><ul>
+<li>which gulp/cnmp检查是否安装过</li>
+<li>在项目中首次使用gulp要初始化建立json配置文件（package.json），使用cnpm init命令</li>
+<li>在项目中首次使用gulp要在项目中局部安装gulp，使用cnpm install gulp –save-dev命令，–save-dev表示在配置文件package.json中保存信息</li>
+<li>vim gulpfile.js命令建立gulpfile.js文件并进入vim编辑器以编辑它,在该文件中写入gulp的功能</li>
+<li>vim .gitignore命令建立.gitignore文件并进入vim编辑器以编辑它，在该文件中写入提交到仓库时需忽略的文件的相对路径</li>
+<li>vim编辑器模式使用ctrl+c命令退出</li>
+<li>gulp taskName命令执行写入的操作；也可以在gulpfile.js中定义default默认操作直接使用gulp命令执行一系列定义的操作，但其执行顺序不一定为定义顺序<h3 id="gulpfile-js中的命令"><a href="#gulpfile-js中的命令" class="headerlink" title="gulpfile.js中的命令"></a>gulpfile.js中的命令</h3></li>
+<li>头部依赖<ul>
+<li>var gulp= require(‘gulp’);</li>
+<li>var minify-css= require(‘gulp-minify-css’);  //压缩css</li>
+<li>var concat= require(‘gulp-concat’);  //拼接文件</li>
+<li>var uglify= require(‘gulp-uglify’);  //压缩JS</li>
+<li>var jshint= require(‘gulp-jshint’);  //语法检查</li>
 </ul>
 </li>
-<li>搜索类：<ul>
-<li><code>indexOf(value,~~start~~)</code>,<code>lastIndexOf(value,~~start~~)</code>：start参数可省略，返回value在对应字符串中所在的索引位置，start参数表示开始查找位置。当value为多字符时返回匹配到的多字符中首字符的位置</li>
-<li><code>search(&#39;子串&#39;/正则表达式)</code>：返回匹配到结果的起始位置</li>
-<li><code>match(&#39;子串&#39;/正则表达式)</code>：返回数组，包含匹配到的文本</li>
+<li>常用函数<ul>
+<li>gulp.task(name, fn)定义name任务</li>
+<li>gulp.run(tasks…)尽可能多的并行运行多个task</li>
+<li>gulp.watch(glob, fn)监听glob，当glob内容发生改变时，执行fn</li>
+<li>gulp.src(glob)源文件路径，返回一个可读的stream</li>
+<li>gulp.dest(glob)目标文件路径，返回一个可写的stream</li>
 </ul>
 </li>
-<li>截取类：<ul>
-<li><code>substring(start,end)</code>：截取start索引到end-1索引的子字符串（参数不可为负值）</li>
-<li><code>slice(start,end)</code>：截取start索引到end-1索引的子字符串（参数可为负值）</li>
-<li><code>substr(start,length)</code>：截取start索引起的lengrh长的子字符串（参数不可为负值）</li>
-</ul>
-</li>
-<li>其他：<ul>
-<li><code>replace(&#39;被替代子串(可为正则表达式)&#39;,&#39;新子串&#39;)</code>：用新子串替代旧子串，默认只替换一次，全局替换用正则表达式g指向全局</li>
-<li><code>split(&#39;seperator&#39;,~~howmany~~)</code>：将字符串以seperator为界分为多元素数组，seperator为空’ ‘对每个字母都分割，默认为整个字符串为一个数组元素，howmany参数可省略，表数组最大长度</li>
-<li><code>toUpperCase()</code>,<code>toLowerCase()</code>：将字符串转换为全部大写/小写<br><p></p></li>
+<li>两个例子<ul>
+<li>移动文件<pre><br>gulp.task(‘move’,function (){return gulp.src([‘../src/<em>*/</em>.<em>‘,’../src/</em>‘])    //src文件夹下所有文件夹下的所有文件及src下的所有文件夹（一个*只代表一层文件）<br>}).pipe(gulp.dest(‘./xxx’));    //pipe()表示进入管道流<br></pre></li>
+<li>设置默认命令<pre><br>gulp.task(‘default’,function (){gulp.start([‘task1’,’task2’])});<br></pre><h1 id="最后要检查下移动后的文件数目与源文件数目是否相同！"><a href="#最后要检查下移动后的文件数目与源文件数目是否相同！" class="headerlink" title="最后要检查下移动后的文件数目与源文件数目是否相同！"></a>最后要检查下移动后的文件数目与源文件数目是否相同！</h1></li>
 </ul>
 </li>
 </ul>
@@ -122,13 +128,13 @@
         
   
   <div class="categories">
-    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
+    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>, <a href="/categories/technology/javascript/日常的问题/">日常的问题</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
+    <a href="/tags/gulp/">gulp</a>, <a href="/tags/xampp/">xampp</a>
   </div>
 
         <!-- partial('post/share') -->
