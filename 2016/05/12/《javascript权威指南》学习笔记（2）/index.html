@@ -1,87 +1,302 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
   <title>《javascript权威指南》学习笔记（2） | D_d</title>
-  <meta name="author" content="D_d" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数组篇数组有别于其他对象，具有length属性等特性，其索引最大长度为232-2
+创建直接量：var arr=[]构造函数：- var arr=new Array(8)——创建长度为8的数组- var arr=new Array(8,10)——创建两个元素的数组
+读写数组元素主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《javascript权威指南》学习笔记（2）">
+<meta property="og:url" content="http://yoursite.com/2016/05/12/《javascript权威指南》学习笔记（2）/index.html">
+<meta property="og:site_name" content="D_d">
+<meta property="og:description" content="数组篇数组有别于其他对象，具有length属性等特性，其索引最大长度为232-2
+创建直接量：var arr=[]构造函数：- var arr=new Array(8)——创建长度为8的数组- var arr=new Array(8,10)——创建两个元素的数组
+读写数组元素主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而">
+<meta property="og:image" content="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg">
+<meta property="og:updated_time" content="2016-05-18T14:38:49.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《javascript权威指南》学习笔记（2）">
+<meta name="twitter:description" content="数组篇数组有别于其他对象，具有length属性等特性，其索引最大长度为232-2
+创建直接量：var arr=[]构造函数：- var arr=new Array(8)——创建长度为8的数组- var arr=new Array(8,10)——创建两个元素的数组
+读写数组元素主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而">
+<meta name="twitter:image" content="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg">
   
-  <meta name="description" content="这里是丁丁的博客" />
-  
-
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-  <meta property="og:title" content="《javascript权威指南》学习笔记（2）" />
-  <meta property="og:site_name" content="D_d" />
-
+    <link rel="alternative" href="/atom.xml" title="D_d" type="application/atom+xml">
   
   
-
+    <link rel="icon" href="http://o6yoa3nwp.bkt.clouddn.com/favicon.ico">
   
-    <meta property="og:image" content="undefined" />
   
-
-  <link href="http://o6yoa3nwp.bkt.clouddn.com/favicon.ico" rel="icon" />
- 
-
-  <link rel="alternate" href="/atom.xml" title="D_d" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
   
-
-
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
 </head>
-
-
 <body>
-  <header id="header" class="inner"><br/><br/><br/><br/><br/><br/><br/>
-<div class="alignleft1">
-  <h1><a href="/">D_d</a></h1><br/>
-  <h2><a href="/">——Welcome to D_d&#39;s Blog!——</a></h2><br/>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">D_d</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">——Welcome to D_d&#39;s Blog!——</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/about">留言打卡</a></li>
+                        
+                            <li><a href="/FrontEndGuide">前端导航</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/luuman" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/people/luuman" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/lishangmou" title="weibo">weibo</a>
+                            
+                                <a class="fl google" target="_blank" href="http://i.youku.com/shangmou" title="google">google</a>
+                            
+                                <a class="fl twitter" target="_blank" href="http: //twitter.com/luuman" title="twitter">twitter</a>
+                            
+                                <a class="fl facebook" target="_blank" href="#" title="facebook">facebook</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/xampp/" style="font-size: 10px;">xampp</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/图片格式/" style="font-size: 10px;">图片格式</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://MOxFIVE.github.io/">MOxFIVE</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.vsay.cn/">DoubleV</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ccwebsite.com/">兮兮</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.dandyweng.com/">翁天信</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.plqblog.com/views/index.php">潘利强</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hankin.cn/">hankin</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.waydrow.com/">waydrow</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯海迷、爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
 </div>
-<nav id="main-nav" class="alignright1">
-  <ul>
-    
-      <li><a href="/">首页</a></li>
-    
-      <li><a href="/archives">归档</a></li>
-    
-      <li><a href="/">关于生活</a></li>
-    
-      <li><a href="/categories/technology">技术</a></li>
-    
-      <li><a href="/categories/technology/javascript">js</a></li>
-    
-      <li><a href="/categories/technology/css">HTML&amp;CSS</a></li>
-    
-      <li><a href="/categories/plan">哈哈哈计划赶不上变化</a></li>
-    
-  </ul>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">D_d</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">D_d</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">——Welcome to D_d&#39;s Blog!——</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/about">留言打卡</a></li>
+                
+                    <li><a href="/FrontEndGuide">前端导航</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/luuman" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/luuman" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/lishangmou" title="weibo">weibo</a>
+                    
+                        <a class="google" target="_blank" href="http://i.youku.com/shangmou" title="google">google</a>
+                    
+                        <a class="twitter" target="_blank" href="http: //twitter.com/luuman" title="twitter">twitter</a>
+                    
+                        <a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
 </nav>
-<br/><br/></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+      <div class="body-wrap"><article id="post-《javascript权威指南》学习笔记（2）" class="article article-type-post" itemscope itemprop="blogPost">
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2016-05-12T12:18:11.000Z"><a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">2016-05-12</a></time>
-      
-      
+    <div class="article-meta">
+      <a href="/2016/05/12/《javascript权威指南》学习笔记（2）/" class="article-date">
+      <time datetime="2016-05-12T12:18:11.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    </div>
   
-    <h1 class="title">《javascript权威指南》学习笔记（2）</h1>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《javascript权威指南》学习笔记（2）
+    </h1>
   
 
-    </header>
-    <div class="entry">
+      </header>
       
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/javascript/">javascript</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript学习笔记/">javascript学习笔记</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
         <h1 id="数组篇"><a href="#数组篇" class="headerlink" title="数组篇"></a>数组篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"><br>数组有别于其他对象，具有length属性等特性，其索引最大长度为2<sup>32</sup>-2</p>
 <h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><h4 id="直接量：var-arr"><a href="#直接量：var-arr" class="headerlink" title="直接量：var arr=[]"></a>直接量：var arr=[]</h4><h4 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h4><h4 id="var-arr-new-Array-8-——创建长度为8的数组"><a href="#var-arr-new-Array-8-——创建长度为8的数组" class="headerlink" title="- var arr=new Array(8)——创建长度为8的数组"></a>- var arr=new Array(8)——创建长度为8的数组</h4><h4 id="var-arr-new-Array-8-10-——创建两个元素的数组"><a href="#var-arr-new-Array-8-10-——创建两个元素的数组" class="headerlink" title="- var arr=new Array(8,10)——创建两个元素的数组"></a>- var arr=new Array(8,10)——创建两个元素的数组</h4><hr>
 <h3 id="读写数组元素"><a href="#读写数组元素" class="headerlink" title="读写数组元素"></a>读写数组元素</h3><h4 id="主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。"><a href="#主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。" class="headerlink" title="主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。"></a>主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。</h4><hr>
@@ -95,164 +310,253 @@
       
     </div>
     
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
+  </div>
   
-  <div class="categories">
-    <a href="/categories/technology/">technology</a>, <a href="/categories/technology/javascript/">javascript</a>
-  </div>
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/12/《javascript权威指南》学习笔记（2）/">《javascript权威指南》学习笔记（2）</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 D_d 的个人博客">D_d</a></p>
+        <p><span>发布时间:</span>2016年05月12日 - 20时18分</p>
+        <p><span>最后更新:</span>2016年05月18日 - 22时38分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/12/《javascript权威指南》学习笔记（2）/" title="《javascript权威指南》学习笔记（2）">http://yoursite.com/2016/05/12/《javascript权威指南》学习笔记（2）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/12/《javascript权威指南》学习笔记（2）/　　作者: D_d" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
-        
+
+
+<nav id="article-nav">
   
-  <div class="tags">
-    <a href="/tags/javascript学习笔记/">javascript学习笔记</a>
-  </div>
+    <a href="/2016/05/13/《javascript权威指南》学习笔记（3）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          《javascript权威指南》学习笔记（3）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/11/5月plan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">5月plan</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
+  
 </article>
 
-
-
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:yoursite.com">
-  </form>
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数组篇"><span class="toc-number">1.</span> <span class="toc-text">数组篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建"><span class="toc-number">1.0.1.</span> <span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#直接量：var-arr"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">直接量：var arr=[]</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造函数："><span class="toc-number">1.0.1.2.</span> <span class="toc-text">构造函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#var-arr-new-Array-8-——创建长度为8的数组"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">- var arr=new Array(8)——创建长度为8的数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#var-arr-new-Array-8-10-——创建两个元素的数组"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">- var arr=new Array(8,10)——创建两个元素的数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读写数组元素"><span class="toc-number">1.0.2.</span> <span class="toc-text">读写数组元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">主要采用索引形式。也可以采用负数及小数，将作为数组对象的属性名。如果采用字符串为索引，字符串中内容为整数的话，将作为索引值而不是属性名。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断索引或属性是否存在于数组中"><span class="toc-number">1.0.3.</span> <span class="toc-text">判断索引或属性是否存在于数组中</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#index-property-in-arr：返回true-false-可用来判定不存在还是存在值为undefined"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">index/property in arr：返回true/false,可用来判定不存在还是存在值为undefined</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加与删除数组元素"><span class="toc-number">1.0.4.</span> <span class="toc-text">添加与删除数组元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#添加："><span class="toc-number">1.0.4.1.</span> <span class="toc-text">添加：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push-element1-element2-…-：尾部添加element1-element2-…等元素，参数可为1个到多个"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">- push(element1,element2,…)：尾部添加element1,element2,…等元素，参数可为1个到多个</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unshift-element1-element2-…-：头部添加element1-element2-…等元素，参数可为1个到多个"><span class="toc-number">1.0.4.3.</span> <span class="toc-text">- unshift(element1,element2,…)：头部添加element1,element2,…等元素，参数可为1个到多个</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除："><span class="toc-number">1.0.4.4.</span> <span class="toc-text">删除：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pop-howmany-：尾部删除howmany个元素，省略howmany默认为1"><span class="toc-number">1.0.4.5.</span> <span class="toc-text">- pop(howmany)：尾部删除howmany个元素，省略howmany默认为1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shift-howmany-：头部删除howmany个元素，省略howmany默认为1"><span class="toc-number">1.0.4.6.</span> <span class="toc-text">- shift(howmany)：头部删除howmany个元素，省略howmany默认为1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delete-a-i-：不会改变length属性也不会从高索引下移元素，会使数组变为稀疏数组"><span class="toc-number">1.0.4.7.</span> <span class="toc-text">- delete a[i]：不会改变length属性也不会从高索引下移元素，会使数组变为稀疏数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#splice-index-howmany-items-：会修改数组本身，返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容"><span class="toc-number">1.0.4.8.</span> <span class="toc-text">- splice[index,howmany,items]：会修改数组本身，返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">1.0.5.</span> <span class="toc-text">遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#for循环，for-in循环，forEach循环（允许以不同顺序遍历，具体见后，数组的方法）"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">for循环，for in循环，forEach循环（允许以不同顺序遍历，具体见后，数组的方法）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多维数组"><span class="toc-number">1.0.6.</span> <span class="toc-text">多维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JS不支持真正的多维数组，采用数组的数组进行近似。eg-var-arr-1-2-3-4-5-6-此时可以采用arr-i-length获取i行的列长"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">JS不支持真正的多维数组，采用数组的数组进行近似。eg:var arr=[[1,2,3],[4,5,6]],此时可以采用arr[i].length获取i行的列长</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组的方法"><span class="toc-number">1.0.7.</span> <span class="toc-text">数组的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#join-‘sep’-：在每个数组元素之间加入’sep’后把数组转换为字符串，不改变原数组。直接整个转换为字符串’sep’设为’’。无参数默认为’-’分割。join为split的逆向方法"><span class="toc-number">1.0.7.1.</span> <span class="toc-text">- join(‘sep’)：在每个数组元素之间加入’sep’后把数组转换为字符串，不改变原数组。直接整个转换为字符串’sep’设为’’。无参数默认为’,’分割。join为split的逆向方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#reverse-：颠倒数组顺序，会改变原数组。"><span class="toc-number">1.0.7.2.</span> <span class="toc-text">- reverse()：颠倒数组顺序，会改变原数组。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sort-function-：可传入function参数自定义排序规则，默认按ASCII码顺序排列。会改变原数组。eg-arr-sort-function-a-b-return-a-b-按由小到大排列-这里按负数，0，正数排列-，return-b-a按由大到小的顺序。"><span class="toc-number">1.0.7.3.</span> <span class="toc-text">- sort(function)：可传入function参数自定义排序规则，默认按ASCII码顺序排列。会改变原数组。eg:arr.sort(function (a,b){return a-b})按由小到大排列(这里按负数，0，正数排列)，return b-a按由大到小的顺序。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#concat-items-：在当前数组后面拼接数组元素，不改变原数组。items中可包含多个数组元素-若items中有’-’则最外一层-会自动去掉"><span class="toc-number">1.0.7.4.</span> <span class="toc-text">- concat(items)：在当前数组后面拼接数组元素，不改变原数组。items中可包含多个数组元素,若items中有’[]’则最外一层[]会自动去掉</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#slice-start-end-：start及end为索引值，返回start到end-1之间的数组元素。不改变原数组。end可省略，省略默认截取到最后。可接收负参数，最后一个元素对应索引为-1"><span class="toc-number">1.0.7.5.</span> <span class="toc-text">- slice(start,end)：start及end为索引值，返回start到end-1之间的数组元素。不改变原数组。end可省略，省略默认截取到最后。可接收负参数，最后一个元素对应索引为-1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#splice-index-howmany-items-：为对象方法会改变原数组。返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容"><span class="toc-number">1.0.7.6.</span> <span class="toc-text">- splice[index,howmany,items]：为对象方法会改变原数组。返回被删除或替换的数组元素。从index索引处删除howmany个元素，items参数可选存在会在删除元素的位置添加items的内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push-unshift-pop-shift-为添加与删除数组元素的方法，会改变原数组。"><span class="toc-number">1.0.7.7.</span> <span class="toc-text">- push(),unshift(),pop(),shift()为添加与删除数组元素的方法，会改变原数组。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#toString-为对象方法，在此相当于无参数join-。toLocaleString-在此与toString-效果相同"><span class="toc-number">1.0.7.8.</span> <span class="toc-text">- toString()为对象方法，在此相当于无参数join()。toLocaleString()在此与toString()效果相同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isArray-可判定是否为数组调用：Array-isArray-arr-。无isString-isFunction-等，判定用typeof-及instanceof"><span class="toc-number">1.0.7.9.</span> <span class="toc-text">- isArray()可判定是否为数组调用：Array.isArray(arr)。无isString(),isFunction()等，判定用typeof()及instanceof</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES5中的新方法："><span class="toc-number">1.0.7.10.</span> <span class="toc-text">ES5中的新方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IndexOf-value-start-lastIndexOf-value-start-：查找value对应的索引值，start参数可省略，表开始查找的索引位置。与字符串中的同名方法相同"><span class="toc-number">1.0.7.11.</span> <span class="toc-text">- IndexOf(value,start),lastIndexOf(value,start)：查找value对应的索引值，start参数可省略，表开始查找的索引位置。与字符串中的同名方法相同</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#以下方法参数均为function类型"><span class="toc-number">1.0.7.12.</span> <span class="toc-text">- 以下方法参数均为function类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#–-forEach-遍历所有数组元素。function参数中的参数最多为3个，顺序为value-index-arr。forEach-不可break，要通过try-catch方法达到break效果"><span class="toc-number">1.0.7.13.</span> <span class="toc-text">– forEach():遍历所有数组元素。function参数中的参数最多为3个，顺序为value,index,arr。forEach()不可break，要通过try,catch方法达到break效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#–-map-：传递元素值给函数。类似映射关系"><span class="toc-number">1.0.7.14.</span> <span class="toc-text">– map()：传递元素值给函数。类似映射关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#–-filter-：function的return值为一个逻辑判定型的bool值。相当于过滤器。eg-arr-filter-function-x-return-x-gt-3-会找到满足条件大于3的元素组成新数组"><span class="toc-number">1.0.7.15.</span> <span class="toc-text">– filter()：function的return值为一个逻辑判定型的bool值。相当于过滤器。eg:arr.filter(function (x){return x>3;});会找到满足条件大于3的元素组成新数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#–-every-：function的return值为一个逻辑判定型的bool值。函数返回true-false。判定是否每个元素都满足条件"><span class="toc-number">1.0.7.16.</span> <span class="toc-text">– every()：function的return值为一个逻辑判定型的bool值。函数返回true/false。判定是否每个元素都满足条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#–-some-：function的return值为一个逻辑判定型的bool值。函数返回true-false。判定是否数组中存在满足条件的元素"><span class="toc-number">1.0.7.17.</span> <span class="toc-text">– some()：function的return值为一个逻辑判定型的bool值。函数返回true/false。判定是否数组中存在满足条件的元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#–-reduce-reduceRight-：将数组元素以指定方式组合。function参数后可跟一个参数作为初始值传入function定义的方法。function参数的参数可含2-4个值，分别为：preValue（上次reduce-的结果）-curValue（当前传入的值）-curIndex（当前索引值）-arr（当前数组）。reduceRight-为后向开始"><span class="toc-number">1.0.7.18.</span> <span class="toc-text">– reduce()/reduceRight()：将数组元素以指定方式组合。function参数后可跟一个参数作为初始值传入function定义的方法。function参数的参数可含2-4个值，分别为：preValue（上次reduce()的结果）,curValue（当前传入的值）,curIndex（当前索引值）,arr（当前数组）。reduceRight()为后向开始</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类数组"><span class="toc-number">1.0.8.</span> <span class="toc-text">类数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#类数组与数组相似，有length-prototype属性，以整数下标为属性名。可通过Array-prototype-数组方法-call-类数组对象，传参-使用数组方法"><span class="toc-number">1.0.8.1.</span> <span class="toc-text">类数组与数组相似，有length,prototype属性，以整数下标为属性名。可通过Array.prototype.数组方法.call(类数组对象，传参)使用数组方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串可看做只读数组，可调用部分不改变原数组的数组方法，通过Array-prototype-join-slice-filter等ES5的数组新方法-call-字符串对象，传参-直接调用数组方法（其他数组方法目前没发现可用于这种方式）"><span class="toc-number">1.0.8.2.</span> <span class="toc-text">字符串可看做只读数组，可调用部分不改变原数组的数组方法，通过Array.prototype.join/slice/filter等ES5的数组新方法.call(字符串对象，传参)直接调用数组方法（其他数组方法目前没发现可用于这种方式）</span></a></li></ol></li></ol></li></ol></li></ol>
 </div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-  <div class="widget tag">
-  <h3 class="title">关于 wo</h3>
-  <ul class="entry">
-    <li style="padding-left: 40px;"><img width="150px" src="http://o6yoa3nwp.bkt.clouddn.com/me.jpg" title="头像"/></li>
-    <br/><hr/><br/>
-    <li>丁丁</li>
-    <li>双子座</li>
-    <li>爱生活，爱技术，爱旅行，爱摄影</li><br/><hr/><br/>
-    <li style="text-align: center;"><a target="_blank" href="http://weibo.com/u/2258194143?refer_flag=1001030102_&is_all=1">go to 我的微博</a></li>
-  </ul>
-</div>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
 
-
-  
-<div class="widget tag">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/technology/css/">css</a><small>2</small></li>
-  
-    <li><a href="/categories/technology/javascript/">javascript</a><small>15</small></li>
-  
-    <li><a href="/categories/plan/">plan</a><small>1</small></li>
-  
-    <li><a href="/categories/technology/">technology</a><small>18</small></li>
-  
-    <li><a href="/categories/technology/日常的问题/">日常的问题</a><small>1</small></li>
-  
-    <li><a href="/categories/technology/javascript/日常的问题/">日常的问题</a><small>2</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2016/07/12/关于图片/">关于图片</a>
-      </li>
-    
-      <li>
-        <a href="/2016/07/12/工具小常识xampp-gulp/">工具小常识xampp&amp;gulp</a>
-      </li>
-    
-      <li>
-        <a href="/2016/07/09/《javascript权威指南》学习笔记（13）/">《javascript权威指南》学习笔记（13）</a>
-      </li>
-    
-      <li>
-        <a href="/2016/07/09/《javascript权威指南》学习笔记（12）/">《javascript权威指南》学习笔记（12）</a>
-      </li>
-    
-      <li>
-        <a href="/2016/07/08/《javascript权威指南》学习笔记（11）/">《javascript权威指南》学习笔记（11）</a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/gulp/">gulp</a><small>1</small></li>
-  
-    <li><a href="/tags/javascript学习笔记/">javascript学习笔记</a><small>13</small></li>
-  
-    <li><a href="/tags/xampp/">xampp</a><small>1</small></li>
-  
-    <li><a href="/tags/哈哈哈！计划赶不上变化/">哈哈哈！计划赶不上变化</a><small>1</small></li>
-  
-    <li><a href="/tags/图片格式/">图片格式</a><small>1</small></li>
-  
-    <li><a href="/tags/纯css实现多级nav/">纯css实现多级nav</a><small>1</small></li>
-  
-    <li><a href="/tags/纯css画三角形/">纯css画三角形</a><small>1</small></li>
-  
-    <li><a href="/tags/闭包和作用域/">闭包和作用域</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tagcloud">
-  <h3 class="title">标签云</h3>
-  <div class="entry">
-    <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/xampp/" style="font-size: 10px;">xampp</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/图片格式/" style="font-size: 10px;">图片格式</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
-  </div>
-</div>
-
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2016 D_d
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
-  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
 </script>
 
 
-<div id='bg'></div>
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/12/《javascript权威指南》学习笔记（2）/" data-title="《javascript权威指南》学习笔记（2）" data-url="http://yoursite.com/2016/05/12/《javascript权威指南》学习笔记（2）/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/13/《javascript权威指南》学习笔记（3）/" title="上一篇: 《javascript权威指南》学习笔记（3）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/05/11/5月plan/" title="下一篇: 5月plan">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/关于图片/">关于图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/工具小常识xampp-gulp/">工具小常识xampp&gulp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/《javascript权威指南》学习笔记（13）/">《javascript权威指南》学习笔记（13）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/《javascript权威指南》学习笔记（12）/">《javascript权威指南》学习笔记（12）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/《javascript权威指南》学习笔记（11）/">《javascript权威指南》学习笔记（11）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/《javascript权威指南》学习笔记（10）/">《javascript权威指南》学习笔记（10）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/14/《javascript权威指南》学习笔记（8）/">《javascript权威指南》学习笔记（8）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/《javascript权威指南》学习笔记（7）/">《javascript权威指南》学习笔记（7）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/《javascript权威指南》学习笔记（6）/">《javascript权威指南》学习笔记（6）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/黑魔法——纯css画一个三角形/">黑魔法——纯css画一个三角形</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/《javascript权威指南》学习笔记（5）/">《javascript权威指南》学习笔记（5）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/闭包和作用域的小例子/">闭包和作用域的小例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/《javascript权威指南》学习笔记（3）/">《javascript权威指南》学习笔记（3）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/12/《javascript权威指南》学习笔记（2）/">《javascript权威指南》学习笔记（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/5月plan/">5月plan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 D_d
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 5;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
 </body>
 </html>
