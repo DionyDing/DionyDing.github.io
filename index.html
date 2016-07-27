@@ -256,8 +256,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="绝对居中"><a href="#绝对居中" class="headerlink" title="绝对居中"></a>绝对居中</h3><p><div style="width:200px;height:200px;border:1px solid yellowgreen;">.div1</div></p>
-<p><div style="width:100px;height:100px;border:1px solid yellowgreen;margin:25px auto">.div2</div><br></p>
+        <h3 id="绝对居中"><a href="#绝对居中" class="headerlink" title="绝对居中"></a>绝对居中</h3><p><div style="width:200px;height:200px;border:1px solid yellowgreen;">.div1<br>  <div style="width:100px;height:100px;border:1px solid yellowgreen;margin:33px auto">.div2</div><br></div></p>
 <ul>
 <li>方式1：<pre><br>.div1{<br>position:relative;<br>}<br>.div2{<br>position:absolute;<br>margin:auto;        //这里是auto，初衷就是为上下左右都居中设定的<br>top:0;<br>bottom:0;<br>left:0;<br>right:0;<br>}<br></pre>貌似原理是top,bottom,left,right全部置0后浏览器会重新分配位置，此时margin:auto就会生效，上下与左右都会居中</li>
 <li>方式2：使用translate（x,y）设置<pre><br>.div1{<br>position:relative;<br>}<br>.div2{<br>position:absolute;<br>width:200px;<br>top:50%;<br>left:50%;<br>transform：translate(-50%，-50%);    //这里translate会基于自身宽度而不是父元素宽度乘以百分比<br>}</pre><h3 id="IE盒模型与标准盒模型的区别"><a href="#IE盒模型与标准盒模型的区别" class="headerlink" title="IE盒模型与标准盒模型的区别"></a>IE盒模型与标准盒模型的区别</h3></li>
