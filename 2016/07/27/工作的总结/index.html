@@ -504,7 +504,13 @@
     <script>
         $(document).ready(function() {
             var backgroundnum = 5;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+			var num=Math.ceil(Math.random() * backgroundnum);
+			var backgroundimg;
+			if(num==1){
+			  backgroundimg = "url(/background/bg-x.JPG)".replace(/x/gi, num);
+			}else{
+			  backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, num);
+			}
             $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
             $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
         })
