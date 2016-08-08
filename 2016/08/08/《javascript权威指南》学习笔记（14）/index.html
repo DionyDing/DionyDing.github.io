@@ -3,22 +3,37 @@
 <head>
   <meta charset="utf-8">
   
-  <title>《javascript权威指南》学习笔记（1） | D_d</title>
+  <title>《javascript权威指南》学习笔记（14） | D_d</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="字符串篇
-字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array">
+  <meta name="description" content="客户端存储篇
+——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制localStorage与sessionStorage
+代表storage对象，本质为一个持久化关联数组，有些数据类型的存储需要序列化
+区别：主要区别在于存储期于作用域
+存储期：
+localStorage存储数据为永久性的，除非Web应用或用户删除，否则一直存在于用户计算机永不过期
+sess">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《javascript权威指南》学习笔记（1）">
-<meta property="og:url" content="http://yoursite.com/2016/05/10/《javascript权威指南》学习笔记（1）/index.html">
+<meta property="og:title" content="《javascript权威指南》学习笔记（14）">
+<meta property="og:url" content="http://yoursite.com/2016/08/08/《javascript权威指南》学习笔记（14）/index.html">
 <meta property="og:site_name" content="D_d">
-<meta property="og:description" content="字符串篇
-字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array">
+<meta property="og:description" content="客户端存储篇
+——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制localStorage与sessionStorage
+代表storage对象，本质为一个持久化关联数组，有些数据类型的存储需要序列化
+区别：主要区别在于存储期于作用域
+存储期：
+localStorage存储数据为永久性的，除非Web应用或用户删除，否则一直存在于用户计算机永不过期
+sess">
 <meta property="og:image" content="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg">
-<meta property="og:updated_time" content="2016-05-18T14:38:32.912Z">
+<meta property="og:updated_time" content="2016-08-08T15:21:44.360Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《javascript权威指南》学习笔记（1）">
-<meta name="twitter:description" content="字符串篇
-字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array">
+<meta name="twitter:title" content="《javascript权威指南》学习笔记（14）">
+<meta name="twitter:description" content="客户端存储篇
+——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制localStorage与sessionStorage
+代表storage对象，本质为一个持久化关联数组，有些数据类型的存储需要序列化
+区别：主要区别在于存储期于作用域
+存储期：
+localStorage存储数据为永久性的，除非Web应用或用户删除，否则一直存在于用户计算机永不过期
+sess">
 <meta name="twitter:image" content="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg">
   
     <link rel="alternative" href="/atom.xml" title="D_d" type="application/atom+xml">
@@ -234,11 +249,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-《javascript权威指南》学习笔记（1）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-《javascript权威指南》学习笔记（14）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/10/《javascript权威指南》学习笔记（1）/" class="article-date">
-      <time datetime="2016-05-10T14:16:09.000Z" itemprop="datePublished">2016-05-10</time>
+      <a href="/2016/08/08/《javascript权威指南》学习笔记（14）/" class="article-date">
+      <time datetime="2016-08-08T12:26:51.000Z" itemprop="datePublished">2016-08-08</time>
 </a>
     </div>
   
@@ -251,7 +266,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《javascript权威指南》学习笔记（1）
+      《javascript权威指南》学习笔记（14）
     </h1>
   
 
@@ -276,31 +291,37 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="字符串篇"><a href="#字符串篇" class="headerlink" title="字符串篇"></a>字符串篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<h3 id="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><a href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。" class="headerlink" title="字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,&#39;-&#39;)等价于str调用split方法后再调用join方法。"></a>字符串在javascript中类似于只读数组，拥有<strong>length属性</strong>及<strong>prototype属性</strong>。可以以数组方式访问字符串中的字母,如<code>str[0]</code>可以访问第一个字母，等同于<code>str.charAt(0)</code>。此外，字符串还可通过<code>call()</code>和<code>apply()</code>方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现<code>join()</code>,<code>filter()</code>等ES5的新数组方法,<code>slice()</code>适用）,如:<code>Array.prototype.join.call(str,&#39;-&#39;)</code>等价于str调用split方法后再调用join方法。</h3><h3 id="字符串的方法"><a href="#字符串的方法" class="headerlink" title="字符串的方法"></a>字符串的方法</h3><h3 id="字符串的方法全都不改变原字符串！"><a href="#字符串的方法全都不改变原字符串！" class="headerlink" title="字符串的方法全都不改变原字符串！"></a><strong>字符串的方法全都不改变原字符串！</strong></h3><h3 id="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><a href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。" class="headerlink" title="方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"></a>方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</h3><h2 id="常见的字符串方法："><a href="#常见的字符串方法：" class="headerlink" title="常见的字符串方法："></a>常见的字符串方法：<p style="font-size:20px"></p></h2><ul>
-<li>索引类：<ul>
-<li><code>charAt(i)</code>：返回索引i处的字符</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>charCodeAt(i)</code>：返回索引i处的字符的Unicode编码</li>
-<li><code>fromCharCode(num1,num2,…)</code>：nmmN代表Unicode编码，返回numN对应的字符</li>
+        <h1 id="客户端存储篇"><a href="#客户端存储篇" class="headerlink" title="客户端存储篇"></a>客户端存储篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h1 id="——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制"><a href="#——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制" class="headerlink" title="——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制"></a>——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制</h1><h3 id="localStorage与sessionStorage"><a href="#localStorage与sessionStorage" class="headerlink" title="localStorage与sessionStorage"></a>localStorage与sessionStorage</h3><ul>
+<li>代表storage对象，本质为一个持久化关联数组，有些数据类型的存储需要序列化</li>
+<li>区别：主要区别在于存储期于作用域<ul>
+<li>存储期：<ul>
+<li>localStorage存储数据为永久性的，除非Web应用或用户删除，否则一直存在于用户计算机永不过期</li>
+<li>sessionStorage存储的数据一旦标签页被关闭，数据也被删除</li>
 </ul>
 </li>
-<li>搜索类：<ul>
-<li><code>indexOf(value,~~start~~)</code>,<code>lastIndexOf(value,~~start~~)</code>：start参数可省略，返回value在对应字符串中所在的索引位置，start参数表示开始查找位置。当value为多字符时返回匹配到的多字符中首字符的位置</li>
-<li><code>search(&#39;子串&#39;/正则表达式)</code>：返回匹配到结果的起始位置</li>
-<li><code>match(&#39;子串&#39;/正则表达式)</code>：返回数组，包含匹配到的文本</li>
+<li>作用域：<ul>
+<li>localStorage限定于文档源级别，同源才可共享、覆盖，且受浏览器种类限制，不同浏览器打开同一页面不可共享localStorage</li>
+<li>sessionStorage限定于文档源级别且限定于窗口级别，受同源策略限制且不同标签页不共享数据。但窗口指顶级窗口，同一页面下的iframe标签可共享数据</li>
 </ul>
 </li>
-<li>截取类：<ul>
-<li><code>substring(start,end)</code>：截取start索引到end-1索引的子字符串（参数不可为负值）</li>
-<li><code>slice(start,end)</code>：截取start索引到end-1索引的子字符串（参数可为负值）</li>
-<li><code>substr(start,length)</code>：截取start索引起的lengrh长的子字符串（参数不可为负值）</li>
 </ul>
 </li>
-<li>其他：<ul>
-<li><code>replace(&#39;被替代子串(可为正则表达式)&#39;,&#39;新子串&#39;)</code>：用新子串替代旧子串，默认只替换一次，全局替换用正则表达式g指向全局</li>
-<li><code>split(&#39;seperator&#39;,~~howmany~~)</code>：将字符串以seperator为界分为多元素数组，seperator为空’ ‘对每个字母都分割，默认为整个字符串为一个数组元素，howmany参数可省略，表数组最大长度</li>
-<li><code>toUpperCase()</code>,<code>toLowerCase()</code>：将字符串转换为全部大写/小写<br><p></p></li>
+<li>API：<ul>
+<li>setItem(…):传入名值存储<ul>
+<li>JSON对象设置值时用这种方法可以避免修改了副本未修改原对象<br>eg:localStorage.o={X:1};<br>localStorage.o.x=0;<br>localStorage.o.x; //1</li>
+</ul>
+</li>
+<li>getItem(…):传入名字获取对应值</li>
+<li>removeItem(…):传入名字删除数据</li>
+<li>clear():清空所有变量</li>
+<li>length,key(“name”):枚举</li>
+</ul>
+</li>
+<li>存储事件onstorage<ul>
+<li>firefox不支持</li>
+<li>数据改变（不包括置相同名值对及删除不存在名值对）时，其他对该数据可见的窗口对象上会触发该事件，对数据进行改变的窗口对象上不触发</li>
+<li>localStorage存储事件采用广播机制<h3 id="cookie—未完待续"><a href="#cookie—未完待续" class="headerlink" title="cookie—未完待续"></a>cookie—未完待续</h3></li>
 </ul>
 </li>
 </ul>
@@ -312,13 +333,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a></p>
+        <p><span>本文标题:</span><a href="/2016/08/08/《javascript权威指南》学习笔记（14）/">《javascript权威指南》学习笔记（14）</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 D_d 的个人博客">D_d</a></p>
-        <p><span>发布时间:</span>2016年05月10日 - 22时16分</p>
-        <p><span>最后更新:</span>2016年05月18日 - 22时38分</p>
+        <p><span>发布时间:</span>2016年08月08日 - 20时26分</p>
+        <p><span>最后更新:</span>2016年08月08日 - 23时21分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/10/《javascript权威指南》学习笔记（1）/" title="《javascript权威指南》学习笔记（1）">http://yoursite.com/2016/05/10/《javascript权威指南》学习笔记（1）/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/10/《javascript权威指南》学习笔记（1）/　　作者: D_d" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/08/《javascript权威指南》学习笔记（14）/" title="《javascript权威指南》学习笔记（14）">http://yoursite.com/2016/08/08/《javascript权威指南》学习笔记（14）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/08/《javascript权威指南》学习笔记（14）/　　作者: D_d" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -331,15 +352,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/05/11/5月plan/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          5月plan
-        
-      </div>
-    </a>
   
+    <a href="/2016/07/27/百度面试的总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">百度面试的总结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -348,7 +365,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#字符串篇"><span class="toc-number">1.</span> <span class="toc-text">字符串篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母-如str-0-可以访问第一个字母，等同于str-charAt-0-。此外，字符串还可通过call-和apply-方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join-filter-等ES5的新数组方法-slice-适用）-如-Array-prototype-join-call-str-39-39-等价于str调用split方法后再调用join方法。"><span class="toc-number">1.0.1.</span> <span class="toc-text">字符串在javascript中类似于只读数组，拥有length属性及prototype属性。可以以数组方式访问字符串中的字母,如str[0]可以访问第一个字母，等同于str.charAt(0)。此外，字符串还可通过call()和apply()方法直接调用数组的一些方法（限于不改变原数组的方法，目前发现join(),filter()等ES5的新数组方法,slice()适用）,如:Array.prototype.join.call(str,'-')等价于str调用split方法后再调用join方法。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串的方法"><span class="toc-number">1.0.2.</span> <span class="toc-text">字符串的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串的方法全都不改变原字符串！"><span class="toc-number">1.0.3.</span> <span class="toc-text">字符串的方法全都不改变原字符串！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。"><span class="toc-number">1.0.4.</span> <span class="toc-text">方法与函数的含义不一样，方法指针对对象的属性定义的function，函数则是指针对全局定义的function。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的字符串方法："><span class="toc-number">1.1.</span> <span class="toc-text">常见的字符串方法：</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#客户端存储篇"><span class="toc-number">1.</span> <span class="toc-text">客户端存储篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制"><span class="toc-number">2.</span> <span class="toc-text">——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#localStorage与sessionStorage"><span class="toc-number">2.0.1.</span> <span class="toc-text">localStorage与sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie—未完待续"><span class="toc-number">2.0.2.</span> <span class="toc-text">cookie—未完待续</span></a></li></ol></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -396,7 +413,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/05/10/《javascript权威指南》学习笔记（1）/" data-title="《javascript权威指南》学习笔记（1）" data-url="http://yoursite.com/2016/05/10/《javascript权威指南》学习笔记（1）/"></div>
+    <div class="ds-thread" data-thread-key="2016/08/08/《javascript权威指南》学习笔记（14）/" data-title="《javascript权威指南》学习笔记（14）" data-url="http://yoursite.com/2016/08/08/《javascript权威指南》学习笔记（14）/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -419,13 +436,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/05/11/5月plan/" title="上一篇: 5月plan">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/07/27/百度面试的总结/" title="下一篇: 百度面试的总结">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/《javascript权威指南》学习笔记（14）/">《javascript权威指南》学习笔记（14）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/百度面试的总结/">百度面试的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/工作的总结/">工作的总结2017\07\27</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/关于图片/">关于图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/工具小常识xampp-gulp/">工具小常识xampp&gulp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/《javascript权威指南》学习笔记（13）/">《javascript权威指南》学习笔记（13）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/《javascript权威指南》学习笔记（12）/">《javascript权威指南》学习笔记（12）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/《javascript权威指南》学习笔记（11）/">《javascript权威指南》学习笔记（11）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/《javascript权威指南》学习笔记（10）/">《javascript权威指南》学习笔记（10）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/14/《javascript权威指南》学习笔记（8）/">《javascript权威指南》学习笔记（8）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/《javascript权威指南》学习笔记（7）/">《javascript权威指南》学习笔记（7）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/《javascript权威指南》学习笔记（6）/">《javascript权威指南》学习笔记（6）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/黑魔法——纯css画一个三角形/">黑魔法——纯css画一个三角形</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/《javascript权威指南》学习笔记（5）/">《javascript权威指南》学习笔记（5）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/闭包和作用域的小例子/">闭包和作用域的小例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/《javascript权威指南》学习笔记（3）/">《javascript权威指南》学习笔记（3）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/12/《javascript权威指南》学习笔记（2）/">《javascript权威指南》学习笔记（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/5月plan/">5月plan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a></li></ul>
