@@ -24,7 +24,7 @@ sess">
 localStorage存储数据为永久性的，除非Web应用或用户删除，否则一直存在于用户计算机永不过期
 sess">
 <meta property="og:image" content="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg">
-<meta property="og:updated_time" content="2016-08-08T15:21:44.360Z">
+<meta property="og:updated_time" content="2016-08-09T14:38:02.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《javascript权威指南》学习笔记（14）">
 <meta name="twitter:description" content="客户端存储篇
@@ -321,9 +321,39 @@ sess">
 <li>存储事件onstorage<ul>
 <li>firefox不支持</li>
 <li>数据改变（不包括置相同名值对及删除不存在名值对）时，其他对该数据可见的窗口对象上会触发该事件，对数据进行改变的窗口对象上不触发</li>
-<li>localStorage存储事件采用广播机制<h3 id="cookie—未完待续"><a href="#cookie—未完待续" class="headerlink" title="cookie—未完待续"></a>cookie—未完待续</h3></li>
+<li>localStorage存储事件采用广播机制<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3></li>
 </ul>
 </li>
+<li>web浏览器通过cookie存储少量数据（localStorage与sessionStorage存储的数据量大一些），初衷是为服务端脚本存储少量数据</li>
+<li>任何以cookie形式存储的数据，不论服务器端是否需要，每一次HTTP请求都会把数据传至服务器端</li>
+<li>检测cookie是否启用：navigator.cookieEnable，返回true/false</li>
+<li>JS的cookie没有使用任何加密机制，是不安全的</li>
+<li>每个cookie都可以设定有效期和作用域<ul>
+<li>有效期：默认关闭浏览器丢失，可通过max-age属性设定，单位s，但必须明确有多长。设置了有效期会将cookie存储在一个文件中，过了有效期才删除</li>
+<li>作用域：通过文档源（domain属性）和文档路径（path属性）来确定<ul>
+<li>domain默认到当前主机名。eg:”example.com”(该域下任何服务器可见，www.example.com与catalog.example.com均可见)</li>
+<li>path置为”/“全域可见，”/catalog”只有catalog目录下可见</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>secure属性：<ul>
+<li>bool值，表明cookie以何种形式在网络传递</li>
+<li>默认false不安全，置为安全则必须通过https等安全协议传递</li>
+</ul>
+</li>
+<li>访问与设置<ul>
+<li>cookie值为字符串形式的name=value,分号分隔，值采用enCodeURIComponent()编码，其中可以包括”path=…;domain=…;secure…”</li>
+<li>改变cookie值必须在相同的名字、域、路径下重置，删除也一样且要max-age置0</li>
+<li>访问通过document.cookie访问，除解码外可能还需要JSON.parse()</li>
+<li>document.lastModified 返回最后修改时间</li>
+</ul>
+</li>
+<li>局限：<ul>
+<li>某时间段时，有些浏览器有上限300条cookie，有的限制单个大小不可超过4KB<h3 id="IE下可通过userData实现客户端存储"><a href="#IE下可通过userData实现客户端存储" class="headerlink" title="IE下可通过userData实现客户端存储"></a>IE下可通过userData实现客户端存储</h3></li>
+</ul>
+</li>
+<li>原理为给元素添加userData行为，便可save(),load()<h3 id="离线web应用存储（除非手动删除，否则一直存在）"><a href="#离线web应用存储（除非手动删除，否则一直存在）" class="headerlink" title="离线web应用存储（除非手动删除，否则一直存在）"></a>离线web应用存储（除非手动删除，否则一直存在）</h3>1.创建.appcache文件，将需下载的文件列一个清单在其中<br>eg:<pre><br>CACHE MANIFEST<br>#注释<br>CACHE:<br>myapp.html<br>myapp.css<br>myapp.js<br>images/<br>……<br>NETWORK：<br>#其中的内容总从网络获取不缓存（支持*）<br>#一般内容为url前缀<br>cgi/<br>……<br>FALLBACK：<br>#每行2个url，第一个为前缀，第二个为需要加载的资源<br>#任何匹配前缀的url都不会缓存而从网络加载，加载失败会以第二个url的缓存代替<br>/videos help.html<br></pre><br>2.&lt;html&gt;加manifest属性指向清单文件<br>3.更新通过清单加版本号实现<br><pre><br>CACHE MANIFEST<h1 id="myapp-version-1-更改数字会重新下载"><a href="#myapp-version-1-更改数字会重新下载" class="headerlink" title="myapp version 1 (更改数字会重新下载)"></a>myapp version 1 (更改数字会重新下载)</h1></pre><br>4.更多深刻内容见20章 20.4</li>
 </ul>
 
       
@@ -336,7 +366,7 @@ sess">
         <p><span>本文标题:</span><a href="/2016/08/08/《javascript权威指南》学习笔记（14）/">《javascript权威指南》学习笔记（14）</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 D_d 的个人博客">D_d</a></p>
         <p><span>发布时间:</span>2016年08月08日 - 20时26分</p>
-        <p><span>最后更新:</span>2016年08月08日 - 23时21分</p>
+        <p><span>最后更新:</span>2016年08月09日 - 22时38分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/08/08/《javascript权威指南》学习笔记（14）/" title="《javascript权威指南》学习笔记（14）">http://yoursite.com/2016/08/08/《javascript权威指南》学习笔记（14）/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/08/08/《javascript权威指南》学习笔记（14）/　　作者: D_d" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -365,7 +395,7 @@ sess">
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#客户端存储篇"><span class="toc-number">1.</span> <span class="toc-text">客户端存储篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制"><span class="toc-number">2.</span> <span class="toc-text">——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#localStorage与sessionStorage"><span class="toc-number">2.0.1.</span> <span class="toc-text">localStorage与sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie—未完待续"><span class="toc-number">2.0.2.</span> <span class="toc-text">cookie—未完待续</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#客户端存储篇"><span class="toc-number">1.</span> <span class="toc-text">客户端存储篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制"><span class="toc-number">2.</span> <span class="toc-text">——客户端存储遵循“同源策略”，但同一站点的不同页面之间可以共享存储数据，这提供了一种通信机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#localStorage与sessionStorage"><span class="toc-number">2.0.1.</span> <span class="toc-text">localStorage与sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie"><span class="toc-number">2.0.2.</span> <span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IE下可通过userData实现客户端存储"><span class="toc-number">2.0.3.</span> <span class="toc-text">IE下可通过userData实现客户端存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离线web应用存储（除非手动删除，否则一直存在）"><span class="toc-number">2.0.4.</span> <span class="toc-text">离线web应用存储（除非手动删除，否则一直存在）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#myapp-version-1-更改数字会重新下载"><span class="toc-number">3.</span> <span class="toc-text">myapp version 1 (更改数字会重新下载)</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
