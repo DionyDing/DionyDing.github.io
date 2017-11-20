@@ -233,6 +233,97 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-《javascript权威指南》学习笔记（11）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/08/《javascript权威指南》学习笔记（11）/" class="article-date">
+      <time datetime="2016-07-08T10:10:26.000Z" itemprop="datePublished">2016-07-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/08/《javascript权威指南》学习笔记（11）/">《javascript权威指南》学习笔记（11）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="多媒体篇"><a href="#多媒体篇" class="headerlink" title="多媒体篇"></a>多媒体篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
+<h3 id="缓存图片"><a href="#缓存图片" class="headerlink" title="缓存图片"></a>缓存图片</h3><ul>
+<li>利用Image()构造函数创建一个屏幕外图片对象，将该对象的src属性置为期望的url，此时图片将添加至文档中，是不可见的，但浏览器还是会加载图片将其缓存。当图片加入文档中时才会显示。</li>
+<li>一个例子:<pre>var img=new Image();
+img.src='url';
+document.body.appendChild(img);
+</pre></li>
+<li>Tips:同类构造函数还有Audio(),但无Video()构造函数<h3 id="脚本化的音频和视频"><a href="#脚本化的音频和视频" class="headerlink" title="脚本化的音频和视频"></a>脚本化的音频和视频</h3></li>
+<li>设置src属性时，加载媒体的过程开始，若有其他媒体在load/play会中止这些媒体</li>
+<li>H5引入&lt;audio&gt;&lt;video&gt;作为音频和视频元素（有control属性，置为true显示播放控件）</li>
+<li>通常需要&lt;source&gt;指定不同格式媒体源，这是因为浏览器在对标准音频和视频解码器的支持上有差异<br>eg:&lt;source src=’music.ogg’&gt;<span style="color:red;">该标签无内容，不需闭合！</span></li>
+<li>有Audio()构造函数支持音频缓存,但无Video()构造函数</li>
+<li>一些属性与方法<ul>
+<li>play()/pause():控制播放与暂停</li>
+<li>canPlayType(‘媒体MIME类型,eg:audio/wav’):测试能否播放指定类型媒体文件，不能返回空值，可以返回</li>
+<li>currentTime：单位秒，指定播放器应跳过播放的时间</li>
+<li>volume:值在0~1之间，播放音量</li>
+<li>muted：bool值，true为静音</li>
+<li>controls,loop,preload,autoplay属性：也可做HTML属性，controls,loop,autoplay均为bool值，preload表示开始播放前是否预加载，加载多少内容，值为none不预加载/metadata元数据需加载（默认）/data预加载浏览器认为适量的内容</li>
+<li>一些只读属性：用来查询bool值<ul>
+<li>pause:是否暂停</li>
+<li>seeking：是否跳至新播放点</li>
+<li>initialTime：媒体开始时间，单位秒，一般为0</li>
+<li>ended：是否播完</li>
+<li>duration：媒体时长，单位秒</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/javascript/">javascript</a><a class="article-category-link" href="/categories/technology/javascript/多媒体/">多媒体</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript学习笔记/">javascript学习笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-《javascript权威指南》学习笔记（10）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1106,71 +1197,6 @@ if(target.nodeName.toLowerCase()==&apos;li&apos;){
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/纯css实现多级nav/">纯css实现多级nav</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-闭包和作用域的小例子" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/13/闭包和作用域的小例子/" class="article-date">
-      <time datetime="2016-05-13T14:17:31.000Z" itemprop="datePublished">2016-05-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/13/闭包和作用域的小例子/">闭包和作用域的小例子</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this-a……噗……"><a href="#this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this-a……噗……" class="headerlink" title="this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this.a……噗……"></a>this指向当前对象，在函数闭包返回变量时不需要this直接返回！今天我傻傻的还在下面的程序里写了this.a……噗……</h3><p><pre style="font-size:20px;">eg：<br>function test(){<br>    var a=3;<br>    return{                //这里返回一个对象<br>        get:function (){<br>            return a;<br>        },<br>        set:function (a1){<br>            a=a1;<br>        }<br>    }<br>}<br>a;               //a为私有变量，访问不到，全局a为undefined，故返回undefined<br>test().get();    //返回a的值3<br>test().set(4);<br>test().get();    //<span style="color:red;">返回3，这是因为每次test()都会重新初始化重新将a置为初始值3，执行上文没有被保存</span><br>var obj=test();<br>obj.set(4);<br>obj.get();       //<span style="color:red;">返回4，var obj=test()会使得执行上文每次都会保存，不会重新初始化</span></pre></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><hr>
-<h3 id="师傅今天考了我一道作用域的题，没答对。。。书白看了。。。"><a href="#师傅今天考了我一道作用域的题，没答对。。。书白看了。。。" class="headerlink" title="师傅今天考了我一道作用域的题，没答对。。。书白看了。。。"></a>师傅今天考了我一道作用域的题，没答对。。。书白看了。。。</h3><p><pre style="font-size:20px">var name=1;<br>var obj={<br>name:2,<br>b:{<br>  name:3,<br>  c:{<br>    name:4,<br>    getName:function (){<br>            console.log(this.name);  //这里最开始为return this.name，这样的话setTimeout(obj.b.c.getName,1000)<br>                                     //会返回其唯一的标识时延的id，没有返回全局下name<br>            }<br>    }<br>  }<br>}<br></pre></p>
-<p><pre style="font-size:20px"><br>obj.b.c.getName();                  //4<br>var a1=obj.b;<br>a1.c.getName();                     //4<br>var b1=obj.b.c;<br>b1.getName();                       //4<br>setTimeout(obj.b.c.getName,1000);   //1<br>setTimeout(obj.b.c.getName(),1000); //4<br>var cGet=obj.b.c.getName;<br>cGet();                             //1<br></pre></p>
-<h4 id="obj-b-c-getName-，a1-c-getName-，b1-getName-调用getName-时this均指向当前对象，即最内层c对象，故返回c-name。"><a href="#obj-b-c-getName-，a1-c-getName-，b1-getName-调用getName-时this均指向当前对象，即最内层c对象，故返回c-name。" class="headerlink" title="obj.b.c.getName()，a1.c.getName()，b1.getName()调用getName()时this均指向当前对象，即最内层c对象，故返回c.name。"></a><code>obj.b.c.getName()</code>，<code>a1.c.getName()</code>，<code>b1.getName()</code>调用getName()时<code>this</code>均指向当前对象，即最内层c对象，故返回<code>c.name</code>。</h4><h4 id="setTimeout-obj-b-c-getName-1000-生效时，this指向window对象，相当于创建临时变量并把obj-b-c-getName赋给这个临时变量，注意这里没有-表示调用，临时变量中内容为function-console-log-this-name-，this指向全局，故返回全局下name，即window-name。"><a href="#setTimeout-obj-b-c-getName-1000-生效时，this指向window对象，相当于创建临时变量并把obj-b-c-getName赋给这个临时变量，注意这里没有-表示调用，临时变量中内容为function-console-log-this-name-，this指向全局，故返回全局下name，即window-name。" class="headerlink" title="setTimeout(obj.b.c.getName,1000)生效时，this指向window对象，相当于创建临时变量并把obj.b.c.getName赋给这个临时变量，注意这里没有()表示调用，临时变量中内容为function (){console.log(this.name);}，this指向全局，故返回全局下name，即window.name。"></a><code>setTimeout(obj.b.c.getName,1000)</code>生效时，<code>this</code>指向<code>window</code>对象，相当于创建临时变量并把<code>obj.b.c.getName</code>赋给这个临时变量，注意这里没有()表示调用，临时变量中内容为<code>function (){console.log(this.name);}</code>，<code>this</code>指向全局，故返回全局下name，即<code>window.name</code>。</h4><h4 id="setTimeout-obj-b-c-getName-1000-生效时相当于直接从obj-b-c下调用c的getName-方法，此时this在其中指向c。"><a href="#setTimeout-obj-b-c-getName-1000-生效时相当于直接从obj-b-c下调用c的getName-方法，此时this在其中指向c。" class="headerlink" title="setTimeout(obj.b.c.getName(),1000)生效时相当于直接从obj.b.c下调用c的getName()方法，此时this在其中指向c。"></a><code>setTimeout(obj.b.c.getName(),1000)</code>生效时相当于直接从<code>obj.b.c</code>下调用c的getName()方法，此时<code>this</code>在其中指向c。</h4><h4 id="cGet同样相当于把obj-b-c-getName下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。"><a href="#cGet同样相当于把obj-b-c-getName下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。" class="headerlink" title="cGet同样相当于把obj.b.c.getName下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。"></a>cGet同样相当于把<code>obj.b.c.getName</code>下的function赋值给cGet变量，调用时this同样指向全局name。相当于把getName私有方法抓取出来到全局了。</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/日常的问题/">日常的问题</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包和作用域/">闭包和作用域</a></li></ul>
     </div>
 
       
