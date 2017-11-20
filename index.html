@@ -149,7 +149,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/work-notes/" style="font-size: 10px;">work notes</a> <a href="/tags/xampp/" style="font-size: 10px;">xampp</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/图片格式/" style="font-size: 10px;">图片格式</a> <a href="/tags/百度面试题/" style="font-size: 10px;">百度面试题</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
+                        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/about工作/" style="font-size: 10px;">about工作</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/work-notes/" style="font-size: 10px;">work notes</a> <a href="/tags/xampp/" style="font-size: 10px;">xampp</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/图片格式/" style="font-size: 10px;">图片格式</a> <a href="/tags/百度面试题/" style="font-size: 10px;">百度面试题</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
                     </div>
                 </section>
                 
@@ -232,6 +232,182 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-工作笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/20/工作笔记/" class="article-date">
+      <time datetime="2017-11-20T15:38:04.000Z" itemprop="datePublished">2017-11-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/20/工作笔记/">工作笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="气球活动的总结"><a href="#气球活动的总结" class="headerlink" title="气球活动的总结"></a>气球活动的总结</h2><p>1.关于canvas：</p>
+<ul>
+<li><canvas>标签的width与height必须设定，会以此来换算画布坐标</canvas></li>
+<li>实际的显示可在<canvas>的样式中设定以做自适应，但宽高比例须要与width、height一致，否则会有拉伸，类似图片的样式宽高与实际宽高比例不同会拉伸，图片模糊</canvas></li>
+<li>要改变画笔使用颜色，只需要在新路径beginPath，设定新颜色即可</li>
+<li>canvas元素外包一个div可阻止有position定位时元素下方莫名其妙多了几像素空行的问题</li>
+</ul>
+<p>2.随机打乱数组的算法：</p>
+<ul>
+<li>思想为从最末尾的数组元素开始，与其前面的某随机生成index值的元素交换位置，直至index为1的元素与index为0的元素交换位置，这样做可以保证每一个元素都随机交换过，其交换概率均等，处于不同位置的概率均等</li>
+<li>代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">randomArr(arr) &#123;</span><br><span class="line">    for (let i = (arr.length - 1); i &gt; 0; i--) &#123;</span><br><span class="line">      let random = Math.floor(Math.random() * i);</span><br><span class="line">      let param = arr[random];</span><br><span class="line">      arr[random] = arr[i];</span><br><span class="line">      arr[i] = param;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.关于touch事件</p>
+<ul>
+<li>touchstart事件会先于click事件触发，touchmove存在则不为click事件为touch事件，不存在为click事件</li>
+<li>touch事件的touchList数组有三个：changedTouches，targetTouches，touches<ul>
+<li>changedTouches列出发生改变的接触点的Touch对象：<br>1.对touchstart事件，touchList列出新增触点<br>2.对touchmove事件，touchList列出发生改变的触点<br>3.对touchend事件，touchList列出离开屏幕的触点</li>
+<li>targetTouches列出从当前element触发的接触点的Touch对象（touchstart须从当前element触发）</li>
+<li>touches列出所有屏幕接触点的Touch对象（touchstart从任何element触发）<br>—————————–tu</li>
+</ul>
+</li>
+<li>changedTouches，targetTouches，touches的touchList对象包含的参数相同，说明：<ul>
+<li>clientX：触摸目标在视口中的x坐标。</li>
+<li>clientY：触摸目标在视口中的y坐标。</li>
+<li>identifier：标识触摸的唯一ID。</li>
+<li>pageX：触摸目标在页面中的x坐标。</li>
+<li>pageY：触摸目标在页面中的y坐标。</li>
+<li>screenX：触摸目标在屏幕中的x坐标。</li>
+<li>screenY：触摸目标在屏幕中的y坐标。</li>
+<li>target：触目的DOM节点目标。</li>
+<li>force：压力大小（0.0无压力，1.0最大压力）。</li>
+<li>radiusX,radiusY,rotationAngle：监测手指的椭圆形用(16年safari及微信内置浏览器都不支持这些属性，chrome模拟器可以，现在不确定)。</li>
+</ul>
+</li>
+<li>touchcancel：系统停止跟踪触摸时触发<br>——————tu</li>
+</ul>
+<p>4.关于immutable:<br>React只要setState就会触发render重新渲染，可引入immutable比对两次状态若未改变就阻止重新渲染（shouldComponentUpdate中return false，只有首次渲染和forceUpdate会重新渲染）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    /*selected参数不改变时不需重新渲染*/</span><br><span class="line">    return !Immutable.is(this.state.selected, nextState.selected);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.下拉刷新：<br>下拉刷新的交互在IOS中会导致页面也被拉动，在touch事件中通过e.preventDefault()来禁止，但要注意保留需要的touch事件动作</p>
+<p>6.关于setTimeout：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;console.log(1)&#125;, 0);</span><br><span class="line">Promise.resolve(2).then((val)=&gt;&#123;console.log(val)&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>代码执行结果为输出2，0。<br>现有的 JavaScript 引擎是单线程处理任务的。它把任务放到队列中，不会同步去执行，必须在完成一个任务后才开始另外一个任务。均为异步但setTimeout对应部分会在浏览器执行下一队列最开始执行，而Promise对应会在本次队列执行。setTimeout可以把任务从某个队列中跳脱成为新队列。</p>
+<ul>
+<li>tips:<ul>
+<li>HTML5标准规定了setTimeout()的第二个参数的最小值（最短间隔），不得低于4毫秒，如果低于这个值，就会自动增加。另外，对于那些DOM的变动（尤其是涉及页面重新渲染的部分），通常不会立即执行，而是每16.7(1000/60即：1s60帧看起来动画比较顺滑)毫秒执行一次（这也是为何setTimeout的定时器值推荐最小使用16.7ms的原因，小于此可能会丢帧）。这时使用requestAnimationFrame()的效果要好于setTimeout()。</li>
+<li>window.requestAnimationFrame(callback)在下次重绘时产生另一个动画画面，跟着浏览器的绘制走，如果浏览设备绘制间隔是16.7ms，就这个间隔绘制；如果浏览设备绘制间隔是10ms, 就10ms绘制。这样就不会存在过度绘制的问题，动画不会掉帧，自然流畅。但其兼容性一般，使用需谨慎。</li>
+</ul>
+</li>
+</ul>
+<p>7.关于Promise：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Promise.reject(2).then((v) =&gt; &#123;</span><br><span class="line">  console.log(&apos;reject:&apos; + v);</span><br><span class="line">  &#125;,(v)=&gt;&#123;console.log(&apos;reject:&apos;+v);&#125;).then(()=&gt;&#123;</span><br><span class="line">  console.log(2.1);</span><br><span class="line">  &#125;,()=&gt;&#123;console.log(2.2);&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上述代码结果输出reject:2, 2.1<br>在链式调用Promise对象时，第一个then方法中跳入reject对应函数，但在下一次then方法中会进入resolve对应函数，故链式调用时在结尾用catch方法捕获reject及error较好！！！</p>
+<p>8.rax项目中向View中传入store：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class FragmentSheet extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    let props = this.props;</span><br><span class="line">    let extendStyle = props.style;</span><br><span class="line">    this.sheetStore = this.sheetStore || new Store(props.gameId);</span><br><span class="line"></span><br><span class="line">    return (&lt;View style=&#123;style.sheetWrap&#125;&gt;</span><br><span class="line">      &lt;View style=&#123;[style.sheetBorder, extendStyle.sheetBorder]&#125; /&gt;</span><br><span class="line">      &lt;Header store=&#123;this.sheetStore&#125; imgStyle=&#123;style.sheetImgStyle&#125; /&gt;</span><br><span class="line">      &lt;FragmentListView store=&#123;this.sheetStore&#125; /&gt;</span><br><span class="line">      &lt;View style=&#123;style.sheetButton&#125; onClick=&#123;props.onButtonClick&#125;&gt;试试手气&lt;/View&gt;</span><br><span class="line">    &lt;/View&gt;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第五行中存入this.sheetStore中会比在constructor中使用全局变量存储sheetStore好一些，不会污染全局命名空间</p>
+<p>9.rax项目中要使用显示省略号的属性text-overflow，需要配合Text标签的numberOfLine属性一起使用，文档中的lines属性可能有误。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/javascript/">javascript</a><a class="article-category-link" href="/categories/technology/javascript/工作总结/">工作总结</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/about工作/">about工作</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Promise对象" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/21/Promise对象/" class="article-date">
+      <time datetime="2016-11-21T06:02:52.000Z" itemprop="datePublished">2016-11-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/21/Promise对象/">Promise对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/javascript/">javascript</a><a class="article-category-link" href="/categories/technology/javascript/客户端存储/">客户端存储</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-《javascript权威指南》学习笔记（14）" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -964,246 +1140,6 @@ document.body.appendChild(img);
 
 
   
-    <article id="post-《javascript权威指南》学习笔记（10）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/05/《javascript权威指南》学习笔记（10）/" class="article-date">
-      <time datetime="2016-07-05T02:53:43.000Z" itemprop="datePublished">2016-07-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/05/《javascript权威指南》学习笔记（10）/">《javascript权威指南》学习笔记（10）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="脚本化HTTP篇"><a href="#脚本化HTTP篇" class="headerlink" title="脚本化HTTP篇"></a>脚本化HTTP篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<p>HTTP：规定了Web浏览器如何从Web服务器获取文档，向Web服务器提交表单内容，Web服务器如何相应这些请求和提交（我的理解就是Web浏览器和服务器之间的交互）</p>
-<h3 id="lt-img-gt-lt-script-gt-lt-iframe-gt-的src属性为url时会发起http的GET请求"><a href="#lt-img-gt-lt-script-gt-lt-iframe-gt-的src属性为url时会发起http的GET请求" class="headerlink" title="&lt;img&gt;,&lt;script&gt;,&lt;iframe&gt;的src属性为url时会发起http的GET请求"></a>&lt;img&gt;,&lt;script&gt;,&lt;iframe&gt;的src属性为url时会发起http的GET请求</h3><h3 id="Ajax特点："><a href="#Ajax特点：" class="headerlink" title="Ajax特点："></a>Ajax特点：</h3><p>使用脚本操纵HTTP和Web服务器进行数据交换，不会导致页面重载</p>
-<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><ul>
-<li>XMLHttpRequest对象不可跨域，通过JSONP实现跨域</li>
-<li>P代表函数名包裹/填充数据，用JS函数包裹对应响应数据，一般函数名为callback</li>
-<li>JSON表明服务器响应必须用JSON格式</li>
-<li>XHR2可以通过选择合适的CORS（Cross-origin Resource Sharing）允许跨域，测试XHR.withCredentials可以判断浏览器是否支持<h3 id="JSONP原理"><a href="#JSONP原理" class="headerlink" title="JSONP原理"></a>JSONP原理</h3>&lt;script&gt;可以不受限于同源策略跨域通信，此时服务器响应采用JSON编码的数据格式，故这种Ajax传输协议叫做JSONP<br>Tips：只可用于处理GET请求<h3 id="XMLHttpRequest对象（实现Ajax技术）"><a href="#XMLHttpRequest对象（实现Ajax技术）" class="headerlink" title="XMLHttpRequest对象（实现Ajax技术）"></a>XMLHttpRequest对象（实现Ajax技术）</h3>定义了用脚本操纵Http的API，包含GET请求及POST请求的能力，能用文本或document对象的形式返回服务器响应<h3 id="与Ajax同类的Comet技术"><a href="#与Ajax同类的Comet技术" class="headerlink" title="与Ajax同类的Comet技术"></a>与Ajax同类的Comet技术</h3></li>
-<li>在Comet中，web服务器发起通信并异步发送消息到客户端，若web应用需响应服务端，会使用Ajax技术发送、请求数据</li>
-<li>Tips：Ajax中浏览器从服务器“拉”数据，Comet中服务器向浏览器“推”数据<h3 id="XMLHttpRequest对象实现Ajax请求"><a href="#XMLHttpRequest对象实现Ajax请求" class="headerlink" title="XMLHttpRequest对象实现Ajax请求"></a>XMLHttpRequest对象实现Ajax请求</h3>1.实例化XMLHttpRequest：var xhr=new XMLHttpRequest();<br>2.调用其open()方法：xhr.open(‘method’,’url’,<del>bool</del>);<ul>
-<li>method参数为http请求方式，GET/POST，不区分大小写，但一般大写</li>
-<li>url为请求地址，跨域会报错</li>
-<li>bool为一个可选参数，是否异步，设为false会同步，但同步时send()会阻塞UI一般不用<br>3.若为POST方式需设置请求头以方便服务器正常解码：xhr.setRequestHeader(‘content-Type’,’xxx’);<br>４.监听readystate：<pre><br>xhr.onreadystatechange=function (){<br>if(xhr.readystate==4&amp;&amp;xhr.status==200){<br>//请求完成不一定成功，xhr.status==200才成功<br>response……<br>}<br>}</pre><br>5.向服务器发送可选请求体：xhr.send();</li>
-</ul>
-</li>
-<li>这一步才会启动网络，发送请求</li>
-<li>GET方式无请求体，POST方式有请求体,可携带请求体参数</li>
-<li>发送请求后，会返回响应response<h3 id="XMLHttpRequest对象的响应"><a href="#XMLHttpRequest对象的响应" class="headerlink" title="XMLHttpRequest对象的响应"></a>XMLHttpRequest对象的响应</h3></li>
-<li>完整的http响应由状态码，响应头，响应主体组成</li>
-<li>响应返回后，有一系列响应属性生效。此时为在响应返回时得到通知，要监听readystate事件</li>
-<li>响应属性如下：<ul>
-<li>status/statusText：以数字/文本形式返回http状态码</li>
-<li>responseText/responseXML：响应主体文本/Document形式</li>
-<li>getResponseHeader()/getAllResponseHeader():查询响应头</li>
-</ul>
-</li>
-<li>readystate属性：代表http请求状态<ul>
-<li>0：open()未调用</li>
-<li>1：open()以调用</li>
-<li>2：收到响应头</li>
-<li>3：收到响应体</li>
-<li>4：响应完成</li>
-<li>Tips:理论上每次改变都会触发事件，但实际上不同浏览器有差别0、1一般不触发，4所有浏览器都会触发<h3 id="http请求无法完成的触发事件"><a href="#http请求无法完成的触发事件" class="headerlink" title="http请求无法完成的触发事件"></a>http请求无法完成的触发事件</h3></li>
-</ul>
-</li>
-<li>timeout：超时触发事件</li>
-<li>abort：请求中止触发事件</li>
-<li>error：重定向太多阻止请求触发事件<h3 id="中止请求"><a href="#中止请求" class="headerlink" title="中止请求"></a>中止请求</h3></li>
-<li>如果用户在指定时间内还没有输入字符，应中止表单请求</li>
-<li>abort()方法取消正在进行的HTTP请求<h3 id="编码请求主体"><a href="#编码请求主体" class="headerlink" title="编码请求主体"></a>编码请求主体</h3></li>
-<li>url编码：<ul>
-<li>POST方式提交表单要进行URL编码，即16进制转义码替换特殊字符，’=’分开名字和值，’&amp;’分开名值对</li>
-<li>对表单数据有正式的请求头，’content-Type’为’application/x-www-form-unlencoded’</li>
-<li>将名值对用encodeURIComponent(‘xxx’);编码</li>
-</ul>
-</li>
-<li>JSON编码<ul>
-<li>JSON.stringify(‘xxx’);编码</li>
-<li>JSON.parse(‘xxx’);解码</li>
-</ul>
-</li>
-<li>上传文件<ul>
-<li>POST请求发送文件内容时，type=’file’时有files属性，它是File对象的类数组对象</li>
-<li>XHR2允许在send()中传入File对象实现上传文件。文件类型为二进制大对象（Blob）的子类型</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/javascript/">javascript</a><a class="article-category-link" href="/categories/technology/javascript/脚本化HTTP/">脚本化HTTP</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript学习笔记/">javascript学习笔记</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-《javascript权威指南》学习笔记（9）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/14/《javascript权威指南》学习笔记（9）/" class="article-date">
-      <time datetime="2016-06-14T14:05:20.000Z" itemprop="datePublished">2016-06-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="event事件对象篇"><a href="#event事件对象篇" class="headerlink" title="event事件对象篇"></a>event事件对象篇</h1><p><img src="http://o6yo3ducz.bkt.clouddn.com/javascript-book-cover.jpg" title="javascript权威指南" width="200px"></p>
-<p><div style="font-size:20px;">event代表事件状态，例如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态等</div></p>
-<p><div style="color:red;font-size:20px;">event对象只在事件发生的过程中才有效！</div></p>
-<h3 id="事件概述"><a href="#事件概述" class="headerlink" title="事件概述"></a>事件概述</h3><p><img src="http://o6yo3ducz.bkt.clouddn.com/event.jpg" width="90%"></p>
-<ul>
-<li>事件是Web浏览器通知应用程序发生了什么事情</li>
-<li>提及事件必须指明事件类型和目标<br>事件类型：说明发生了什么类型事件的字符串<br>时间目标：发生事件的对象或与之相关的对象</li>
-<li>事件传播的三个阶段：<ul>
-<li>捕获：目标处理程序调用之前，沿DOM树向下，从外向内捕获</li>
-<li>目标对象本身的事件处理程序调用</li>
-<li>冒泡：文档元素上发生某类型事件时会沿DOM树向上冒泡，当前DOM直到&lt;body&gt;,再到document，再到window<h3 id="注册事件处理程序"><a href="#注册事件处理程序" class="headerlink" title="注册事件处理程序"></a>注册事件处理程序</h3></li>
-</ul>
-</li>
-<li><code>addEventListener(&#39;eventType&#39;,function,~~bool~~)</code>:三个参数为事件类型，发生时执行的函数，是否为捕获阶段（可省略，默认false）<br>IE9前使用<code>attachEvent(&#39;oneventType&#39;,function);</code>（tips:这里function中this指向window，<code>addEventListener()</code>中this指向事件目标）<br>可为同一事件注册多个函数，执行时会按注册顺序调用；<br>参数相同的情况下多次调用<code>addEventListener()</code>只注册一次</li>
-<li>通过JS中对应属性设置：事件处理程序属性名称由”on”+”eventType”组成，全部小写</li>
-<li>通过HTML属性设置：事件处理程序属性名称由”on”+”eventType”组成，全部小写。但为保持内容与行为分离，不应采用这种方式<h3 id="事件移除与取消"><a href="#事件移除与取消" class="headerlink" title="事件移除与取消"></a>事件移除与取消</h3></li>
-<li>移除：<code>removeEventListener(&#39;eventType&#39;,function,~~bool~~)</code>参数必须和注册时相同</li>
-<li>设置HTML属性注册事件处理程序，将返回值置为false，浏览器会取消默认行为，但这只对属性注册的程序有效</li>
-<li>取消事件默认行为：<code>preventDefault()</code></li>
-<li>阻止事件传播：<code>stopPropagation()</code>,可在传播期间任何时间调用<br>IE9以下不支持，通过将cancelBuble置为true阻止<h3 id="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"><a href="#事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数" class="headerlink" title="事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数"></a>事件处理程序执行环境为其定义时的作用域，而不是调用时的作用域；但HTML属性中的事件处理程序会被转为能存取全局变量的顶级函数</h3><h3 id="事件处理程序的调用顺序"><a href="#事件处理程序的调用顺序" class="headerlink" title="事件处理程序的调用顺序"></a>事件处理程序的调用顺序</h3></li>
-<li>通过JS对应属性及HTML属性注册的程序优先调用</li>
-<li><code>addEventListener()</code>按注册顺序调用</li>
-<li><code>attachEvent()</code>可能按任意顺序调用<h3 id="事件传播"><a href="#事件传播" class="headerlink" title="事件传播"></a>事件传播</h3></li>
-<li>三个阶段：捕获、事件处理程序调用、冒泡</li>
-<li>当需要在大量单独的文档元素上注册处理程序时，可在其共同的祖先元素上注册</li>
-<li>特殊冒泡行为：<ul>
-<li>focus,blur,scroll不冒泡</li>
-<li>load冒泡至document对象停止，文档全部加载完才会冒泡至window对象</li>
-</ul>
-</li>
-<li>捕获常用于处理鼠标拖放，因为拖放目标不能是元素内部的子元素<h3 id="文档加载事件"><a href="#文档加载事件" class="headerlink" title="文档加载事件"></a>文档加载事件</h3></li>
-<li>load:直到文档和所有图片加载完毕才发生（load发生前触发脚本可以提升web应用启动时间）</li>
-<li>DOMContentLoaded：文档加载完毕且所有延迟脚本执行完毕触发</li>
-<li>readystatechange：状态改变触发，在load事件前触发<h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3></li>
-<li>click：按下并释放鼠标按键时触发</li>
-<li>contextmenu：单击鼠标右键上下文菜单即将出现时触发，可取消默认行为</li>
-<li>dbclick：双击鼠标触发</li>
-<li>mousedown：按下鼠标按键时触发</li>
-<li>mouseup：释放鼠标按键时触发</li>
-<li>mouseout：离开元素时触发（mouseleave为不冒泡的mouseout）</li>
-<li>mouseover：进入元素悬停时触发（mouseenter为不冒泡的mouseover）</li>
-<li>mousemove：移动鼠标时触发</li>
-<li>tips：<br>传递给鼠标事件的event对象有clientX,clientY属性，指示鼠标位置的窗口坐标<br>event对象有altkey,ctrlkey,shiftkey,metakey等属性指定鼠标事件发生时该键有没有按下<h3 id="鼠标滚轮事件"><a href="#鼠标滚轮事件" class="headerlink" title="鼠标滚轮事件"></a>鼠标滚轮事件</h3></li>
-<li>mousewheel:默认滚动或缩放文档，可阻止默认操作<br>传递给事件处理程序的事件对象event有wheelDelta属性，指定滚轮有多远<br>Firefox中用DOMMouseScroll取代mousewheel，用detail取代wheelDelta<h3 id="文本事件"><a href="#文本事件" class="headerlink" title="文本事件"></a>文本事件</h3></li>
-<li>keydown:按下键盘（包括辅助键、功能键、字母数字键）</li>
-<li>keypress:keydown产生可打印字符时，在keydown和keyup之间触发，文本真正插入前触发，表输入单个字符（可能需用string.fromCharCode()转为字符串才生效）</li>
-<li>keyup:键盘释放（包括辅助键、功能键、字母数字键）</li>
-<li>textinput：无论何时用户输入文本都会触发，不管来源（有兼容性问题）</li>
-<li>相关event对象有keycode属性，指定按下的键是哪个<ul>
-<li>可打印字符keycode值为unicode编码</li>
-<li>字母键keycode值总为大写</li>
-</ul>
-</li>
-<li>相关event对象有altkey,ctrlkey,shiftkey,metakey属性，事件发生时对应辅助键按下值为true<h3 id="事件处理程序定义时要传入参数e代表event对象！"><a href="#事件处理程序定义时要传入参数e代表event对象！" class="headerlink" title="事件处理程序定义时要传入参数e代表event对象！"></a>事件处理程序定义时要传入参数e代表event对象！</h3><h3 id="event对象的target属性：触发事件的元素（IE下为srcElement属性）"><a href="#event对象的target属性：触发事件的元素（IE下为srcElement属性）" class="headerlink" title="event对象的target属性：触发事件的元素（IE下为srcElement属性）"></a>event对象的target属性：触发事件的元素（IE下为srcElement属性）</h3><h3 id="event对象的currentTarget属性：事件绑定的节点"><a href="#event对象的currentTarget属性：事件绑定的节点" class="headerlink" title="event对象的currentTarget属性：事件绑定的节点"></a>event对象的currentTarget属性：事件绑定的节点</h3><h3 id="以上两者在事件委托时不同（事件委托-事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）"><a href="#以上两者在事件委托时不同（事件委托-事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）" class="headerlink" title="以上两者在事件委托时不同（事件委托/事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）"></a>以上两者在事件委托时不同（事件委托/事件代理：利用事件会冒泡到父节点，通过父节点监听事件，再判断是父节点下哪个节点触发，做相应处理）</h3>一个事件委托的例子：<pre><br>window.onload=function (){<br>var oUL=document.getElementById(‘ul’);<br>oUL.addEventListener(‘mouseover’,overFun,false);<br>oUL.addEventListener(‘mouseout’,outFun,false);<br>function overFun(e){<br>  var e=e||window.e;<br>  var target=e.target||e.srcElement  //兼容IE<br>  if(target.nodeName.toLowerCase()==’li’){<pre><code>target.style.background=&apos;red&apos;;
-</code></pre>  }<br>}<br>function outFun(e){<pre><code>var e=e||window.e;
-var target=e.target||e.srcElement  //兼容IE
-if(target.nodeName.toLowerCase()==&apos;li&apos;){
-  target.style.background=&apos;yellowgreen&apos;;
-}
-</code></pre>  }<br>}<br></pre></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/javascript/">javascript</a><a class="article-category-link" href="/categories/technology/javascript/event对象/">event对象</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript学习笔记/">javascript学习笔记</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1214,7 +1150,7 @@ if(target.nodeName.toLowerCase()==&apos;li&apos;){
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2016 D_d
+                &copy; 2017 D_d
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman

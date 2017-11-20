@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>工作笔记 | D_d</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="气球活动的总结1.关于canvas：
+
+标签的width与height必须设定，会以此来换算画布坐标
+实际的显示可在的样式中设定以做自适应，但宽高比例须要与width、height一致，否则会有拉伸，类似图片的样式宽高与实际宽高比例不同会拉伸，图片模糊
+要改变画笔使用颜色，只需要在新路径beginPath，设定新颜色即可
+canvas元素外包一个div可阻止有position定位时元素下方莫名其妙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作笔记">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/工作笔记/index.html">
+<meta property="og:site_name" content="D_d">
+<meta property="og:description" content="气球活动的总结1.关于canvas：
+
+标签的width与height必须设定，会以此来换算画布坐标
+实际的显示可在的样式中设定以做自适应，但宽高比例须要与width、height一致，否则会有拉伸，类似图片的样式宽高与实际宽高比例不同会拉伸，图片模糊
+要改变画笔使用颜色，只需要在新路径beginPath，设定新颜色即可
+canvas元素外包一个div可阻止有position定位时元素下方莫名其妙">
+<meta property="og:updated_time" content="2017-11-20T15:43:00.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工作笔记">
+<meta name="twitter:description" content="气球活动的总结1.关于canvas：
+
+标签的width与height必须设定，会以此来换算画布坐标
+实际的显示可在的样式中设定以做自适应，但宽高比例须要与width、height一致，否则会有拉伸，类似图片的样式宽高与实际宽高比例不同会拉伸，图片模糊
+要改变画笔使用颜色，只需要在新路径beginPath，设定新颜色即可
+canvas元素外包一个div可阻止有position定位时元素下方莫名其妙">
+  
+    <link rel="alternative" href="/atom.xml" title="D_d" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">D_d</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">——Welcome to D_d&#39;s Blog!——</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">归档</a></li>
+                        
+                            <li><a href="/">关于生活</a></li>
+                        
+                            <li><a href="/categories/technology">技术</a></li>
+                        
+                            <li><a href="/categories/technology/javascript">js</a></li>
+                        
+                            <li><a href="/categories/technology/css">HTML&amp;CSS</a></li>
+                        
+                            <li><a href="/categories/plan">哈哈哈计划赶不上变化</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ek9DTk5OSE1MSzoLC1QZFRc" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/dionyding" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/u/2258194143" title="weibo">weibo</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/about工作/" style="font-size: 10px;">about工作</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/javascript学习笔记/" style="font-size: 20px;">javascript学习笔记</a> <a href="/tags/work-notes/" style="font-size: 10px;">work notes</a> <a href="/tags/xampp/" style="font-size: 10px;">xampp</a> <a href="/tags/哈哈哈！计划赶不上变化/" style="font-size: 10px;">哈哈哈！计划赶不上变化</a> <a href="/tags/图片格式/" style="font-size: 10px;">图片格式</a> <a href="/tags/百度面试题/" style="font-size: 10px;">百度面试题</a> <a href="/tags/纯css实现多级nav/" style="font-size: 10px;">纯css实现多级nav</a> <a href="/tags/纯css画三角形/" style="font-size: 10px;">纯css画三角形</a> <a href="/tags/闭包和作用域/" style="font-size: 10px;">闭包和作用域</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://congyingtech.github.io/">mohnTech</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://missxing.github.io/">missXing</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱生活，爱旅行，爱摄影，爱前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">D_d</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">D_d</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">——Welcome to D_d&#39;s Blog!——</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">归档</a></li>
+                
+                    <li><a href="/">关于生活</a></li>
+                
+                    <li><a href="/categories/technology">技术</a></li>
+                
+                    <li><a href="/categories/technology/javascript">js</a></li>
+                
+                    <li><a href="/categories/technology/css">HTML&amp;CSS</a></li>
+                
+                    <li><a href="/categories/plan">哈哈哈计划赶不上变化</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ek9DTk5OSE1MSzoLC1QZFRc" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/dionyding" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/u/2258194143" title="weibo">weibo</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-工作笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/20/工作笔记/" class="article-date">
+      <time datetime="2017-11-20T15:38:04.000Z" itemprop="datePublished">2017-11-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      工作笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/technology/">technology</a><a class="article-category-link" href="/categories/technology/javascript/">javascript</a><a class="article-category-link" href="/categories/technology/javascript/工作总结/">工作总结</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/about工作/">about工作</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="气球活动的总结"><a href="#气球活动的总结" class="headerlink" title="气球活动的总结"></a>气球活动的总结</h2><p>1.关于canvas：</p>
+<ul>
+<li><canvas>标签的width与height必须设定，会以此来换算画布坐标</canvas></li>
+<li>实际的显示可在<canvas>的样式中设定以做自适应，但宽高比例须要与width、height一致，否则会有拉伸，类似图片的样式宽高与实际宽高比例不同会拉伸，图片模糊</canvas></li>
+<li>要改变画笔使用颜色，只需要在新路径beginPath，设定新颜色即可</li>
+<li>canvas元素外包一个div可阻止有position定位时元素下方莫名其妙多了几像素空行的问题</li>
+</ul>
+<p>2.随机打乱数组的算法：</p>
+<ul>
+<li>思想为从最末尾的数组元素开始，与其前面的某随机生成index值的元素交换位置，直至index为1的元素与index为0的元素交换位置，这样做可以保证每一个元素都随机交换过，其交换概率均等，处于不同位置的概率均等</li>
+<li>代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">randomArr(arr) &#123;</span><br><span class="line">    for (let i = (arr.length - 1); i &gt; 0; i--) &#123;</span><br><span class="line">      let random = Math.floor(Math.random() * i);</span><br><span class="line">      let param = arr[random];</span><br><span class="line">      arr[random] = arr[i];</span><br><span class="line">      arr[i] = param;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>3.关于touch事件</p>
+<ul>
+<li>touchstart事件会先于click事件触发，touchmove存在则不为click事件为touch事件，不存在为click事件</li>
+<li>touch事件的touchList数组有三个：changedTouches，targetTouches，touches<ul>
+<li>changedTouches列出发生改变的接触点的Touch对象：<br>1.对touchstart事件，touchList列出新增触点<br>2.对touchmove事件，touchList列出发生改变的触点<br>3.对touchend事件，touchList列出离开屏幕的触点</li>
+<li>targetTouches列出从当前element触发的接触点的Touch对象（touchstart须从当前element触发）</li>
+<li>touches列出所有屏幕接触点的Touch对象（touchstart从任何element触发）<br>—————————–tu</li>
+</ul>
+</li>
+<li>changedTouches，targetTouches，touches的touchList对象包含的参数相同，说明：<ul>
+<li>clientX：触摸目标在视口中的x坐标。</li>
+<li>clientY：触摸目标在视口中的y坐标。</li>
+<li>identifier：标识触摸的唯一ID。</li>
+<li>pageX：触摸目标在页面中的x坐标。</li>
+<li>pageY：触摸目标在页面中的y坐标。</li>
+<li>screenX：触摸目标在屏幕中的x坐标。</li>
+<li>screenY：触摸目标在屏幕中的y坐标。</li>
+<li>target：触目的DOM节点目标。</li>
+<li>force：压力大小（0.0无压力，1.0最大压力）。</li>
+<li>radiusX,radiusY,rotationAngle：监测手指的椭圆形用(16年safari及微信内置浏览器都不支持这些属性，chrome模拟器可以，现在不确定)。</li>
+</ul>
+</li>
+<li>touchcancel：系统停止跟踪触摸时触发<br>——————tu</li>
+</ul>
+<p>4.关于immutable:<br>React只要setState就会触发render重新渲染，可引入immutable比对两次状态若未改变就阻止重新渲染（shouldComponentUpdate中return false，只有首次渲染和forceUpdate会重新渲染）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    /*selected参数不改变时不需重新渲染*/</span><br><span class="line">    return !Immutable.is(this.state.selected, nextState.selected);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.下拉刷新：<br>下拉刷新的交互在IOS中会导致页面也被拉动，在touch事件中通过e.preventDefault()来禁止，但要注意保留需要的touch事件动作</p>
+<p>6.关于setTimeout：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;console.log(1)&#125;, 0);</span><br><span class="line">Promise.resolve(2).then((val)=&gt;&#123;console.log(val)&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>代码执行结果为输出2，0。<br>现有的 JavaScript 引擎是单线程处理任务的。它把任务放到队列中，不会同步去执行，必须在完成一个任务后才开始另外一个任务。均为异步但setTimeout对应部分会在浏览器执行下一队列最开始执行，而Promise对应会在本次队列执行。setTimeout可以把任务从某个队列中跳脱成为新队列。</p>
+<ul>
+<li>tips:<ul>
+<li>HTML5标准规定了setTimeout()的第二个参数的最小值（最短间隔），不得低于4毫秒，如果低于这个值，就会自动增加。另外，对于那些DOM的变动（尤其是涉及页面重新渲染的部分），通常不会立即执行，而是每16.7(1000/60即：1s60帧看起来动画比较顺滑)毫秒执行一次（这也是为何setTimeout的定时器值推荐最小使用16.7ms的原因，小于此可能会丢帧）。这时使用requestAnimationFrame()的效果要好于setTimeout()。</li>
+<li>window.requestAnimationFrame(callback)在下次重绘时产生另一个动画画面，跟着浏览器的绘制走，如果浏览设备绘制间隔是16.7ms，就这个间隔绘制；如果浏览设备绘制间隔是10ms, 就10ms绘制。这样就不会存在过度绘制的问题，动画不会掉帧，自然流畅。但其兼容性一般，使用需谨慎。</li>
+</ul>
+</li>
+</ul>
+<p>7.关于Promise：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Promise.reject(2).then((v) =&gt; &#123;</span><br><span class="line">  console.log(&apos;reject:&apos; + v);</span><br><span class="line">  &#125;,(v)=&gt;&#123;console.log(&apos;reject:&apos;+v);&#125;).then(()=&gt;&#123;</span><br><span class="line">  console.log(2.1);</span><br><span class="line">  &#125;,()=&gt;&#123;console.log(2.2);&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上述代码结果输出reject:2, 2.1<br>在链式调用Promise对象时，第一个then方法中跳入reject对应函数，但在下一次then方法中会进入resolve对应函数，故链式调用时在结尾用catch方法捕获reject及error较好！！！</p>
+<p>8.rax项目中向View中传入store：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class FragmentSheet extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    let props = this.props;</span><br><span class="line">    let extendStyle = props.style;</span><br><span class="line">    this.sheetStore = this.sheetStore || new Store(props.gameId);</span><br><span class="line"></span><br><span class="line">    return (&lt;View style=&#123;style.sheetWrap&#125;&gt;</span><br><span class="line">      &lt;View style=&#123;[style.sheetBorder, extendStyle.sheetBorder]&#125; /&gt;</span><br><span class="line">      &lt;Header store=&#123;this.sheetStore&#125; imgStyle=&#123;style.sheetImgStyle&#125; /&gt;</span><br><span class="line">      &lt;FragmentListView store=&#123;this.sheetStore&#125; /&gt;</span><br><span class="line">      &lt;View style=&#123;style.sheetButton&#125; onClick=&#123;props.onButtonClick&#125;&gt;试试手气&lt;/View&gt;</span><br><span class="line">    &lt;/View&gt;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>第五行中存入this.sheetStore中会比在constructor中使用全局变量存储sheetStore好一些，不会污染全局命名空间</p>
+<p>9.rax项目中要使用显示省略号的属性text-overflow，需要配合Text标签的numberOfLine属性一起使用，文档中的lines属性可能有误。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/11/20/工作笔记/">工作笔记</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 D_d 的个人博客">D_d</a></p>
+        <p><span>发布时间:</span>2017年11月20日 - 23时38分</p>
+        <p><span>最后更新:</span>2017年11月20日 - 23时43分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/11/20/工作笔记/" title="工作笔记">http://yoursite.com/2017/11/20/工作笔记/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/11/20/工作笔记/　　作者: D_d" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/21/Promise对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Promise对象</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#气球活动的总结"><span class="toc-number">1.</span> <span class="toc-text">气球活动的总结</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/11/20/工作笔记/" data-title="工作笔记" data-url="http://yoursite.com/2017/11/20/工作笔记/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/11/21/Promise对象/" title="下一篇: Promise对象">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/11/20/工作笔记/">工作笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/21/Promise对象/">Promise对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/08/《javascript权威指南》学习笔记（14）/">《javascript权威指南》学习笔记（14）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/百度面试的总结/">百度面试的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/工作的总结/">工作的总结2017\07\27</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/关于图片/">关于图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/工具小常识xampp-gulp/">工具小常识xampp&gulp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/《javascript权威指南》学习笔记（13）/">《javascript权威指南》学习笔记（13）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/09/《javascript权威指南》学习笔记（12）/">《javascript权威指南》学习笔记（12）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/《javascript权威指南》学习笔记（11）/">《javascript权威指南》学习笔记（11）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/05/《javascript权威指南》学习笔记（10）/">《javascript权威指南》学习笔记（10）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/14/《javascript权威指南》学习笔记（9）/">《javascript权威指南》学习笔记（9）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/14/《javascript权威指南》学习笔记（8）/">《javascript权威指南》学习笔记（8）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/《javascript权威指南》学习笔记（7）/">《javascript权威指南》学习笔记（7）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/《javascript权威指南》学习笔记（6）/">《javascript权威指南》学习笔记（6）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/黑魔法——纯css画一个三角形/">黑魔法——纯css画一个三角形</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/《javascript权威指南》学习笔记（5）/">《javascript权威指南》学习笔记（5）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/《javascript权威指南》学习笔记（4）/">《javascript权威指南》学习笔记（4）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/17/用纯css实现多级导航菜单/">用纯css实现多级导航菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/闭包和作用域的小例子/">闭包和作用域的小例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/《javascript权威指南》学习笔记（3）/">《javascript权威指南》学习笔记（3）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/12/《javascript权威指南》学习笔记（2）/">《javascript权威指南》学习笔记（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/11/5月plan/">5月plan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/《javascript权威指南》学习笔记（1）/">《javascript权威指南》学习笔记（1）</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 D_d
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 5;
+			var num=Math.ceil(Math.random() * backgroundnum);
+			var backgroundimg;
+			if(num==1){
+			  backgroundimg = "url(/background/bg-x.JPG)".replace(/x/gi, num);
+			  //莫名其妙！！！第一张图后缀大写？？？
+			}else{
+			  backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, num);
+			}
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
