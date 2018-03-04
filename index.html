@@ -260,7 +260,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="登录部分："><a href="#登录部分：" class="headerlink" title="登录部分："></a>登录部分：</h2><ul>
+        <ul>
+<li>url： <a href="https://market.m.taobao.com/apps/market/acthappyyear2018/index.html?cpBookId=act-happy-year2018" target="_blank" rel="external">2018——一汪百旺</a><h2 id="登录部分："><a href="#登录部分：" class="headerlink" title="登录部分："></a>登录部分：</h2></li>
 <li>视频：<ul>
 <li>在部分安卓机中视频层级较高，无法使图片覆盖在视频之上，初始可用截图代替视频，点 击全屏播放，以解决这个问题</li>
 </ul>
@@ -379,26 +380,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="气球活动的总结"><a href="#气球活动的总结" class="headerlink" title="气球活动的总结"></a>气球活动的总结</h2><p>1.关于canvas：</p>
-<ul>
+        <h1 id="气球活动的总结"><a href="#气球活动的总结" class="headerlink" title="气球活动的总结"></a>气球活动的总结</h1><ul>
+<li>url: <a href="https://h5.m.taobao.com/app/lottery/www/global/index.html?id=cph5/lottery-raffle/raffle/index&amp;configId=act-raffle-balloon201710&amp;payType=6&amp;cpBookId=promoballoon201710" target="_blank" rel="external">拽气球</a></li>
+</ul>
+<h2 id="关于canvas："><a href="#关于canvas：" class="headerlink" title="关于canvas："></a>关于canvas：</h2><ul>
 <li>canvas标签的width与height必须设定，会以此来换算画布坐标</li>
 <li>实际的显示可在canvas的样式中设定以做自适应，但宽高比例须要与width、height一致，否则会有拉伸，类似图片的样式宽高与实际宽高比例不同会拉伸，图片模糊</li>
 <li>要改变画笔使用颜色，只需要在新路径beginPath，设定新颜色即可</li>
 <li>canvas元素外包一个div可阻止有position定位时元素下方莫名其妙多了几像素空行的问题</li>
 </ul>
-<p>2.随机打乱数组的算法：</p>
-<ul>
+<h2 id="随机打乱数组的算法："><a href="#随机打乱数组的算法：" class="headerlink" title="随机打乱数组的算法："></a>随机打乱数组的算法：</h2><ul>
 <li>思想为从最末尾的数组元素开始，与其前面的某随机生成index值的元素交换位置，直至index为1的元素与index为0的元素交换位置，这样做可以保证每一个元素都随机交换过，其交换概率均等，处于不同位置的概率均等</li>
 <li>代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">randomArr(arr) &#123;</span><br><span class="line">    for (let i = (arr.length - 1); i &gt; 0; i--) &#123;</span><br><span class="line">      let random = Math.floor(Math.random() * i);</span><br><span class="line">      let param = arr[random];</span><br><span class="line">      arr[random] = arr[i];</span><br><span class="line">      arr[i] = param;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>3.关于touch事件</p>
-<ul>
+<h2 id="关于touch事件"><a href="#关于touch事件" class="headerlink" title="关于touch事件"></a>关于touch事件</h2><ul>
 <li>touchstart事件会先于click事件触发，touchmove存在则不为click事件为touch事件，不存在为click事件</li>
 <li>touch事件的touchList数组有三个：changedTouches，targetTouches，touches<ul>
 <li>changedTouches列出发生改变的接触点的Touch对象：<br>1.对touchstart事件，touchList列出新增触点<br>2.对touchmove事件，touchList列出发生改变的触点<br>3.对touchend事件，touchList列出离开屏幕的触点</li>
 <li>targetTouches列出从当前element触发的接触点的Touch对象（touchstart须从当前element触发）</li>
-<li>touches列出所有屏幕接触点的Touch对象（touchstart从任何element触发）<br>—————————–tu</li>
+<li>touches列出所有屏幕接触点的Touch对象（touchstart从任何element触发）</li>
 </ul>
 </li>
 <li>changedTouches，targetTouches，touches的touchList对象包含的参数相同，说明：<ul>
@@ -414,11 +415,11 @@
 <li>radiusX,radiusY,rotationAngle：监测手指的椭圆形用(16年safari及微信内置浏览器都不支持这些属性，chrome模拟器可以，现在不确定)。</li>
 </ul>
 </li>
-<li>touchcancel：系统停止跟踪触摸时触发<br>——————tu</li>
+<li>touchcancel：系统停止跟踪触摸时触发</li>
 </ul>
-<p>4.关于immutable:<br>React只要setState就会触发render重新渲染，可引入immutable比对两次状态若未改变就阻止重新渲染（shouldComponentUpdate中return false，只有首次渲染和forceUpdate会重新渲染）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    /*selected参数不改变时不需重新渲染*/</span><br><span class="line">    return !Immutable.is(this.state.selected, nextState.selected);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>5.下拉刷新：<br>下拉刷新的交互在IOS中会导致页面也被拉动，在touch事件中通过e.preventDefault()来禁止，但要注意保留需要的touch事件动作</p>
-<p>6.关于setTimeout：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;console.log(1)&#125;, 0);</span><br><span class="line">Promise.resolve(2).then((val)=&gt;&#123;console.log(val)&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于immutable"><a href="#关于immutable" class="headerlink" title="关于immutable:"></a>关于immutable:</h2><p>React只要setState就会触发render重新渲染，可引入immutable比对两次状态若未改变就阻止重新渲染（shouldComponentUpdate中return false，只有首次渲染和forceUpdate会重新渲染）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    /*selected参数不改变时不需重新渲染*/</span><br><span class="line">    return !Immutable.is(this.state.selected, nextState.selected);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="下拉刷新："><a href="#下拉刷新：" class="headerlink" title="下拉刷新："></a>下拉刷新：</h2><p>下拉刷新的交互在IOS中会导致页面也被拉动，在touch事件中通过e.preventDefault()来禁止，但要注意保留需要的touch事件动作</p>
+<h2 id="关于setTimeout："><a href="#关于setTimeout：" class="headerlink" title="关于setTimeout："></a>关于setTimeout：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;&#123;console.log(1)&#125;, 0);</span><br><span class="line">Promise.resolve(2).then((val)=&gt;&#123;console.log(val)&#125;);</span><br></pre></td></tr></table></figure>
 <p>代码执行结果为输出2，0。<br>现有的 JavaScript 引擎是单线程处理任务的。它把任务放到队列中，不会同步去执行，必须在完成一个任务后才开始另外一个任务。均为异步但setTimeout对应部分会在浏览器执行下一队列最开始执行，而Promise对应会在本次队列执行。setTimeout可以把任务从某个队列中跳脱成为新队列。</p>
 <ul>
 <li>tips:<ul>
@@ -427,12 +428,11 @@
 </ul>
 </li>
 </ul>
-<p>7.关于Promise：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Promise.reject(2).then((v) =&gt; &#123;</span><br><span class="line">  console.log(&apos;reject:&apos; + v);</span><br><span class="line">  &#125;,(v)=&gt;&#123;console.log(&apos;reject:&apos;+v);&#125;).then(()=&gt;&#123;</span><br><span class="line">  console.log(2.1);</span><br><span class="line">  &#125;,()=&gt;&#123;console.log(2.2);&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于Promise："><a href="#关于Promise：" class="headerlink" title="关于Promise："></a>关于Promise：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Promise.reject(2).then((v) =&gt; &#123;</span><br><span class="line">  console.log(&apos;reject:&apos; + v);</span><br><span class="line">  &#125;,(v)=&gt;&#123;console.log(&apos;reject:&apos;+v);&#125;).then(()=&gt;&#123;</span><br><span class="line">  console.log(2.1);</span><br><span class="line">  &#125;,()=&gt;&#123;console.log(2.2);&#125;)</span><br></pre></td></tr></table></figure>
 <p>上述代码结果输出reject:2, 2.1<br>在链式调用Promise对象时，第一个then方法中跳入reject对应函数，但在下一次then方法中会进入resolve对应函数，故链式调用时在结尾用catch方法捕获reject及error较好！！！</p>
-<p>8.rax项目中向View中传入store：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class FragmentSheet extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    let props = this.props;</span><br><span class="line">    let extendStyle = props.style;</span><br><span class="line">    this.sheetStore = this.sheetStore || new Store(props.gameId);</span><br><span class="line"></span><br><span class="line">    return (&lt;View style=&#123;style.sheetWrap&#125;&gt;</span><br><span class="line">      &lt;View style=&#123;[style.sheetBorder, extendStyle.sheetBorder]&#125; /&gt;</span><br><span class="line">      &lt;Header store=&#123;this.sheetStore&#125; imgStyle=&#123;style.sheetImgStyle&#125; /&gt;</span><br><span class="line">      &lt;FragmentListView store=&#123;this.sheetStore&#125; /&gt;</span><br><span class="line">      &lt;View style=&#123;style.sheetButton&#125; onClick=&#123;props.onButtonClick&#125;&gt;试试手气&lt;/View&gt;</span><br><span class="line">    &lt;/View&gt;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="rax项目中向View中传入store："><a href="#rax项目中向View中传入store：" class="headerlink" title="rax项目中向View中传入store："></a>rax项目中向View中传入store：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class FragmentSheet extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    let props = this.props;</span><br><span class="line">    let extendStyle = props.style;</span><br><span class="line">    this.sheetStore = this.sheetStore || new Store(props.gameId);</span><br><span class="line"></span><br><span class="line">    return (&lt;View style=&#123;style.sheetWrap&#125;&gt;</span><br><span class="line">      &lt;View style=&#123;[style.sheetBorder, extendStyle.sheetBorder]&#125; /&gt;</span><br><span class="line">      &lt;Header store=&#123;this.sheetStore&#125; imgStyle=&#123;style.sheetImgStyle&#125; /&gt;</span><br><span class="line">      &lt;FragmentListView store=&#123;this.sheetStore&#125; /&gt;</span><br><span class="line">      &lt;View style=&#123;style.sheetButton&#125; onClick=&#123;props.onButtonClick&#125;&gt;试试手气&lt;/View&gt;</span><br><span class="line">    &lt;/View&gt;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>第五行中存入this.sheetStore中会比在constructor中使用全局变量存储sheetStore好一些，不会污染全局命名空间</p>
-<p>9.rax项目中要使用显示省略号的属性text-overflow，需要配合Text标签的numberOfLine属性一起使用，文档中的lines属性可能有误。</p>
-
+<h2 id="rax项目中要使用显示省略号的属性text-overflow，需要配合Text标签的numberOfLine属性一起使用，文档中的lines属性可能有误。"><a href="#rax项目中要使用显示省略号的属性text-overflow，需要配合Text标签的numberOfLine属性一起使用，文档中的lines属性可能有误。" class="headerlink" title="rax项目中要使用显示省略号的属性text-overflow，需要配合Text标签的numberOfLine属性一起使用，文档中的lines属性可能有误。"></a>rax项目中要使用显示省略号的属性text-overflow，需要配合Text标签的numberOfLine属性一起使用，文档中的lines属性可能有误。</h2>
       
     </div>
     
